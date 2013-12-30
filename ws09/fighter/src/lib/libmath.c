@@ -2,29 +2,39 @@
 
 
 coord_t div(coord_t first, coord_t second){
-    return first / second;
+    /**
+     *  10 /  3 =  3
+     * -10 /  3 = -4
+     *  10 / -3 = -4
+     * -10 / -3 =  3
+     **/ 
+    if (((0 < first) && (0 < second)) || ((first < 0) && (second < 0)))
+        return first / second;
+    return first / second - 1;
 }
 
 coord_t mod(coord_t first, coord_t second){
-    coord_t remainder;
- 
-    if(0 > second){
-        remainder = -first % -second;
-        if( 0 > remainder)
-            remainder -= second;
-        remainder = -remainder;
-    }
-    else{
-        remainder = first % second;
-        if( 0 > remainder)
-            remainder += second;
-    }
-
-    return remainder;
-
-    /**
-     *  Some other versions of this function:
-     *
+    return  first - div(first, second) * second;
+    
+     /** 
+     *  Other versions of this function without calling div:
+     * 
+     *      Direct:
+     * 
+     *          coord_t remainder;
+     *          if(0 > second){
+     *              remainder = -first % -second;
+     *              if( 0 > remainder)
+     *                  remainder -= second;
+     *              remainder = -remainder;
+     *          }
+     *          else{
+     *              remainder = first % second;
+     *              if( 0 > remainder)
+     *                  remainder += second;
+     *          }
+     *          return remainder;
+     *       
      *      Сompact:
      *  
      *          coord_t remainder = first % second;

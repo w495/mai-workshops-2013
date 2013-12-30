@@ -37,6 +37,9 @@ int main(int argc, char* argv[], char* env[]){
     coord_t i = I_0;
     coord_t j = J_0;
     coord_t l = L_0;
+    coord_t i_tmp = 0;
+    coord_t j_tmp = 0;
+    coord_t l_tmp = 0;
     coord_t ex0 = ELLIPSE_X0;
     coord_t ey0 = ELLIPSE_Y0;
     coord_t exd = ELLIPSE_XDIAG;
@@ -48,11 +51,14 @@ int main(int argc, char* argv[], char* env[]){
     isout = out_of_ellipse(i, j, ex0, ey0, exd, eyd);
     fprintf(stderr, "%lu) i = %d j = %d l = %d\n",  k, i, j, l);
     while((k < STEPS) && isout){
-        i = next_i(i, j, l, k);
-        j = next_j(i, j, l, k);
-        l = next_l(i, j, l, k);
+        i_tmp = next_i(i, j, l, k);
+        j_tmp = next_j(i, j, l, k);
+        l_tmp = next_l(i, j, l, k);
         /* here k = next_k is the sim to k++ */
         k = next_k(i, j, l, k);
+        i = i_tmp;
+        j = j_tmp;
+        l = l_tmp;
         isout = out_of_ellipse(i, j, ex0, ey0, exd, eyd);
         fprintf(stderr, "%lu) i = %d j = %d l = %d\n",  k, i, j, l);
     };

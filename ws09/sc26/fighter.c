@@ -109,6 +109,10 @@ int main(int argc, char* argv[], char* env[]){
     coord_t i = I_0;
     coord_t j = J_0;
     coord_t l = L_0;
+    coord_t i_tmp = 0;
+    coord_t j_tmp = 0;
+    coord_t l_tmp = 0;
+    
     bool_t isout = TRUE;
     size_t k = 0;
 
@@ -117,11 +121,14 @@ int main(int argc, char* argv[], char* env[]){
     isout = out_of_ellipse(i, j);
     fprintf(stderr, "%lu) i = %d j = %d l = %d\n",  k, i, j, l);
     while((k < STEPS) && isout){
-        i = next_i(i, j, l, k);
-        j = next_j(i, j, l, k);
-        l = next_l(i, j, l, k);
+        i_tmp = next_i(i, j, l, k);
+        j_tmp = next_j(i, j, l, k);
+        l_tmp = next_l(i, j, l, k);
         /* here k = next_k is the sim to k++ */
         k = next_k(i, j, l, k);
+        i = i_tmp;
+        j = j_tmp;
+        l = l_tmp;
         isout = out_of_ellipse(i, j);
         fprintf(stderr, "%lu) i = %d j = %d l = %d\n",  k, i, j, l);
     };
@@ -140,30 +147,41 @@ int main(int argc, char* argv[], char* env[]){
  * <lib>
  **************************************************************************/
 
+
 coord_t div(coord_t first, coord_t second){
-    return first / second;
+    /**
+     *  10 /  3 =  3
+     * -10 /  3 = -4
+     *  10 / -3 = -4
+     * -10 / -3 =  3
+     **/ 
+    if (((0 < first) && (0 < second)) || ((first < 0) && (second < 0)))
+        return first / second;
+    return first / second - 1;
 }
 
 coord_t mod(coord_t first, coord_t second){
-    coord_t remainder;
- 
-    if(0 > second){
-        remainder = -first % -second;
-        if( 0 > remainder)
-            remainder -= second;
-        remainder = -remainder;
-    }
-    else{
-        remainder = first % second;
-        if( 0 > remainder)
-            remainder += second;
-    }
-
-    return remainder;
-
-    /**
-     *  Some other versions of this function:
-     *
+    return  first - div(first, second) * second;
+    
+     /** 
+     *  Other versions of this function without calling div:
+     * 
+     *      Direct:
+     * 
+     *          coord_t remainder;
+     *          if(0 > second){
+     *              remainder = -first % -second;
+     *              if( 0 > remainder)
+     *                  remainder -= second;
+     *              remainder = -remainder;
+     *          }
+     *          else{
+     *              remainder = first % second;
+     *              if( 0 > remainder)
+     *                  remainder += second;
+     *          }
+     *          return remainder;
+     *       
      *      Сompact:
      *  
      *          coord_t remainder = first % second;
