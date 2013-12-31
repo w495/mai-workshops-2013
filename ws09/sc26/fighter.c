@@ -1,6 +1,6 @@
 /**
  *  © Ilya w495 Nikitin 2013, MAI
- *  Workshop 8. «Motion of a point», Scenario 26. Normal version.
+ *  Workshop 9. «Motion of a point», Scenario 26. Normal version.
  * 
  * The ellipse is centered at the point (20, 0), 
  * passing through the point (10, 0), (30, 0), (20, 5) and (20, -5).
@@ -23,16 +23,16 @@ const size_t STEPS = 50;
 
 const coord_t I_0 = -10;
 const coord_t J_0 = -10;
-const coord_t L_0 =  6;
+const coord_t L_0 =   6;
 
 const coord_t ELLIPSE_X0 = 20;
-const coord_t ELLIPSE_Y0 = 0;
+const coord_t ELLIPSE_Y0 =  0;
 
 const coord_t ELLIPSE_XDIAG = 10;
-const coord_t ELLIPSE_YDIAG = 5;
+const coord_t ELLIPSE_YDIAG =  5;
 
 /**************************************************************************
- * <lib>
+ * <libmath>
  **************************************************************************/
 
 typedef enum {FALSE = 0, TRUE = 1} bool_t;
@@ -52,11 +52,11 @@ coord_t min(coord_t, coord_t);
 coord_t norm(coord_t);
 
 /**************************************************************************
- * </lib>
+ * </libmath>
  **************************************************************************/
 
 /**************************************************************************
- * <biz>
+ * <libbiz>
  **************************************************************************/
 
 coord_t ellipse_common(
@@ -101,7 +101,7 @@ coord_t next_k(
 );
 
 /**************************************************************************
- * </biz>
+ * </libbiz>
  **************************************************************************/
 
 int main(int argc, char* argv[], char* env[]){
@@ -112,13 +112,19 @@ int main(int argc, char* argv[], char* env[]){
     coord_t i_tmp = 0;
     coord_t j_tmp = 0;
     coord_t l_tmp = 0;
-    
+
     bool_t isout = TRUE;
     size_t k = 0;
 
-    /* test_mod(); */
-
+    /**
+    /* Call debug function 
+     */ 
+    test_mod();
     isout = out_of_ellipse(i, j);
+    
+    /** 
+     * Print debug message to `stderr`.
+     */ 
     fprintf(stderr, "%lu) i = %d j = %d l = %d\n",  k, i, j, l);
     while((k < STEPS) && isout){
         i_tmp = next_i(i, j, l, k);
@@ -130,6 +136,9 @@ int main(int argc, char* argv[], char* env[]){
         j = j_tmp;
         l = l_tmp;
         isout = out_of_ellipse(i, j);
+        /** 
+         * Print debug message to `stderr`.
+         */ 
         fprintf(stderr, "%lu) i = %d j = %d l = %d\n",  k, i, j, l);
     };
 
@@ -144,9 +153,8 @@ int main(int argc, char* argv[], char* env[]){
 }
 
 /**************************************************************************
- * <lib>
+ * <libmath>
  **************************************************************************/
-
 
 coord_t div(coord_t first, coord_t second){
     /**
@@ -241,11 +249,11 @@ coord_t sign(coord_t arg){
 }
 
 /**************************************************************************
- * </lib>
+ * </libmath>
  **************************************************************************/
 
 /**************************************************************************
- * <biz>
+ * <libbiz>
  **************************************************************************/
 
 coord_t ellipse_common(
@@ -323,7 +331,6 @@ coord_t next_j(coord_t i, coord_t j, coord_t l, size_t k){
     );
 }
 
-
 /**
  *  @fn Returns the value of
  *      (ik3 + jk3 + lk3 − k) mod 35
@@ -346,5 +353,5 @@ coord_t next_k(coord_t i, coord_t j, coord_t l, size_t k){
 }
 
 /**************************************************************************
- * </biz>
+ * </libbiz>
  **************************************************************************/

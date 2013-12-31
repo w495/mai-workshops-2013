@@ -49,6 +49,10 @@ int main(int argc, char* argv[], char* env[]){
     size_t k = 0;
 
     isout = out_of_ellipse(i, j, ex0, ey0, exd, eyd);
+
+    /** 
+     * Print debug message to `stderr`.
+     */ 
     fprintf(stderr, "%lu) i = %d j = %d l = %d\n",  k, i, j, l);
     while((k < STEPS) && isout){
         i_tmp = next_i(i, j, l, k);
@@ -60,6 +64,10 @@ int main(int argc, char* argv[], char* env[]){
         j = j_tmp;
         l = l_tmp;
         isout = out_of_ellipse(i, j, ex0, ey0, exd, eyd);
+        
+        /** 
+         * Print debug message to `stderr`.
+         */ 
         fprintf(stderr, "%lu) i = %d j = %d l = %d\n",  k, i, j, l);
     };
 
