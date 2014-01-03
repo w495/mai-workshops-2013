@@ -59,6 +59,14 @@ int main(){
     scanf("%d", &size);
 
     /*
+     * Защита от дурака.
+     */ 
+    if(!((0 <= size) &&  (size <= MAX_MATRIX_SIZE))){
+        printf("wrong input\n");
+        return 1;
+    }
+    
+    /*
      * Cчитываем размер матрицы.
      */ 
     for(i = 0; i != size; ++i)
