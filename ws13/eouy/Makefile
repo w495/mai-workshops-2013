@@ -1,8 +1,8 @@
 CC=gcc
 CC_FLAGS= -pedantic -std=c89 -ansi
-NAME=yosets
+NAME=eouy
 SRCDIR=./src
-SRC=$(SRCDIR)/sets.c
+SRC=$(SRCDIR)/eouy.c
 
 all: 
 	$(CC) $(SRC) $(CC_FLAGS) -o $(NAME)
