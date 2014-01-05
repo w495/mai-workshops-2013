@@ -125,12 +125,12 @@ real_t target_fuction(real_t x);
 real_t taylor_fuction(real_t x, iter_t n);
 
 /**
- * @fn Возвращает модуль числа `x`
+ * @fn Возвращает модуль числа `x`.
  */
-real_t rabs(real_t a);
+real_t rabs(real_t x);
 
 /**
- * @fn Возвращает модуль числа `n`
+ * @fn Возвращает модуль `n`-ную степень числа `x`.
  */
 real_t rpow(real_t x, iter_t n);
 
@@ -393,16 +393,16 @@ real_t taylor_fuction(real_t x, iter_t n) {
 }
 
 /**
- * @fn Возвращает модуль числа `x`
+ * @fn Возвращает модуль числа `x`.
  */
-real_t rabs(real_t a) {
-    if (a < 0)
-        return -a;
+real_t rabs(real_t x) {
+    if (x < 0)
+        return -x;
     return a;
 }
 
 /**
- * @fn Возвращает модуль числа `n`
+ * @fn Возвращает модуль `n`-ную степень числа `x`.
  */
 real_t rpow(real_t x, iter_t n) {
     iter_t i;
