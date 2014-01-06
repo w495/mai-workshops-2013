@@ -1,5 +1,5 @@
 CC=gcc
-CC_FLAGS= -pedantic -std=c90 -ansi
+CC_FLAGS= -pedantic -std=c90 -Wall
 NAME=fighter
 SRCDIR=./src
 SRC=$(SRCDIR)/main.c

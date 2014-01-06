@@ -1,13 +1,15 @@
 CC=gcc
-CC_FLAGS= -Wall -pedantic -std=c89 -ansi
+CC_FLAGS= -Wall -pedantic -std=c89 -Wall
 NAME=unishift
 SRCDIR=./src
 SRC=$(SRCDIR)/unishift.c
 
-all: 
-	$(CC) $(SRC) $(CC_FLAGS) -o $(NAME)
+.PHONY : all clean
 
-# -----------------------------------------------------------------------	
+all: $(NAME)
+
+$(NAME): $(SRC)
+	$(CC) $< $(CC_FLAGS) -o $@
+
 clean:
 	rm  -f $(NAME)
-

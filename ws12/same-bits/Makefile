@@ -1,13 +1,16 @@
 CC=gcc
-CC_FLAGS= -pedantic -std=c89 -ansi
-NAME=in-non-decreasing
+CC_FLAGS= -pedantic -std=c89 -Wall
+NAME=same-bits
 SRCDIR=./src
-SRC=$(SRCDIR)/in-non-decreasing.c
+SRC=$(SRCDIR)/same-bits.c
 
-all: 
-	$(CC) $(SRC) $(CC_FLAGS) -o $(NAME)
+.PHONY : all clean
 
-# -----------------------------------------------------------------------	
+all: $(NAME)
+
+$(NAME): $(SRC)
+	$(CC) $< $(CC_FLAGS) -o $@
+
 clean:
 	rm  -f $(NAME)
 
