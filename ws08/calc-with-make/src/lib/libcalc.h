@@ -17,7 +17,7 @@
  * WARNING: We only deal with positive numbers. (0_o)
  * WARNING: We have possible problem with exit(1).
  **/
-int getnum(char*);
+int getnum(char *);
 
 /**
  * @fn Calculates operation `op` with to int args.
@@ -28,7 +28,6 @@ int calc(char, int, int);
 /**
  * @fn Prints error message.
  **/
-void error(char*);
+void error(char *);
 
 #endif /* __LIBCALC__ */
-

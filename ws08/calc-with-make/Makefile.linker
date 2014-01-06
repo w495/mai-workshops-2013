@@ -1,42 +1,130 @@
+## 
+## Define a compiler.
+## 
 CC=gcc
-LD=ld
-LD_LIBS=-L`gcc -print-file-name=` /usr/lib64/crt1.o /usr/lib64/crti.o  /usr/lib64/crtn.o
-LD_FLAGS=$(LD_LIBS) -lc -static 
 
-CC_FLAGS= -pedantic -std=c90 -ansi
+## 
+## Define a linker.
+## ld is old-fashin linker for UNIX. But it still works. 
+## In most cases `gcc` is recommended.
+## 
+LD=ld
+
+## 
+## Define common compiler's flags
+## 
+CC_FLAGS= -pedantic -std=c89 -Wall
+
+## 
+## Define compiler's flags for object files.
+## 
 CC_OBJ_FLAGS= -c $(CC_FLAGS)
+
+## 
+## Define linker's flags for static libraries.
+## 
+LD_LIBS=-L`gcc -print-file-name=` \
+	/usr/lib64/crt1.o /usr/lib64/crti.o  /usr/lib64/crtn.o
+
+## 
+## Define all linker's flags.
+## 
+LD_FLAGS=$(LD_LIBS) -lc -static
+
+## 
+## A directory with the source codes.
+## 
 SRCDIR=./src
-#SRCDIR=$(PWD)/src
+
+## 
+## The name of our library.
+## 
 LIB=libcalc
+
+## 
+## The source directory of the `libcalc` library.
+## 
 LIBDIR=$(SRCDIR)/lib
+
+## 
+## The source directory of the `libcalc` library.
+## 
 LIB_H=$(LIBDIR)/$(LIB).h
+
+## 
+## The source file of our library.
+## 
 LIB_SRC=$(LIBDIR)/$(LIB).c
+
+## 
+## The object file of our library.
+## 
 LIB_OBJ=$(LIB).o
 
+## 
+## The name of standart calculator.
+##
 CALC=stdcalc
+
+## 
+## The source file of standart calculator.
+## 
 CALC_SRC=$(SRCDIR)/$(CALC).c
+
+## 
+## The object file of standart calculator.
+## 
 CALC_OBJ=$(CALC).o
 
+.SUFIXES: .h .c .o
+
+.PHONY : all simple clean cleanall
+
+all: $(CALC)
+
+##
+## ld -L`gcc -print-file-name=` /usr/lib64/crt1.o /usr/lib64/crti.o  
+## 		/usr/lib64/crtn.o -lc -static stdcalc.o libcalc.o -o stdcalc
+##
+$(CALC):  $(CALC_OBJ) $(LIB_OBJ)
+	#
+	# 	Link standart calculator and libcalc library together.
+	#
+	$(LD) $(LD_FLAGS) $^ -o $@
+
+##
+## gcc -c -pedantic -std=c89 -Wall src/lib/libcalc.c -o libcalc.o
+##
+$(LIB_OBJ): $(LIB_SRC) $(LIB_H)
+	#
+	# 	Build libcalc library.
+	#
+	$(CC) $(CC_OBJ_FLAGS) $< -o $@
+
+##
+## gcc -c -pedantic -std=c89 -Wall src/stdcalc.c -o stdcalc.o
+##
+$(CALC_OBJ): $(CALC_SRC) $(LIB_H)
+	#
+	# 	Build standart calculator.
+	#
+	$(CC) $(CC_OBJ_FLAGS) $< -o $@
 
 # -----------------------------------------------------------------------
-all: lib main
-	$(LD) $(LD_FLAGS) $(CALC_OBJ) $(LIB_OBJ) -o $(CALC)
 
-lib:
-	$(CC) $(CC_OBJ_FLAGS) $(LIB_SRC) -o $(LIB_OBJ)
-	
-main:
-	$(CC) $(CC_OBJ_FLAGS) $(CALC_SRC) -o $(CALC_OBJ)
+simple: $(LIB_SRC) $(CALC_SRC)
+	#
+	# Build standart calculator in simple way.
+	# This way has some problems:
+	# 	If I change the header file, `make` does not track its changes 
+	# 	and nothing will rebuild.
+	#
+	$(CC)  $(CC_FLAGS) $^ -o $(CALC)
 
-# -----------------------------------------------------------------------	
-simple:
-	$(CC) $(LIB_SRC) $(CALC_SRC) $(CC_FLAGS) -o $(CALC)
-
-# -----------------------------------------------------------------------
 cleanall: clean
-	rm  -f $(CALC)	
+	rm  -f $(CALC)
+
 clean:
 	rm  -f $(LIB_OBJ) $(CALC_OBJ)
 
 
-	
