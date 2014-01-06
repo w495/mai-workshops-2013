@@ -265,7 +265,7 @@ int main() {
     real_t delta_x;
 
     /**
-     * @var Количество шагов.
+     * @var Количество интервалов, на которые мы делим отрезок.
      */
     step_t nsteps;
 
@@ -398,7 +398,7 @@ real_t taylor_fuction(real_t x, iter_t n) {
 real_t rabs(real_t x) {
     if (x < 0)
         return -x;
-    return a;
+    return x;
 }
 
 /**

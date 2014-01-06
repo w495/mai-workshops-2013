@@ -1,8 +1,8 @@
 CC=gcc
 CC_FLAGS= -Wall -pedantic -std=c89 -lm -ansi
-NAME=cp3example1
+NAME=big-solid
 SRCDIR=./src
-SRC=$(SRCDIR)/cp3example1.c
+SRC=$(SRCDIR)/big-solid.c
 
 all: 
 	$(CC) $(SRC) $(CC_FLAGS) -o $(NAME)
