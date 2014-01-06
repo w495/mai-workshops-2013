@@ -1,5 +1,5 @@
 CC=gcc
-CC_FLAGS= -Wall -pedantic -std=c89 -Wall
+CC_FLAGS= -Wall -pedantic -std=c89
 NAME=fmax2sum
 SRCDIR=./src
 SRC=$(SRCDIR)/fmax2sum.c

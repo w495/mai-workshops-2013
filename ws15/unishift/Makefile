@@ -1,5 +1,5 @@
 CC=gcc
-CC_FLAGS= -Wall -pedantic -std=c89 -Wall
+CC_FLAGS= -Wall -pedantic -std=c89
 NAME=unishift
 SRCDIR=./src
 SRC=$(SRCDIR)/unishift.c

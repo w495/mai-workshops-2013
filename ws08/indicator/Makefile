@@ -1,15 +1,24 @@
 CC            = gcc
 CFLAGS        = -Wall -pedantic -ansi
-SRC           = src/indicator.c
-MAIN_SRC      = src/main.c
+SOURCE        = src/indicator.c
+HEADER        = src/indicator.h
+MAIN          = src/main.c
+OBJECT        = indicator.o
 TARGET        = indicator
 
-.SUFFIXES: .c
+.SUFFIXES: .c .o
 
 all: $(TARGET)
 
-$(TARGET): $(SRC) $(MAIN_SRC)
+$(TARGET): $(OBJECT) $(MAIN)
 	$(CC) $(CFLAGS) $^ -o $@
 
+$(OBJECT): $(SOURCE) $(HEADER)
+	$(CC) $(CFLAGS) $< -c -o $@
+
+cleanall: clean
+	rm -f $(TARGET)
+
 clean:
-	rm $(TARGET)
+	rm -f $(OBJECT)
+	
