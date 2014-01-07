@@ -159,12 +159,14 @@
 ### Пример
 
     [w495@w495 ~]$ echo 192.168.1.{1..254}|xargs -n1 -P0 ping -c1|grep "bytes from"
-    64 bytes from 192.168.1.4: icmp_seq=1 ttl=64 time=0.090 ms
-    64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=3.66 ms
-    64 bytes from 192.168.1.2: icmp_seq=1 ttl=64 time=137 ms
-    64 bytes from 192.168.1.6: icmp_seq=1 ttl=64 time=263 ms
-    64 bytes from 192.168.1.38: icmp_seq=1 ttl=255 time=795 ms
-    64 bytes from 192.168.1.7: icmp_seq=1 ttl=64 time=1135 ms
+    64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=4.23 ms
+    64 bytes from 192.168.1.4: icmp_seq=1 ttl=64 time=0.064 ms
+    64 bytes from 192.168.1.2: icmp_seq=1 ttl=64 time=43.6 ms
+    64 bytes from 192.168.1.3: icmp_seq=1 ttl=64 time=45.1 ms
+    64 bytes from 192.168.1.7: icmp_seq=1 ttl=64 time=97.3 ms
+    64 bytes from 192.168.1.5: icmp_seq=1 ttl=64 time=169 ms
+    64 bytes from 192.168.1.38: icmp_seq=1 ttl=255 time=5080 ms
+
 
 ## Nmap
 
@@ -185,60 +187,190 @@ http://en.wikipedia.org/wiki/Nmap
 
 ### Пример
 
-    [w495@w495 ~]$ sudo nmap -sn -PR 192.168.1.0/24
+    [w495@w495 ~]$ sudo nmap -sn -PO 192.168.1.1/24
 
-    Starting Nmap 6.40 ( http://nmap.org ) at 2014-01-08 00:44 MSK
+    Starting Nmap 6.40 ( http://nmap.org ) at 2014-01-08 02:09 MSK
     Nmap scan report for 192.168.1.1
-    Host is up (0.023s latency).
+    Host is up (0.018s latency).
     MAC Address: BC:76:70:06:2C:38 (Shenzhen Huawei Communication Technologies Co.)
     Nmap scan report for 192.168.1.2
-    Host is up (0.022s latency).
-    MAC Address: 00:1F:3A:F7:94:D1 (Hon Hai Precision Ind.Co.)
-    Nmap scan report for 192.168.1.6
-    Host is up (0.13s latency).
+    Host is up (0.039s latency).
     MAC Address: BC:85:56:BB:FB:FD (Hon Hai Precision Ind. Co.)
+    Nmap scan report for 192.168.1.3
+    Host is up (0.015s latency).
+    MAC Address: 00:1F:3A:F7:94:D1 (Hon Hai Precision Ind.Co.)
+    Nmap scan report for 192.168.1.5
+    Host is up (0.090s latency).
+    MAC Address: 88:30:8A:3A:24:DD (Murata Manufactuaring Co.)
     Nmap scan report for 192.168.1.7
-    Host is up (6.9s latency).
+    Host is up (0.018s latency).
     MAC Address: 00:21:5D:2A:00:E8 (Intel Corporate)
     Nmap scan report for 192.168.1.38
-    Host is up (0.026s latency).
+    Host is up (0.085s latency).
     MAC Address: B4:99:BA:C6:21:B8 (Hewlett-Packard Company)
     Nmap scan report for 192.168.1.4
     Host is up.
-    Nmap done: 256 IP addresses (6 hosts up) scanned in 14.65 seconds
+    Nmap done: 256 IP addresses (7 hosts up) scanned in 13.03 seconds
+    [w495@w495 ~]$ sudo nmap -sn -PS 192.168.1.1/24
 
 # Определение ОС сетевого компьютеров
 
+## Точка доступна
 
-    [w495@w495 ~]$ sudo nmap -O -Pn 192.168.1.6
+### Пример
 
-    Starting Nmap 6.40 ( http://nmap.org ) at 2014-01-08 00:56 MSK
-    Nmap scan report for 192.168.1.6
-    Host is up (0.064s latency).
+    [w495@w495 ~]$ sudo nmap  -O 192.168.1.1
+
+    Starting Nmap 6.40 ( http://nmap.org ) at 2014-01-08 02:13 MSK
+    Nmap scan report for 192.168.1.1
+    Host is up (0.012s latency).
+    Not shown: 994 closed ports
+    PORT     STATE    SERVICE
+    21/tcp   open     ftp
+    22/tcp   filtered ssh
+    23/tcp   open     telnet
+    80/tcp   open     http
+    631/tcp  open     ipp
+    8081/tcp filtered blackice-icecap
+    MAC Address: BC:76:70:06:2C:38 (Shenzhen Huawei Communication Technologies Co.)
+    Device type: general purpose
+    Running: Linux 2.6.X
+    OS CPE: cpe:/o:linux:linux_kernel:2.6
+    OS details: Linux 2.6.9 - 2.6.33
+    Network Distance: 1 hop
+
+    OS detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+    Nmap done: 1 IP address (1 host up) scanned in 6.38 seconds
+    [w495@w495 ~]$ 
+
+## Служебный ноутбук
+
+### Пример
+
+Сканируем:
+
+    [w495@w495 ~]$ sudo nmap  -O 192.168.1.2
+
+    Starting Nmap 6.40 ( http://nmap.org ) at 2014-01-08 02:18 MSK
+    Nmap scan report for 192.168.1.2
+    Host is up (0.016s latency).
     Not shown: 999 filtered ports
     PORT   STATE SERVICE
     22/tcp open  ssh
     MAC Address: BC:85:56:BB:FB:FD (Hon Hai Precision Ind. Co.)
     Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
-    Aggressive OS guesses:  Linux 2.6.32 - 3.6 (93%), 
+    Aggressive OS guesses:  Linux 2.6.32 - 3.6 (94%), 
                             Linux 2.6.32 - 3.9 (93%), 
                             Linux 3.0 - 3.9 (93%), 
+                            Linux 2.6.22 - 2.6.36 (91%), 
+                            Linux 2.6.39 (91%), 
                             Linux 2.6.32 (90%), 
-                            Linux 2.6.22 - 2.6.36 (90%), 
-                            Linux 2.6.39 (90%), 
-                            Crestron XPanel control system (89%), 
-                            Netgear DG834G WAP or Western Digital WD TV media player (89%), 
-                            Linux 3.3 (89%), Linux 2.6.32 - 2.6.35 (88%)
+                            Crestron XPanel control system (90%), 
+                            Netgear DG834G WAP or Western Digital WD TV media player (90%), 
+                            Linux 2.6.32 - 2.6.35 (89%), 
+                            Linux 2.6.32 - 3.2 (89%)
     No exact OS matches for host (test conditions non-ideal).
     Network Distance: 1 hop
 
     OS detection performed. Please report any incorrect results at http://nmap.org/submit/ .
-    Nmap done: 1 IP address (1 host up) scanned in 38.76 seconds
+    Nmap done: 1 IP address (1 host up) scanned in 10.72 seconds
+    [w495@w495 ~]$ 
 
-    
+Проверяем:
+
+    [w495@w495 ~]$ ssh w495@192.168.1.2
+    w495@192.168.1.2's password: 
+    Last failed login: Tue Jan  7 22:19:25 SAMT 2014 from 192.168.1.4 on ssh:notty
+    There was 1 failed login attempt since the last successful login.
+    Last login: Tue Jan  7 19:47:08 2014
+    [w495@w495yb ~]$ uname -a
+    Linux w495yb 3.12.6-200.fc19.x86_64 #1 SMP Mon Dec 23 16:33:38 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
+    [w495@w495yb ~]$ 
+
+## Ноутбук жены
+
+Сканируем:
+
+    [w495@w495 ~]$ sudo nmap  -O 192.168.1.3
+
+    Starting Nmap 6.40 ( http://nmap.org ) at 2014-01-08 02:22 MSK
+    Nmap scan report for 192.168.1.3
+    Host is up (0.027s latency).
+    Not shown: 999 closed ports
+    PORT   STATE SERVICE
+    22/tcp open  ssh
+    MAC Address: 00:1F:3A:F7:94:D1 (Hon Hai Precision Ind.Co.)
+    Device type: general purpose
+    Running: Linux 2.6.X
+    OS CPE: cpe:/o:linux:linux_kernel:2.6
+    OS details: Linux 2.6.32 - 2.6.35
+    Network Distance: 1 hop
+
+    OS detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+    Nmap done: 1 IP address (1 host up) scanned in 5.14 seconds
+    [w495@w495 ~]$ 
+
+Проверяем:
+
+    [w495@w495 ~]$ ssh gt@192.168.1.3
+    gt@192.168.1.3's password: 
+    Linux gt-nb 2.6.32-42-generic #95-Ubuntu SMP Wed Jul 25 15:56:09 UTC 2012 x86_64 GNU/Linux
+    Ubuntu 10.04.4 LTS
+
+    Welcome to Ubuntu!
+     * Documentation:  https://help.ubuntu.com/
+
+    175 packages can be updated.
+    147 updates are security updates.
+
+    Last login: Tue Dec 17 00:18:51 2013
+    gt@gt-nb:~$ uname -a
+    Linux gt-nb 2.6.32-42-generic #95-Ubuntu SMP Wed Jul 25 15:56:09 UTC 2012 x86_64 GNU/Linux
+    gt@gt-nb:~$ 
+
+
+## Сетевой принтер
+
+### Пример
+
+    [w495@w495 ~]$ sudo nmap -O 192.168.1.38
+    Starting Nmap 6.40 ( http://nmap.org ) at 2014-01-08 02:11 MSK
+    Nmap scan report for 192.168.1.38
+    Host is up (0.023s latency).
+    Not shown: 994 closed ports
+    PORT     STATE SERVICE
+    7/tcp    open  echo
+    80/tcp   open  http
+    515/tcp  open  printer
+    8080/tcp open  http-proxy
+    8290/tcp open  unknown
+    9100/tcp open  jetdirect
+    MAC Address: B4:99:BA:C6:21:B8 (Hewlett-Packard Company)
+    Device type: printer
+    Running: HP embedded
+    OS CPE: cpe:/h:hp:laserjet_cp1025nw 
+            cpe:/h:hp:laserjet_1102w 
+            cpe:/h:hp:laserjet_m1212nf 
+            cpe:/h:hp:laserjet_m1217nfw 
+            cpe:/h:hp:laserjet_p1120w 
+            cpe:/h:hp:laserjet_p1606dn
+    OS details: HP LaserJet CP1025nw, 
+                1102w, 
+                M1212nf, 
+                M1217nfw, 
+                P1120w, or P1606dn printer
+    Network Distance: 1 hop
+
+    OS detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+    Nmap done: 1 IP address (1 host up) scanned in 6.42 seconds
+    [w495@w495 ~]$
+
+Это сетевой принтер. Принтер знает настройки нескольких Wifi-сетей. 
+И на самом принтере нет индикатора, к какой именно из них он подключен.
+Потому `nmap` это хороший способ определения, в какой сети сейчас принтер.
+
 # Определение пути до удаленной машины
 
-    
     [w495@w495 ~]$ tracepath ya.ru
      1:  192.168.1.4                                           0.190ms pmtu 1500
      1:  192.168.1.1                                           3.146ms 
