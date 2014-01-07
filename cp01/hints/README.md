@@ -3,10 +3,10 @@
 В устройстве вашего компьютера, (да и компьютеров в классе), 
 помогут разобраться команды.
 Сами команды для Вашей системы могут отличаться. 
-Например. у меня нет очень полезной команды *hwinfo*.
+Например. у меня нет очень полезной команды `hwinfo`.
 
 Для начала можно попробовать, то что приведено тут.
-Кроме того, аналогичную инфомацию можно получить с помощью *dmidecode*.
+Кроме того, аналогичную инфомацию можно получить с помощью `dmidecode`.
 http://linux-bash.ru/menusistem/106-dmidecode.html
 
 
@@ -16,8 +16,9 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
 
     $> lstopo 
 
-![alt text](https://pbs.twimg.com/media/BbBRXFfCAAAADlx.png "Результат команды lstopo")
-
+<center>
+![Изображение. Результат команды lstopo](https://pbs.twimg.com/media/BbBRXFfCAAAADlx.png "Результат команды lstopo")
+</center>
 
 # Процессор
 
