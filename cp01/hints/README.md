@@ -429,11 +429,9 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
 
     $> sudo lshw-gui
 
-[quote=Пример]
-[center]
-[img]https://pbs.twimg.com/media/BbBfkrNCAAAwszV.png[/img]
-[/center]
-[/quote]
+## lshw-gui
+
+![Изображение. Результат команды lshw-gui](https://pbs.twimg.com/media/BbBfkrNCAAAwszV.png "Результат команды lshw-gui")
 
 ## lshw
 
