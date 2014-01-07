@@ -1,14 +1,12 @@
 # Рекомендации
 
 В устройстве вашего компьютера, (да и компьютеров в классе), 
-помогут разобраться команды.
-Сами команды для Вашей системы могут отличаться. 
+помогут разобраться команды. Сами команды для Вашей системы могут отличаться. 
 Например. у меня нет очень полезной команды `hwinfo`.
 
 Для начала можно попробовать, то что приведено тут.
 Кроме того, аналогичную инфомацию можно получить с помощью `dmidecode`.
 http://linux-bash.ru/menusistem/106-dmidecode.html
-
 
 # Топология вашей машины
 
@@ -16,9 +14,7 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
 
     $> lstopo 
 
-<center>
 ![Изображение. Результат команды lstopo](https://pbs.twimg.com/media/BbBRXFfCAAAADlx.png "Результат команды lstopo")
-</center>
 
 # Процессор
 
@@ -77,7 +73,14 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
     fpu_exception   : yes
     cpuid level : 13
     wp      : yes
-    flags       : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm ida arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid
+    flags       : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge \
+                  mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 \
+                  ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon \
+                  pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf \
+                  eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est \
+                  tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt \
+                  tsc_deadline_timer aes xsave avx lahf_lm ida arat epb \
+                  xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid
     bogomips    : 3392.31
     clflush size    : 64
     cache_alignment : 64
@@ -103,7 +106,14 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
     fpu_exception   : yes
     cpuid level : 13
     wp      : yes
-    flags       : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm ida arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid
+    flags       : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge \
+                  mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 \
+                  ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon \
+                  pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf \
+                  eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est \
+                  tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt \
+                  tsc_deadline_timer aes xsave avx lahf_lm ida arat epb \
+                  xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid
     bogomips    : 3392.31
     clflush size    : 64
     cache_alignment : 64
@@ -129,7 +139,14 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
     fpu_exception   : yes
     cpuid level : 13
     wp      : yes
-    flags       : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm ida arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid
+    flags       : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge \
+                  mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 \
+                  ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon \
+                  pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf \
+                  eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est \
+                  tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt \
+                  tsc_deadline_timer aes xsave avx lahf_lm ida arat epb \
+                  xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid
     bogomips    : 3392.31
     clflush size    : 64
     cache_alignment : 64
@@ -155,7 +172,14 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
     fpu_exception   : yes
     cpuid level : 13
     wp      : yes
-    flags       : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm ida arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid
+    flags       : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge \
+                  mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 \
+                  ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon \
+                  pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf \
+                  eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est \
+                  tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt \
+                  tsc_deadline_timer aes xsave avx lahf_lm ida arat epb \
+                  xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid
     bogomips    : 3392.31
     clflush size    : 64
     cache_alignment : 64
@@ -242,18 +266,30 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
 ### Пример
 
     [w495@w495 ~]$ lspci
-    00:00.0 Host bridge: Intel Corporation 2nd Generation Core Processor Family DRAM Controller (rev 09)
-    00:02.0 VGA compatible controller: Intel Corporation 2nd Generation Core Processor Family Integrated Graphics Controller (rev 09)
-    00:16.0 Communication controller: Intel Corporation 6 Series/C200 Series Chipset Family MEI Controller #1 (rev 04)
-    00:1b.0 Audio device: Intel Corporation 6 Series/C200 Series Chipset Family High Definition Audio Controller (rev 05)
-    00:1c.0 PCI bridge: Intel Corporation 6 Series/C200 Series Chipset Family PCI Express Root Port 1 (rev b5)
-    00:1c.1 PCI bridge: Intel Corporation 6 Series/C200 Series Chipset Family PCI Express Root Port 2 (rev b5)
-    00:1c.3 PCI bridge: Intel Corporation 6 Series/C200 Series Chipset Family PCI Express Root Port 4 (rev b5)
-    00:1d.0 USB controller: Intel Corporation 6 Series/C200 Series Chipset Family USB Enhanced Host Controller #1 (rev 05)
-    00:1f.0 ISA bridge: Intel Corporation QS67 Express Chipset Family LPC Controller (rev 05)
-    00:1f.2 SATA controller: Intel Corporation 6 Series/C200 Series Chipset Family 6 port SATA AHCI Controller (rev 05)
-    00:1f.3 SMBus: Intel Corporation 6 Series/C200 Series Chipset Family SMBus Controller (rev 05)
-    02:00.0 Network controller: Atheros Communications Inc. AR9485 Wireless Network Adapter (rev 01)
+    00:00.0 Host bridge: Intel Corporation 2nd Generation Core Processor Family 
+            DRAM Controller (rev 09)
+    00:02.0 VGA compatible controller: Intel Corporation 2nd Generation 
+            Core Processor Family Integrated Graphics Controller (rev 09)
+    00:16.0 Communication controller: Intel Corporation 6 Series/C200 Series 
+            Chipset Family MEI Controller #1 (rev 04)
+    00:1b.0 Audio device: Intel Corporation 6 Series/C200 Series 
+            Chipset Family High Definition Audio Controller (rev 05)
+    00:1c.0 PCI bridge: Intel Corporation 6 Series/C200 Series 
+            Chipset Family PCI Express Root Port 1 (rev b5)
+    00:1c.1 PCI bridge: Intel Corporation 6 Series/C200 Series 
+            Chipset Family PCI Express Root Port 2 (rev b5)
+    00:1c.3 PCI bridge: Intel Corporation 6 Series/C200 Series 
+            Chipset Family PCI Express Root Port 4 (rev b5)
+    00:1d.0 USB controller: Intel Corporation 6 Series/C200 Series 
+            Chipset Family USB Enhanced Host Controller #1 (rev 05)
+    00:1f.0 ISA bridge: Intel Corporation QS67 Express 
+            Chipset Family LPC Controller (rev 05)
+    00:1f.2 SATA controller: Intel Corporation 6 Series/C200 Series 
+            Chipset Family 6 port SATA AHCI Controller (rev 05)
+    00:1f.3 SMBus: Intel Corporation 6 Series/C200 Series 
+            Chipset Family SMBus Controller (rev 05)
+    02:00.0 Network controller: Atheros Communications Inc. 
+            AR9485 Wireless Network Adapter (rev 01)
     03:00.0 USB controller: Fresco Logic FL1009 USB 3.0 Host Controller (rev 02)
 
     
@@ -307,13 +343,13 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
     I/O size (minimum/optimal): 512 bytes / 512 bytes
     Disk identifier: 0x13ba8fcf
 
-    Устр-во Загр     Начало       Конец       Блоки   Id  Система
-    /dev/sda1   *        2048   200048639   100023296    7  HPFS/NTFS/exFAT
-    /dev/sda2       200048640   216825855     8388608   82  Linux своп / Solaris
-    /dev/sda3       483340288   500117503     8388608   1c  Скрытый W95 FAT32 (LBA)
-    /dev/sda4       216825856   483340287   133257216    5  Расширенный
-    /dev/sda5       216827904   217876479      524288   83  Linux
-    /dev/sda6       217878528   483340287   132730880   8e  Linux LVM
+    Устр-во   Загр  Начало       Конец       Блоки   Id  Система
+    /dev/sda1  *      2048   200048639   100023296    7  HPFS/NTFS/exFAT
+    /dev/sda2    200048640   216825855     8388608   82  Linux своп / Solaris
+    /dev/sda3    483340288   500117503     8388608   1c  Скрытый W95 FAT32 (LBA)
+    /dev/sda4    216825856   483340287   133257216    5  Расширенный
+    /dev/sda5    216827904   217876479      524288   83  Linux
+    /dev/sda6    217878528   483340287   132730880   8e  Linux LVM
 
 Пункты таблицы разделов расположены не в дисковом порядке.
 
@@ -325,16 +361,16 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
 ### Пример
 
     [w495@w495 ~]$ df -TH
-    Файловая система        Тип      Размер Использовано  Дост Использовано% Cмонтировано в
-    devtmpfs                devtmpfs   2,1G            0  2,1G            0% /dev
-    tmpfs                   tmpfs      2,1G         381k  2,1G            1% /dev/shm
-    tmpfs                   tmpfs      2,1G         7,2M  2,1G            1% /run
-    tmpfs                   tmpfs      2,1G            0  2,1G            0% /sys/fs/cgroup
-    /dev/mapper/fedora-root ext4        43G          31G   10G           76% /
-    tmpfs                   tmpfs      2,1G         168k  2,1G            1% /tmp
-    /dev/sda2               ext4       8,4G         3,3G  4,6G           42% /var
-    /dev/sda5               ext4       512M         214M  261M           46% /boot
-    /dev/mapper/fedora-home ext4        92G          80G  7,3G           92% /home
+    Файловая система        Тип      Размер  Исп. Дост. Исп.% Cмонтировано в
+    devtmpfs                devtmpfs  2,1G    0   2,1G    0%   /dev
+    tmpfs                   tmpfs     2,1G  381k  2,1G    1%   /dev/shm
+    tmpfs                   tmpfs     2,1G  7,2M  2,1G    1%   /run
+    tmpfs                   tmpfs     2,1G     0  2,1G    0%   /sys/fs/cgroup
+    /dev/mapper/fedora-root ext4       43G   31G   10G   76%   /
+    tmpfs                   tmpfs     2,1G  168k  2,1G    1%   /tmp
+    /dev/sda2               ext4      8,4G  3,3G  4,6G   42%   /var
+    /dev/sda5               ext4      512M  214M  261M   46%   /boot
+    /dev/mapper/fedora-home ext4       92G   80G  7,3G   92%   /home
 
 
 # Информация про USB
@@ -349,7 +385,8 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
     Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
     Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
     Bus 001 Device 003: ID 13d3:5719 IMC Networks 
-    Bus 001 Device 004: ID 0bda:0139 Realtek Semiconductor Corp. RTS5139 Card Reader Controller
+    Bus 001 Device 004: ID 0bda:0139 Realtek Semiconductor Corp. 
+                                     RTS5139 Card Reader Controller
     Bus 001 Device 050: ID 13d3:3375 IMC Networks 
 
 
@@ -365,7 +402,8 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
 ### Пример
 
     [w495@w495 ~]$ lspci | grep VGA 
-    00:02.0 VGA compatible controller: Intel Corporation 2nd Generation Core Processor Family Integrated Graphics Controller (rev 09)
+    00:02.0 VGA compatible controller: Intel Corporation 2nd Generation 
+                Core Processor Family Integrated Graphics Controller (rev 09)
 
 
 ## Производитель видеокарты
@@ -388,7 +426,8 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
 
     [w495@w495 ~]$ xrandr 
     Screen 0: minimum 320 x 200, current 1600 x 900, maximum 8192 x 8192
-    eDP1 connected 1600x900+0+0 (normal left inverted right x axis y axis) 293mm x 164mm
+    eDP1 connected 1600x900+0+0 
+    (normal left inverted right x axis y axis) 293mm x 164mm
        1600x900       60.0*+
        1024x768       60.0  
        800x600        60.3     56.2  
@@ -406,7 +445,9 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
 ### Пример
     
     [w495@w495 ~]$ lspci | grep Audio
-    00:1b.0 Audio device: Intel Corporation 6 Series/C200 Series Chipset Family High Definition Audio Controller (rev 05)
+    00:1b.0 Audio device: Intel Corporation 6 Series/C200 Series 
+                          Chipset Family High Definition Audio Controller 
+                          (rev 05)
 
 
 ## Расширенная информация об аудио-контроллера
@@ -449,7 +490,8 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
         serial: C1N0AS294366036
         width: 64 bits
         capabilities: smbios-2.6 dmi-2.6 vsyscall32
-        configuration: boot=normal chassis=notebook family=UX uuid=004D0B43-3443-E181-2DED-C8600016EB94
+        configuration: boot=normal chassis=notebook family=UX 
+                       uuid=004D0B43-3443-E181-2DED-C8600016EB94
       *-core
            description: Motherboard
            product: UX31E
@@ -466,7 +508,11 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
               date: 08/14/2012
               size: 64KiB
               capacity: 2496KiB
-              capabilities: pci upgrade shadowing cdboot bootselect edd int13floppy1200 int13floppy720 int13floppy2880 int5printscreen int9keyboard int14serial int17printer acpi usb smartbattery biosbootspecification
+              capabilities: pci upgrade shadowing cdboot bootselect edd 
+                            int13floppy1200 int13floppy720 int13floppy2880 
+                            int5printscreen int9keyboard int14serial 
+                            int17printer acpi usb smartbattery 
+                            biosbootspecification
          *-cpu
               description: CPU
               product: Core 2 Duo (To Be Filled By O.E.M.)
@@ -480,7 +526,17 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
               capacity: 4GHz
               width: 64 bits
               clock: 100MHz
-              capabilities: x86-64 fpu fpu_exception wp vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx lahf_lm ida arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid cpufreq
+              capabilities: x86-64 fpu fpu_exception wp vme de pse tsc msr pae 
+                            mce cx8 apic sep mtrr pge mca cmov pat pse36 
+                            clflush dts acpi mmx fxsr sse sse2 ss ht tm 
+                            pbe syscall nx rdtscp constant_tsc 
+                            arch_perfmon pebs bts rep_good nopl xtopology 
+                            nonstop_tsc aperfmperf eagerfpu pni pclmulqdq 
+                            dtes64 monitor ds_cpl vmx smx est tm2 ssse3 
+                            cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic 
+                            popcnt tsc_deadline_timer aes xsave avx lahf_lm 
+                            ida arat epb xsaveopt pln pts dtherm 
+                            tpr_shadow vnmi flexpriority ept vpid cpufreq
               configuration: cores=2 enabledcores=1 threads=2
          *-memory
               description: System Memory
@@ -532,7 +588,8 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
               clock: 33MHz
             *-display
                  description: VGA compatible controller
-                 product: 2nd Generation Core Processor Family Integrated Graphics Controller
+                 product: 2nd Generation Core Processor 
+                          Family Integrated Graphics Controller
                  vendor: Intel Corporation
                  physical id: 2
                  bus info: pci@0000:00:02.0
@@ -541,7 +598,8 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
                  clock: 33MHz
                  capabilities: msi pm vga_controller bus_master cap_list rom
                  configuration: driver=i915 latency=0
-                 resources: irq:51 memory:ddc00000-ddffffff memory:c0000000-cfffffff ioport:e000(size=64)
+                 resources: irq:51 memory:ddc00000-ddffffff 
+                            memory:c0000000-cfffffff ioport:e000(size=64)
             *-communication
                  description: Communication controller
                  product: 6 Series/C200 Series Chipset Family MEI Controller #1
@@ -556,7 +614,8 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
                  resources: irq:52 memory:dfe09000-dfe0900f
             *-multimedia
                  description: Audio device
-                 product: 6 Series/C200 Series Chipset Family High Definition Audio Controller
+                 product: 6 Series/C200 Series Chipset 
+                          Family High Definition Audio Controller
                  vendor: Intel Corporation
                  physical id: 1b
                  bus info: pci@0000:00:1b.0
@@ -568,28 +627,36 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
                  resources: irq:53 memory:dfe00000-dfe03fff
             *-pci:0
                  description: PCI bridge
-                 product: 6 Series/C200 Series Chipset Family PCI Express Root Port 1
+                 product: 6 Series/C200 Series Chipset 
+                          Family PCI Express Root Port 1
                  vendor: Intel Corporation
                  physical id: 1c
                  bus info: pci@0000:00:1c.0
                  version: b5
                  width: 32 bits
                  clock: 33MHz
-                 capabilities: pci pciexpress msi pm normal_decode bus_master cap_list
+                 capabilities: pci pciexpress msi pm normal_decode 
+                               bus_master cap_list
                  configuration: driver=pcieport
-                 resources: irq:42 ioport:d000(size=4096) memory:df400000-dfdfffff ioport:d1600000(size=10485760)
+                 resources: irq:42 ioport:d000(size=4096) 
+                            memory:df400000-dfdfffff 
+                            ioport:d1600000(size=10485760)
             *-pci:1
                  description: PCI bridge
-                 product: 6 Series/C200 Series Chipset Family PCI Express Root Port 2
+                 product: 6 Series/C200 Series Chipset 
+                          Family PCI Express Root Port 2
                  vendor: Intel Corporation
                  physical id: 1c.1
                  bus info: pci@0000:00:1c.1
                  version: b5
                  width: 32 bits
                  clock: 33MHz
-                 capabilities: pci pciexpress msi pm normal_decode bus_master cap_list
+                 capabilities: pci pciexpress msi pm normal_decode 
+                               bus_master cap_list
                  configuration: driver=pcieport
-                 resources: irq:43 ioport:c000(size=4096) memory:dea00000-df3fffff ioport:d0b00000(size=10485760)
+                 resources: irq:43 ioport:c000(size=4096) 
+                            memory:dea00000-df3fffff 
+                            ioport:d0b00000(size=10485760)
                *-network
                     description: Wireless interface
                     product: AR9485 Wireless Network Adapter
@@ -601,21 +668,31 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
                     serial: 00:08:ca:86:2e:27
                     width: 64 bits
                     clock: 33MHz
-                    capabilities: pm msi pciexpress bus_master cap_list rom ethernet physical wireless
-                    configuration: broadcast=yes driver=ath9k driverversion=3.11.4-101.fc18.x86_64 firmware=N/A ip=192.168.1.4 latency=0 link=yes multicast=yes wireless=IEEE 802.11bgn
-                    resources: irq:17 memory:dea00000-dea7ffff memory:dea80000-dea8ffff
+                    capabilities: pm msi pciexpress bus_master cap_list 
+                                  rom ethernet physical wireless
+                    configuration: broadcast=yes driver=ath9k 
+                                   driverversion=3.11.4-101.fc18.x86_64 
+                                   firmware=N/A ip=192.168.1.4 latency=0 
+                                   link=yes multicast=yes 
+                                   wireless=IEEE 802.11bgn
+                    resources: irq:17 memory:dea00000-dea7ffff 
+                               memory:dea80000-dea8ffff
             *-pci:2
                  description: PCI bridge
-                 product: 6 Series/C200 Series Chipset Family PCI Express Root Port 4
+                 product: 6 Series/C200 Series Chipset Family 
+                          PCI Express Root Port 4
                  vendor: Intel Corporation
                  physical id: 1c.3
                  bus info: pci@0000:00:1c.3
                  version: b5
                  width: 32 bits
                  clock: 33MHz
-                 capabilities: pci pciexpress msi pm normal_decode bus_master cap_list
+                 capabilities: pci pciexpress msi pm normal_decode 
+                               bus_master cap_list
                  configuration: driver=pcieport
-                 resources: irq:44 ioport:b000(size=4096) memory:de000000-de9fffff ioport:d0000000(size=10485760)
+                 resources: irq:44 ioport:b000(size=4096) 
+                            memory:de000000-de9fffff 
+                            ioport:d0000000(size=10485760)
                *-usb
                     description: USB controller
                     product: FL1009 USB 3.0 Host Controller
@@ -625,9 +702,12 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
                     version: 02
                     width: 64 bits
                     clock: 33MHz
-                    capabilities: pm msi pciexpress msix xhci bus_master cap_list
+                    capabilities: pm msi pciexpress msix xhci 
+                                  bus_master cap_list
                     configuration: driver=xhci_hcd latency=0
-                    resources: irq:19 memory:de000000-de00ffff memory:de011000-de011fff memory:de010000-de010fff
+                    resources: irq:19 memory:de000000-de00ffff 
+                               memory:de011000-de011fff 
+                               memory:de010000-de010fff
                   *-usbhost:0
                        product: xHCI Host Controller
                        vendor: Linux 3.11.4-101.fc18.x86_64 xhci_hcd
@@ -648,7 +728,8 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
                        configuration: driver=hub slots=2 speed=480Mbit/s
             *-usb
                  description: USB controller
-                 product: 6 Series/C200 Series Chipset Family USB Enhanced Host Controller #1
+                 product: 6 Series/C200 Series Chipset 
+                          Family USB Enhanced Host Controller #1
                  vendor: Intel Corporation
                  physical id: 1d
                  bus info: pci@0000:00:1d.0
@@ -685,7 +766,8 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
                           version: 9.19
                           serial: NULL
                           capabilities: usb-2.00
-                          configuration: driver=uvcvideo maxpower=500mA speed=480Mbit/s
+                          configuration: driver=uvcvideo 
+                                         maxpower=500mA speed=480Mbit/s
                      *-usb:1 UNCLAIMED
                           description: Generic USB device
                           product: USB2.0-CRW
@@ -705,7 +787,8 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
                           version: 0.02
                           serial: Alaska Day 2006
                           capabilities: bluetooth usb-1.10
-                          configuration: driver=btusb maxpower=100mA speed=12Mbit/s
+                          configuration: driver=btusb maxpower=100mA 
+                                         speed=12Mbit/s
             *-isa
                  description: ISA bridge
                  product: QS67 Express Chipset Family LPC Controller
@@ -720,7 +803,8 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
                  resources: irq:0
             *-storage
                  description: SATA controller
-                 product: 6 Series/C200 Series Chipset Family 6 port SATA AHCI Controller
+                 product: 6 Series/C200 Series Chipset Family 6 port 
+                          SATA AHCI Controller
                  vendor: Intel Corporation
                  physical id: 1f.2
                  bus info: pci@0000:00:1f.2
@@ -729,7 +813,9 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
                  clock: 66MHz
                  capabilities: storage msi pm ahci_1.0 bus_master cap_list
                  configuration: driver=ahci latency=0
-                 resources: irq:45 ioport:e0b0(size=8) ioport:e0a0(size=4) ioport:e090(size=8) ioport:e080(size=4) ioport:e060(size=32) memory:dfe06000-dfe067ff
+                 resources: irq:45 ioport:e0b0(size=8) ioport:e0a0(size=4) 
+                            ioport:e090(size=8) ioport:e080(size=4) 
+                            ioport:e060(size=32) memory:dfe06000-dfe067ff
             *-serial UNCLAIMED
                  description: SMBus
                  product: 6 Series/C200 Series Chipset Family SMBus Controller
@@ -755,7 +841,8 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
                  serial: 120133300875
                  size: 238GiB (256GB)
                  capabilities: partitioned partitioned:dos
-                 configuration: ansiversion=5 logicalsectorsize=512 sectorsize=512 signature=13ba8fcf
+                 configuration: ansiversion=5 logicalsectorsize=512 
+                                sectorsize=512 signature=13ba8fcf
                *-volume:0
                     description: Windows NTFS volume
                     physical id: 1
@@ -766,7 +853,8 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
                     size: 95GiB
                     capacity: 95GiB
                     capabilities: primary bootable ntfs initialized
-                    configuration: clustersize=4096 created=2011-11-15 02:30:03 filesystem=ntfs label=OS state=clean
+                    configuration: clustersize=4096 created=2011-11-15 02:30:03 
+                                   filesystem=ntfs label=OS state=clean
                *-volume:1
                     description: EXT4 volume
                     vendor: Linux
@@ -778,8 +866,18 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
                     serial: 7417bbc3-02c5-47b6-902c-cef3140d0d81
                     size: 8GiB
                         capacity: 8GiB
-                        capabilities: primary nofs journaled extended_attributes large_files huge_files dir_nlink extents ext4 ext2 initialized
-                        configuration: created=2013-04-05 21:29:29 filesystem=ext4 label=fedora var lastmountpoint=/var modified=2013-12-04 11:14:47 mount.fstype=ext4 mount.options=rw,noatime,discard,data=ordered mounted=2013-12-04 11:14:47 state=mounted
+                        capabilities: primary nofs journaled 
+                                      extended_attributes large_files 
+                                      huge_files dir_nlink extents 
+                                      ext4 ext2 initialized
+                        configuration: created=2013-04-05 21:29:29 
+                                       filesystem=ext4 label=fedora var 
+                                       lastmountpoint=/var 
+                                       modified=2013-12-04 11:14:47 
+                                       mount.fstype=ext4 
+                                       mount.options=rw,noatime,discard,
+                                       data=ordered mounted=2013-12-04 11:14:47 
+                                       state=mounted
                    *-volume:2
                         description: Windows FAT volume
                         vendor: MSDOS5.0
@@ -799,14 +897,17 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
                         logical name: /dev/sda4
                         size: 127GiB
                         capacity: 127GiB
-                        capabilities: primary extended partitioned partitioned:extended
+                        capabilities: primary extended partitioned 
+                                      partitioned:extended
                       *-logicalvolume:0
                            description: Linux filesystem partition
                            physical id: 5
                            logical name: /dev/sda5
                            logical name: /boot
                            capacity: 512MiB
-                           configuration: mount.fstype=ext4 mount.options=rw,noatime,discard,data=ordered state=mounted
+                           configuration: mount.fstype=ext4 mount.options=rw,
+                                          noatime,discard,data=ordered 
+                                          state=mounted
                       *-logicalvolume:1
                            description: Linux LVM Physical Volume partition
                            physical id: 6
@@ -822,5 +923,7 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
                serial: 52:54:00:3f:97:15
                size: 10Mbit/s
                capabilities: ethernet physical
-               configuration: autonegotiation=off broadcast=yes driver=tun driverversion=1.6 duplex=full link=no multicast=yes port=twisted pair speed=10Mbit/s
+               configuration: autonegotiation=off broadcast=yes driver=tun 
+                              driverversion=1.6 duplex=full link=no 
+                              multicast=yes port=twisted pair speed=10Mbit/s
          
