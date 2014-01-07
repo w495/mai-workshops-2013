@@ -1,0 +1,265 @@
+
+
+# Конфигурация сетевого интерфейса
+
+## Общая
+
+См. `man ifconfig`.
+
+    $> ifconfig 
+
+### Пример
+
+    [w495@w495 ~]$ ifconfig 
+    lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+            inet 127.0.0.1  netmask 255.0.0.0
+            inet6 ::1  prefixlen 128  scopeid 0x10<host>
+            loop  txqueuelen 0  (Local Loopback)
+            RX packets 6520  bytes 663847 (648.2 KiB)
+            RX errors 0  dropped 0  overruns 0  frame 0
+            TX packets 6520  bytes 663847 (648.2 KiB)
+            TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+    virbr0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+            inet 192.168.122.1  netmask 255.255.255.0  broadcast 192.168.122.255
+            ether 52:54:00:3f:97:15  txqueuelen 0  (Ethernet)
+            RX packets 0  bytes 0 (0.0 B)
+            RX errors 0  dropped 0  overruns 0  frame 0
+            TX packets 4  bytes 842 (842.0 B)
+            TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+    wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+            inet 192.168.1.4  netmask 255.255.255.0  broadcast 192.168.1.255
+            inet6 fe80::208:caff:fe86:2e27  prefixlen 64  scopeid 0x20<link>
+            ether 00:08:ca:86:2e:27  txqueuelen 1000  (Ethernet)
+            RX packets 22835  bytes 18710913 (17.8 MiB)
+            RX errors 0  dropped 0  overruns 0  frame 0
+            TX packets 35926  bytes 5779561 (5.5 MiB)
+            TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+## Беспроводной интерфейс
+
+См. `man iwconfig`.
+
+    $> iwconfig 
+
+### Пример
+
+    [w495@w495 ~]$ iwconfig 
+    lo        no wireless extensions.
+
+    virbr0-nic  no wireless extensions.
+
+    virbr0    no wireless extensions.
+
+    wlan0     IEEE 802.11bgn  ESSID:"lhst"  
+              Mode:Managed  Frequency:2.462 GHz  Access Point: BC:76:70:06:2C:40   
+              Bit Rate=27 Mb/s   Tx-Power=15 dBm   
+              Retry  long limit:7   RTS thr:off   Fragment thr:off
+              Power Management:on
+              Link Quality=46/70  Signal level=-64 dBm  
+              Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
+              Tx excessive retries:4  Invalid misc:962   Missed beacon:0
+
+
+# Сетевые службы на вашем компьютере
+
+## netstat
+
+См. `man netstat`.
+
+    $> sudo netstat -nap --inet --inet6  | grep -v "-"
+    
+Так мы получаем список всех соединений через IPv4 и IPv6 и выводим PID процесса,
+и имя программы, которые держат эти соединения. Потом через `grep -v "-"`
+фильтруем только те, для которых удалось определить имя.
+
+### Пример
+
+    [w495@w495 ~]$ netstat -nap --inet --inet6  | grep -v "-"
+    Active Internet connections (servers and established)
+    tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      3463/rpcbind        
+    tcp        0      0 127.0.0.1:5939          0.0.0.0:*               LISTEN      3458/teamviewerd    
+    tcp        0      0 192.168.122.1:53        0.0.0.0:*               LISTEN      3602/dnsmasq        
+    tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      3465/sshd           
+    tcp        0      0 0.0.0.0:631             0.0.0.0:*               LISTEN      1181/cupsd          
+    tcp        0      0 127.0.0.1:5432          0.0.0.0:*               LISTEN      3475/postgres       
+    tcp        0      0 0.0.0.0:56185           0.0.0.0:*               LISTEN      5267/skype          
+    tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      3545/sendmail: acce 
+    tcp        0      0 0.0.0.0:17500           0.0.0.0:*               LISTEN      5917/dropbox        
+    tcp        0      0 192.168.1.37:48613      108.160.166.140:443     ESTABLISHED 5917/dropbox        
+    tcp        0      0 192.168.1.37:58138      91.190.216.56:12350     ESTABLISHED 5267/skype          
+    tcp        0     48 192.168.1.37:44470      37.252.232.5:5938       ESTABLISHED 3458/teamviewerd    
+    tcp6       0      0 :::514                  :::*                    LISTEN      3456/xinetd         
+    tcp6       0      0 :::111                  :::*                    LISTEN      3463/rpcbind        
+    tcp6       0      0 :::21                   :::*                    LISTEN      3444/vsftpd         
+    tcp6       0      0 :::22                   :::*                    LISTEN      3465/sshd           
+    tcp6       0      0 :::23                   :::*                    LISTEN      3456/xinetd         
+    tcp6       0      0 :::631                  :::*                    LISTEN      1181/cupsd  
+
+# Список точек WIFI
+
+См. `man nmcli`. Утилиту `nmcli` может потребоваться установить.
+
+    $> nmcli dev wifi list
+    
+### Пример
+
+    [w495@w495 ~]$ nmcli dev wifi list
+    SSID                              BSSID               РЕЖИМ            ЧАСТОТА    СКОРОСТЬ   СИГНАЛ   ЗАЩИТА     АКТИВЕН 
+    'mgts-8'                          28:31:52:26:80:FD   Инфраструктура   2437 МГц   54 МБ/с    94       WPA        нет     
+    'Leha'                            F8:C0:91:13:47:4F   Инфраструктура   2447 МГц   54 МБ/с    100      WPA2       нет     
+    'TUSITA2'                         C8:60:00:E7:90:48   Инфраструктура   2462 МГц   54 МБ/с    74       WPA2       нет     
+    'wifi85947'                       C4:3D:C7:54:54:C0   Инфраструктура   2417 МГц   54 МБ/с    65       WPA WPA2   нет     
+    'Zivop_wifi'                      1C:7E:E5:B5:7B:41   Инфраструктура   2462 МГц   54 МБ/с    64       WPA2       нет     
+    'mgts-26'                         E4:68:A3:00:9C:36   Инфраструктура   2437 МГц   54 МБ/с    50       WPA        нет     
+    'mgts-29'                         E4:68:A3:00:BB:76   Инфраструктура   2437 МГц   54 МБ/с    50       WPA        нет     
+    'mgts-12'                         28:31:52:26:32:8D   Инфраструктура   2437 МГц   54 МБ/с    45       WPA        нет     
+    'mgts-21'                         28:31:52:25:E7:5B   Инфраструктура   2437 МГц   54 МБ/с    69       WPA        нет     
+    'ZyXEL8777'                       40:4A:03:AE:AF:85   Инфраструктура   2437 МГц   54 МБ/с    37       WPA2       нет     
+    'TP-LINK_CA3F12'                  A0:F3:C1:CA:3F:12   Инфраструктура   2462 МГц   54 МБ/с    35       WPA2       нет     
+    'MGTS_1242573'                    34:6B:D3:C3:D0:8C   Инфраструктура   2417 МГц   54 МБ/с    29       WPA2       нет     
+    'c2_free'                         00:27:22:E6:82:84   Инфраструктура   2437 МГц   54 МБ/с    100      --         нет     
+    'c2_free'                         00:27:22:E6:82:48   Инфраструктура   2447 МГц   54 МБ/с    85       --         нет     
+    'c2_free'                         A0:F3:C1:4F:00:D8   Инфраструктура   2452 МГц   54 МБ/с    70       --         нет     
+    'c2_free'                         00:27:22:E6:80:9D   Инфраструктура   2462 МГц   54 МБ/с    79       --         нет     
+    'c2_free'                         A0:F3:C1:4F:08:3C   Инфраструктура   2462 МГц   54 МБ/с    74       --         нет     
+    'c2_free'                         00:27:22:E6:82:89   Инфраструктура   2412 МГц   54 МБ/с    69       --         нет     
+    'c2_free'                         A0:F3:C1:59:D1:58   Инфраструктура   2422 МГц   54 МБ/с    65       --         нет     
+    'c2_free'                         00:27:22:E6:80:23   Инфраструктура   2427 МГц   54 МБ/с    60       --         нет     
+    'FON_MTS'                         BC:76:70:06:2C:43   Инфраструктура   2462 МГц   54 МБ/с    79       --         нет     
+    'Irisha'                          90:F6:52:5B:CA:0C   Инфраструктура   2452 МГц   54 МБ/с    82       WPA WPA2   нет     
+    'mgts-3'                          28:31:52:49:25:6A   Инфраструктура   2437 МГц   54 МБ/с    64       WPA        нет     
+    'c2_free'                         00:27:22:E6:80:03   Инфраструктура   2462 МГц   54 МБ/с    65       --         нет     
+    'Irisha'                          74:EA:3A:ED:C0:70   Инфраструктура   2452 МГц   54 МБ/с    75       WPA WPA2   нет     
+    'mgts-22'                         28:31:52:26:32:B5   Инфраструктура   2462 МГц   54 МБ/с    67       WPA        нет     
+    'lhbe'                            14:A9:E3:00:26:D2   Инфраструктура   2412 МГц   54 МБ/с    62       WPA WPA2   нет     
+    'c2_free'                         00:27:22:E6:8C:CF   Инфраструктура   2422 МГц   54 МБ/с    65       --         нет     
+    'Beeline_router'                  00:14:D1:65:92:AD   Инфраструктура   2452 МГц   54 МБ/с    59       WPA2       нет     
+    'lhst'                            BC:76:70:06:2C:40   Инфраструктура   2462 МГц   54 МБ/с    49       WPA2       да      
+    'mgts-11'                         E4:68:A3:B2:30:9B   Инфраструктура   2462 МГц   54 МБ/с    30       WPA        нет     
+    'PHOME'                           00:23:54:6B:BC:F2   Инфраструктура   2437 МГц   54 МБ/с    27       WPA WPA2   нет     
+    'c2_free'                         A0:F3:C1:4F:08:30   Инфраструктура   2412 МГц   54 МБ/с    55       --         нет     
+    'c2_free'                         00:27:22:E6:80:0D   Инфраструктура   2457 МГц   54 МБ/с    42       --         нет     
+    'c2_free'                         A0:F3:C1:4E:B9:DC   Инфраструктура   2457 МГц   54 МБ/с    69       --         нет     
+    'c2_free'                         A0:F3:C1:4F:00:CC   Инфраструктура   2432 МГц   54 МБ/с    55       --         нет     
+    'c2_free'                         A0:F3:C1:4F:00:D0   Инфраструктура   2447 МГц   54 МБ/с    62       --         нет 
+    
+    
+
+# Сканирование компьютеров в сети
+
+## Ping
+
+См. `man xargs`, `man grep`. 
+Перебираем (`echo 192.168.1.{1..254}`) все возможные адреса сети и пингуем их.
+
+    $> echo 192.168.1.{1..254}|xargs -n1 -P0 ping -c1|grep "bytes from"
+ 
+### Пример
+
+    [w495@w495 ~]$ echo 192.168.1.{1..254}|xargs -n1 -P0 ping -c1|grep "bytes from"
+    64 bytes from 192.168.1.4: icmp_seq=1 ttl=64 time=0.090 ms
+    64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=3.66 ms
+    64 bytes from 192.168.1.2: icmp_seq=1 ttl=64 time=137 ms
+    64 bytes from 192.168.1.6: icmp_seq=1 ttl=64 time=263 ms
+    64 bytes from 192.168.1.38: icmp_seq=1 ttl=255 time=795 ms
+    64 bytes from 192.168.1.7: icmp_seq=1 ttl=64 time=1135 ms
+
+## Nmap
+
+nmap — свободная утилита, предназначенная для разнообразного настраиваемого 
+сканирования IP-сетей с любым количеством объектов, 
+определения состояния объектов сканируемой сети 
+(портов и соответствующих им служб). 
+Изначально программа была реализована для систем UNIX, 
+но сейчас доступны версии для множества операционных систем.
+http://en.wikipedia.org/wiki/Nmap
+
+Всего скорее утилиту придется установить самостоятельно или скачать 
+с официального сайта (http://nmap.org/). 
+
+Будьте аккуратны при ее использовании. 
+С помощью nmap можно получить слишком много информации о сетевых устройствах,
+и это может не понравится их владельцам (во общем, за Вами уже выехали). 
+
+### Пример
+
+    [w495@w495 ~]$ sudo nmap -sn -PR 192.168.1.0/24
+
+    Starting Nmap 6.40 ( http://nmap.org ) at 2014-01-08 00:44 MSK
+    Nmap scan report for 192.168.1.1
+    Host is up (0.023s latency).
+    MAC Address: BC:76:70:06:2C:38 (Shenzhen Huawei Communication Technologies Co.)
+    Nmap scan report for 192.168.1.2
+    Host is up (0.022s latency).
+    MAC Address: 00:1F:3A:F7:94:D1 (Hon Hai Precision Ind.Co.)
+    Nmap scan report for 192.168.1.6
+    Host is up (0.13s latency).
+    MAC Address: BC:85:56:BB:FB:FD (Hon Hai Precision Ind. Co.)
+    Nmap scan report for 192.168.1.7
+    Host is up (6.9s latency).
+    MAC Address: 00:21:5D:2A:00:E8 (Intel Corporate)
+    Nmap scan report for 192.168.1.38
+    Host is up (0.026s latency).
+    MAC Address: B4:99:BA:C6:21:B8 (Hewlett-Packard Company)
+    Nmap scan report for 192.168.1.4
+    Host is up.
+    Nmap done: 256 IP addresses (6 hosts up) scanned in 14.65 seconds
+
+# Определение ОС сетевого компьютеров
+
+
+    [w495@w495 ~]$ sudo nmap -O -Pn 192.168.1.6
+
+    Starting Nmap 6.40 ( http://nmap.org ) at 2014-01-08 00:56 MSK
+    Nmap scan report for 192.168.1.6
+    Host is up (0.064s latency).
+    Not shown: 999 filtered ports
+    PORT   STATE SERVICE
+    22/tcp open  ssh
+    MAC Address: BC:85:56:BB:FB:FD (Hon Hai Precision Ind. Co.)
+    Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+    Aggressive OS guesses:  Linux 2.6.32 - 3.6 (93%), 
+                            Linux 2.6.32 - 3.9 (93%), 
+                            Linux 3.0 - 3.9 (93%), 
+                            Linux 2.6.32 (90%), 
+                            Linux 2.6.22 - 2.6.36 (90%), 
+                            Linux 2.6.39 (90%), 
+                            Crestron XPanel control system (89%), 
+                            Netgear DG834G WAP or Western Digital WD TV media player (89%), 
+                            Linux 3.3 (89%), Linux 2.6.32 - 2.6.35 (88%)
+    No exact OS matches for host (test conditions non-ideal).
+    Network Distance: 1 hop
+
+    OS detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+    Nmap done: 1 IP address (1 host up) scanned in 38.76 seconds
+
+    
+# Определение пути до удаленной машины
+
+    
+    [w495@w495 ~]$ tracepath ya.ru
+     1:  192.168.1.4                                           0.190ms pmtu 1500
+     1:  192.168.1.1                                           3.146ms 
+     1:  192.168.1.1                                          21.113ms 
+     2:  ppp91-77-191-150.pppoe.mtu-net.ru                    71.047ms pmtu 1492
+     2:  ppp91-77-176-1.pppoe.mtu-net.ru                     1068.167ms 
+     2:  ppp91-77-176-1.pppoe.mtu-net.ru                      91.652ms 
+     3:  no reply
+     4:  no reply
+     5:  a197-cr04-be12-53.msk.stream-internet.net            90.704ms asymm  4 
+     6:  m9-cr05-ae9.77.msk.stream-internet.net              716.566ms asymm 10 
+     7:  m9-cr04-be3-77.msk.stream-internet.net              1017.237ms asymm  8 
+     7:  m9-cr04-be14-77.msk.stream-internet.net              50.857ms asymm  8 
+     8:  m9-cr02-po6.msk.stream-internet.net                  48.074ms asymm  7 
+     9:  Yandex-m9.msk.stream-internet.net                    55.783ms asymm  8 
+    10:  no reply
+    11:  ugr-b-c1-ae5-0.yndx.net                             130.478ms asymm 10 
+    12:  ugr-b-c1-ae4-0.yndx.net                             801.556ms asymm 11 
+    13:  no reply
+    14:  no reply
+    15:  no reply
+    16:  www.yandex.ru                                       1696.961ms reached
+         Resume: pmtu 1492 hops 16 back 54 
+
