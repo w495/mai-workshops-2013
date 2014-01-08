@@ -14,7 +14,7 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
 
     $> lstopo 
 
-![Изображение. Результат команды lstopo](https://pbs.twimg.com/media/BbBRXFfCAAAADlx.png "Результат команды lstopo")
+![Изображение. Результат команды lstopo](images/lshw-gui.png "Результат команды lstopo")
 
 # Процессор
 
