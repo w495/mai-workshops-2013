@@ -14,7 +14,7 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
 
     $> lstopo 
 
-![Изображение. Результат команды lstopo](images/lshw-gui.png "Результат команды lstopo")
+![Изображение lstopo](images/lstopo.png "Результат команды lstopo")
 
 # Процессор
 
@@ -473,7 +473,7 @@ http://linux-bash.ru/menusistem/106-dmidecode.html
 
 ## lshw-gui
 
-![Изображение. Результат команды lshw-gui](https://pbs.twimg.com/media/BbBfkrNCAAAwszV.png "Результат команды lshw-gui")
+![Изображение. lshw-gui](images/lshw-gui.png "Результат команды lshw-gui")
 
 ## lshw
 
