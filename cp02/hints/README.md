@@ -413,7 +413,7 @@ http://en.wikipedia.org/wiki/Nmap
 
 ### oricrafter.com
 
-    [w495@w495 ~]$ sudo nmap  -O -Pn oricrafter.com
+    [w495@w495 ~]$ sudo nmap -O -Pn oricrafter.com
 
     Starting Nmap 6.40 ( http://nmap.org ) at 2014-01-08 02:37 MSK
     Nmap scan report for oricrafter.com (90.156.201.87)
@@ -484,3 +484,27 @@ http://en.wikipedia.org/wiki/Nmap
     16:  www.yandex.ru                                       1696.961ms reached
          Resume: pmtu 1492 hops 16 back 54 
 
+
+# Построение топологии сети
+
+## Zenmap
+
+`Zenmap` — официальный GUI для программы Nmap Security Scanner. 
+Программа написана на языке Python.
+Программу всего скорее придется установить самостоятельно 
+
+    $> sudo apt-get install zenmap
+
+Или
+
+    $> yum install
+
+### Локальная сеть
+
+С помощью `zenmap` можно построить топологию локальной сети.
+
+![Изображение. Zenmap: топология локальной сети](images/zenmap-ltopo-scr.png "zenmap: топология локальной сети")
+
+### Глобальная сеть
+
+![Изображение. Zenmap: топология глобальной сети](images/zenmap-ltopo-scr.png "Zenmap: топология глобальной сети")
