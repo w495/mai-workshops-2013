@@ -1,3 +1,9 @@
+# Рекомендации
+
+Для того, чтобы сделать выводы о факультетской сети было бы правильно 
+самостоятельно выяснить как она работает. Сделать это можно, с помощью
+набора команд, приведенного ниже. 
+Тут показано устройство домашней беспроводной сети.
 
 # Конфигурация сетевого интерфейса
 
@@ -96,6 +102,36 @@
     tcp6       0      0 :::23                   :::*                    LISTEN      3456/xinetd         
     tcp6       0      0 :::631                  :::*                    LISTEN      1181/cupsd  
 
+    
+## lsof -i
+
+Показывает список всех открытых портов в Интернет.
+
+    $> lsof -i
+
+### Пример
+
+    [w495@w495 ~]$ lsof -i
+    COMMAND    PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+    wineserve 4328 w495   12u  IPv4  26103      0t0  TCP localhost.localdomain:5939 (LISTEN)
+    skype     5267 w495   13u  IPv4  36900      0t0  UDP localhost.localdomain:49504 
+    skype     5267 w495   29u  IPv4 297639      0t0  TCP 192.168.1.37:57129->bn1msgr2011808.gateway.edge.messenger.live.com:https (ESTABLISHED)
+    skype     5267 w495   30u  IPv4 166333      0t0  TCP *:56185 (LISTEN)
+    skype     5267 w495   34u  IPv4 166334      0t0  UDP *:56185 
+    skype     5267 w495   36u  IPv4 298358      0t0  TCP 192.168.1.37:57026->111.221.77.170:40003 (ESTABLISHED)
+    skype     5267 w495   37u  IPv4 337721      0t0  TCP 192.168.1.37:50356->91.190.218.58:12350 (ESTABLISHED)
+    fedmsg-no 5565 w495   29u  IPv4 296410      0t0  TCP 192.168.1.37:51994->proxy5-2.fedoraproject.org:9940 (ESTABLISHED)
+    dropbox   5917 w495   14u  IPv4 296724      0t0  TCP 192.168.1.37:37756->snt-re3-7d.sjc.dropbox.com:http (ESTABLISHED)
+    dropbox   5917 w495   22u  IPv4  36458      0t0  UDP *:db-lsp-disc 
+    dropbox   5917 w495   25u  IPv4  36461      0t0  TCP *:db-lsp (LISTEN)
+    chrome    7198 w495  159u  IPv4 465964      0t0  TCP 192.168.1.37:41863->lb-in-f94.1e100.net:https (ESTABLISHED)
+    chrome    7198 w495  214u  IPv4 472436      0t0  TCP 192.168.1.37:45014->lb-in-f95.1e100.net:http (ESTABLISHED)
+    chrome    7198 w495  253u  IPv4 465193      0t0  TCP 192.168.1.37:59876->173.194.32.138:https (ESTABLISHED)
+    chrome    7198 w495  281u  IPv4 465295      0t0  TCP 192.168.1.37:36960->lb-in-f94.1e100.net:http (ESTABLISHED)
+    chrome    7198 w495  296u  IPv4 463469      0t0  TCP 192.168.1.37:55312->la-in-f156.1e100.net:http (ESTABLISHED)
+    chrome    7198 w495  297u  IPv4 464646      0t0  TCP 192.168.1.37:33304->129.42.56.216:http (ESTABLISHED)
+
+
 # Список точек WIFI
 
 См. `man nmcli`. Утилиту `nmcli` может потребоваться установить.
@@ -153,11 +189,11 @@
 См. `man xargs`, `man grep`. 
 Перебираем (`echo 192.168.1.{1..254}`) все возможные адреса сети и пингуем их.
 
-    $> echo 192.168.1.{1..254}|xargs -n1 -P0 ping -c1|grep "bytes from"
+    $> echo 192.168.1.{1..254} | xargs -n1 -P0 ping -c1 | grep "bytes from"
  
 ### Пример
 
-    [w495@w495 ~]$ echo 192.168.1.{1..254}|xargs -n1 -P0 ping -c1|grep "bytes from"
+    [w495@w495 ~]$ echo 192.168.1.{1..254} | xargs -n1 -P0 ping -c1 | grep "bytes from"
     64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=4.23 ms
     64 bytes from 192.168.1.4: icmp_seq=1 ttl=64 time=0.064 ms
     64 bytes from 192.168.1.2: icmp_seq=1 ttl=64 time=43.6 ms
@@ -499,6 +535,9 @@ http://en.wikipedia.org/wiki/Nmap
 
     $> yum install
 
+Как пользоваться `zenmap`:
+http://rus-linux.net/nlib.php?name=/MyLDP/lvs/nmap/zenmap.html
+
 ### Локальная сеть
 
 С помощью `zenmap` можно построить топологию локальной сети.
@@ -508,3 +547,9 @@ http://en.wikipedia.org/wiki/Nmap
 ### Глобальная сеть
 
 ![Изображение. Zenmap: топология глобальной сети](images/zenmap-gtopo-scr.png "Zenmap: топология глобальной сети")
+
+
+# Дополнительные материалы
+
+* Сбор информации о сети http://www.linuxspace.org/archives/2838
+* Команды Linux: настройка сети. http://itshaman.ru/articles/7/komandy-linux#network_settings
