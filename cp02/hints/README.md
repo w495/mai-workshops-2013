@@ -1,5 +1,4 @@
 
-
 # Конфигурация сетевого интерфейса
 
 ## Общая
@@ -178,11 +177,15 @@ nmap — свободная утилита, предназначенная дл�
 но сейчас доступны версии для множества операционных систем.
 http://en.wikipedia.org/wiki/Nmap
 
+Посмотреть примеры использования можно тут:
+* http://habrahabr.ru/post/88064/
+* http://nmap.org/man/ru/man-examples.html
+
 Всего скорее утилиту придется установить самостоятельно или скачать 
 с официального сайта (http://nmap.org/). 
 
 Будьте аккуратны при ее использовании. 
-С помощью nmap можно получить слишком много информации о сетевых устройствах,
+С помощью `nmap` можно получить слишком много информации о сетевых устройствах,
 и это может не понравится их владельцам (во общем, за Вами уже выехали). 
 
 ### Пример
@@ -213,7 +216,7 @@ http://en.wikipedia.org/wiki/Nmap
     Nmap done: 256 IP addresses (7 hosts up) scanned in 13.03 seconds
     [w495@w495 ~]$ sudo nmap -sn -PS 192.168.1.1/24
 
-# Определение ОС сетевого компьютеров
+# Определение ОС компьютера локальной сети
 
 ## Точка доступна
 
@@ -305,9 +308,6 @@ http://en.wikipedia.org/wiki/Nmap
     OS CPE: cpe:/o:linux:linux_kernel:2.6
     OS details: Linux 2.6.32 - 2.6.35
     Network Distance: 1 hop
-
-    OS detection performed. Please report any incorrect results at http://nmap.org/submit/ .
-    Nmap done: 1 IP address (1 host up) scanned in 5.14 seconds
     [w495@w495 ~]$ 
 
 Проверяем:
@@ -327,7 +327,6 @@ http://en.wikipedia.org/wiki/Nmap
     gt@gt-nb:~$ uname -a
     Linux gt-nb 2.6.32-42-generic #95-Ubuntu SMP Wed Jul 25 15:56:09 UTC 2012 x86_64 GNU/Linux
     gt@gt-nb:~$ 
-
 
 ## Сетевой принтер
 
@@ -360,14 +359,112 @@ http://en.wikipedia.org/wiki/Nmap
                 M1217nfw, 
                 P1120w, or P1606dn printer
     Network Distance: 1 hop
-
-    OS detection performed. Please report any incorrect results at http://nmap.org/submit/ .
-    Nmap done: 1 IP address (1 host up) scanned in 6.42 seconds
     [w495@w495 ~]$
 
 Это сетевой принтер. Принтер знает настройки нескольких Wifi-сетей. 
 И на самом принтере нет индикатора, к какой именно из них он подключен.
 Потому `nmap` это хороший способ определения, в какой сети сейчас принтер.
+
+# Определение ОС компьютера в Интернете
+
+## k806.ru
+
+### Пример
+
+    [w495@w495 ~]$ sudo nmap  -O -Pn k806.ru
+
+    Starting Nmap 6.40 ( http://nmap.org ) at 2014-01-08 02:30 MSK
+    Nmap scan report for k806.ru (46.4.98.148)
+    Host is up (0.063s latency).
+    rDNS record for 46.4.98.148: jb.umc8.ru
+    Not shown: 984 closed ports
+    PORT     STATE SERVICE
+    22/tcp   open  ssh
+    25/tcp   open  smtp
+    53/tcp   open  domain
+    80/tcp   open  http
+    88/tcp   open  kerberos-sec
+    110/tcp  open  pop3
+    143/tcp  open  imap
+    443/tcp  open  https
+    587/tcp  open  submission
+    749/tcp  open  kerberos-adm
+    993/tcp  open  imaps
+    995/tcp  open  pop3s
+    2222/tcp open  EtherNet/IP-1
+    5222/tcp open  xmpp-client
+    5269/tcp open  xmpp-server
+    5280/tcp open  xmpp-bosh
+    Aggressive OS guesses: DragonFly BSD 2.9 (89%), 
+                           DragonFly BSD 2.11 (87%), 
+                           FreeBSD 5.4-RELEASE (87%), 
+                           Apple TV (iOS 5.2.1) (87%), 
+                           Apple iPad tablet computer (iOS 4.3.2) (86%), 
+                           Blue Coat proxy server (SGOS 6.3.2.201) (85%), 
+                           Apple Mac OS X 10.7.0 - 10.7.5 (Lion) 
+                               (Darwin 11.0.0 - 11.4.2) (85%), 
+                           Apple iPhone mobile phone (iOS 4.3.3) (85%), 
+                           Apple iPhone mobile phone 
+                               (iPhone OS 3.0 - iOS 4.2.1) (85%), 
+                           Apple Mac OS X 10.5.2 - 10.6.7 
+                               (Leopard - Snow Leopard) (Darwin 9.2.0 - 10.7.0) 
+                                   or iOS 4.0.1 - 4.2.1 (85%)
+    No exact OS matches for host (test conditions non-ideal).
+    Network Distance: 17 hops
+    [w495@w495 ~]$
+
+Благодаря знакомству с владельце компьютера k806.ru, 
+я знаю что там стоит DragonFly BSD. `nmap` определил верно.
+
+
+## oricrafter.com
+
+### Пример
+
+    [w495@w495 ~]$ sudo nmap  -O -Pn oricrafter.com
+
+    Starting Nmap 6.40 ( http://nmap.org ) at 2014-01-08 02:37 MSK
+    Nmap scan report for oricrafter.com (90.156.201.87)
+    Host is up (0.042s latency).
+    Other addresses for oricrafter.com (not scanned): 90.156.201.48 90.156.201.74 90.156.201.80
+    rDNS record for 90.156.201.87: fe.shared.masterhost.ru
+    Not shown: 996 closed ports
+    PORT    STATE    SERVICE
+    80/tcp  open     http
+    161/tcp filtered snmp
+    179/tcp filtered bgp
+    199/tcp filtered smux
+    Device type: general purpose|WAP|router|media device|webcam
+    Running (JUST GUESSING): OpenBSD 4.X (97%), 
+                             Asus Linux 2.6.X (92%), 
+                             Linux 2.6.X (92%), 
+                             Netgear embedded (89%), 
+                             Western Digital embedded (89%), 
+                             AXIS Linux 2.6.X (88%)
+    OS CPE: cpe:/o:openbsd:openbsd:4.3 
+            cpe:/h:asus:rt-n16 
+            cpe:/o:asus:linux_kernel:2.6 
+            cpe:/o:linux:linux_kernel:2.6.22 
+            cpe:/h:netgear:dg834g 
+            cpe:/o:westerndigital:wd_tv 
+            cpe:/h:axis:211_network_camera 
+            cpe:/o:axis:linux_kernel:2.6
+    Aggressive OS guesses:  OpenBSD 4.3 (97%), 
+                            Asus RT-N16 WAP (Linux 2.6) (92%), 
+                            Asus RT-AC66U router (Linux 2.6) (92%), 
+                            Asus RT-N66U WAP (Linux 2.6) (92%), 
+                            Tomato 1.28 (Linux 2.6.22) (92%), 
+                            Netgear DG834G WAP or 
+                            Western Digital WD TV media player (89%), 
+                            OpenWrt Kamikaze 7.09 (Linux 2.6.22) (88%), 
+                            Asus RT-N10 router or 
+                            AXIS 211A Network Camera (Linux 2.6) (88%), 
+                            AXIS 211A Network Camera (Linux 2.6.20) (88%)
+    No exact OS matches for host (test conditions non-ideal).
+    [w495@w495 ~]$ 
+
+Я сам делал этот проект. 
+Сайт крутится на сервере Microsoft Windows Server 2008.
 
 # Определение пути до удаленной машины
 
