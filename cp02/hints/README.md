@@ -61,7 +61,7 @@
               Tx excessive retries:4  Invalid misc:962   Missed beacon:0
 
 
-# Сетевые службы на вашем компьютере
+# Сетевые службы на Вашем компьютере
 
 ## netstat
 
@@ -216,11 +216,11 @@ http://en.wikipedia.org/wiki/Nmap
     Nmap done: 256 IP addresses (7 hosts up) scanned in 13.03 seconds
     [w495@w495 ~]$ sudo nmap -sn -PS 192.168.1.1/24
 
-# Определение ОС компьютера локальной сети
+# Определение ОС
 
-## Точка доступна
+## Компьютеры локальной сети
 
-### Пример
+### Точка доступа
 
     [w495@w495 ~]$ sudo nmap  -O 192.168.1.1
 
@@ -246,9 +246,7 @@ http://en.wikipedia.org/wiki/Nmap
     Nmap done: 1 IP address (1 host up) scanned in 6.38 seconds
     [w495@w495 ~]$ 
 
-## Служебный ноутбук
-
-### Пример
+### Служебный ноутбук
 
 Сканируем:
 
@@ -290,7 +288,7 @@ http://en.wikipedia.org/wiki/Nmap
     Linux w495yb 3.12.6-200.fc19.x86_64 #1 SMP Mon Dec 23 16:33:38 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
     [w495@w495yb ~]$ 
 
-## Ноутбук жены
+### Другой ноутбук
 
 Сканируем:
 
@@ -328,9 +326,7 @@ http://en.wikipedia.org/wiki/Nmap
     Linux gt-nb 2.6.32-42-generic #95-Ubuntu SMP Wed Jul 25 15:56:09 UTC 2012 x86_64 GNU/Linux
     gt@gt-nb:~$ 
 
-## Сетевой принтер
-
-### Пример
+### Сетевой принтер
 
     [w495@w495 ~]$ sudo nmap -O 192.168.1.38
     Starting Nmap 6.40 ( http://nmap.org ) at 2014-01-08 02:11 MSK
@@ -365,11 +361,10 @@ http://en.wikipedia.org/wiki/Nmap
 И на самом принтере нет индикатора, к какой именно из них он подключен.
 Потому `nmap` это хороший способ определения, в какой сети сейчас принтер.
 
-# Определение ОС компьютера в Интернете
 
-## k806.ru
+## Компьютеры в Интернете
 
-### Пример
+### k806.ru
 
     [w495@w495 ~]$ sudo nmap  -O -Pn k806.ru
 
@@ -416,10 +411,7 @@ http://en.wikipedia.org/wiki/Nmap
 Благодаря знакомству с владельце компьютера k806.ru, 
 я знаю что там стоит DragonFly BSD. `nmap` определил верно.
 
-
-## oricrafter.com
-
-### Пример
+### oricrafter.com
 
     [w495@w495 ~]$ sudo nmap  -O -Pn oricrafter.com
 
