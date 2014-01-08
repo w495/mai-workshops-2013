@@ -507,4 +507,4 @@ http://en.wikipedia.org/wiki/Nmap
 
 ### Глобальная сеть
 
-![Изображение. Zenmap: топология глобальной сети](images/zenmap-ltopo-scr.png "Zenmap: топология глобальной сети")
+![Изображение. Zenmap: топология глобальной сети](images/zenmap-gtopo-scr.png "Zenmap: топология глобальной сети")
