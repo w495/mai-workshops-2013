@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 
 XBACKLIGHT_MAX=70;
 XBACKLIGHT_MIN=1;
@@ -17,15 +16,17 @@ error () {
 }
 
 usage () {
-cat <<USAGE
-Delete AV project from different places.
-$PROGNAME -n <name> [ -v ]|[ -f ]|[ -i ]
--n | --name          Project name.
-                        Example: "VIDEO/750/Mosfilm/SNG/Lampa"
--v | --verbose       Tell about its actions.
--f | --fictive       Not do only tell.
--i | --interactive   Ask about its actions.
-USAGE
+PROGNAME=$0;
+[[ x$0 = "x" ]] && PROGNAME="change_power";
+cat <<CPUSAGE
+Manual power managment utility for changing power consumption.
+$PROGNAME [-h]|[[-m]|[-M]|[-a] [-v]]
+-h | --help     shows this test.
+-m | --min      minimizes a power consumption.
+-M | --max      maximizes a power consumption. It increases a performance.
+-a | --auto     uses automatic managment.
+-v | --verbose  uses verbose mode. It tells about really actions for power managment .
+CPUSAGE
 }
 
 
@@ -87,15 +88,16 @@ modemin () {
 
 (( $# == 0  )) && { usage ; exit 1 ; }
 
-_args=$(getopt -o mMav -l "min,max,auto,verbose" -n $0 --  "$@");
+_args=$(getopt -o hmMav -l "help,min,max,auto,verbose" -n $0 --  "$@");
 set -- $_args;
 
 mode="auto";
 verbose="no";
 
-while [[ -n $_args ]] ; 
+while [[ -n $_args ]] ;
 do
     case $1 in
+        -h|--help)      usage               ;  exit 0;;
         -m|--min)       mode="min"          ;   shift;;
         -M|--max)       mode="max"          ;   shift;;
         -a|--auto)      mode="auto"         ;   shift;;
@@ -111,13 +113,13 @@ notice "mode    = ${mode}";
 case ${mode} in
     "min"  )    modemin;;
     "max"  )    modemax;;
-    "auto" )      
+    "auto" )
         if on_ac_power ; then
             modemax;
         else
             modemin;
         fi;;
-    '')                                     
+    '')
         break;;
 esac;
 
