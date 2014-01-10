@@ -235,7 +235,7 @@
   В Курсовой работе тут можно было бы рассказать про DIMM.
 * Обладает объемом 2048 МБ и тактовой частотой 1333 МГц.
 
-
+```
     Memory Device
         Array Handle: 0x0040
         Error Information Handle: Not Provided
@@ -254,5 +254,5 @@
         Asset Tag: 9876543210
         Part Number: [Empty]
         Rank: 1
-
+```
 
