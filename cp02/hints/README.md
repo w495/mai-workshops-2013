@@ -542,11 +542,11 @@ http://rus-linux.net/nlib.php?name=/MyLDP/lvs/nmap/zenmap.html
 
 С помощью `zenmap` можно построить топологию локальной сети.
 
-![Изображение. Zenmap: топология локальной сети](images/zenmap-ltopo-scr.png "zenmap: топология локальной сети")
+![Изображение. Zenmap: топология локальной сети](images/zenmap-lhst-ltopo-scr.png "zenmap: топология локальной сети")
 
 ### Глобальная сеть
 
-![Изображение. Zenmap: топология глобальной сети](images/zenmap-gtopo-scr.png "Zenmap: топология глобальной сети")
+![Изображение. Zenmap: топология глобальной сети](images/zenmap-lhst-gtopo-scr.png "Zenmap: топология глобальной сети")
 
 
 # Дополнительные материалы
