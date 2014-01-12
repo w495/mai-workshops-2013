@@ -74,7 +74,7 @@
 
 # Определение запущенных сервисов
 
-![zenmap-zzznet-services-telnet](images/zenmap-zzznet-services-telnet "zenmap-zzznet-services-telnet")
+![zenmap-zzznet-services-telnet](images/zenmap-zzznet-services-telnet.png "zenmap-zzznet-services-telnet")
 
 
 # Определение пути до удаленной машины
