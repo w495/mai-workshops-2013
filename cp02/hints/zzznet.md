@@ -39,13 +39,13 @@
     OS detection performed. Please report any incorrect results at http://nmap.org/submit/ .
 
 Наш узел оказался вебкамерой. Аналогично можно пройти
-и по другим устройствам и сделать это можно с помощью zenmap.
+и по другим устройствам и сделать это можно с помощью утилиты `zenmap`.
 
 ## zenmap
 
 Сканирование проводилось в другой промежуток времени, 
 потому перечисленные компьютеры не совпадают с полученными 
-в результате `ping`.
+с помощью утилиты `ping`.
 
 
 ![zenmap-zzznet-ltopo-scr.png](images/zenmap-zzznet-ltopo-scr.png "zenmap-zzznet-ltopo-scr.png")
