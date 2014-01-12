@@ -72,6 +72,11 @@
 ![zenmap-zzznet-host-192.168.2.231.png](images/zenmap-zzznet-host-192.168.2.231.png "zenmap-zzznet-host-192.168.2.231.png")
 
 
+# Определение запущенных сервисов
+
+![zenmap-zzznet-services-telnet](images/zenmap-zzznet-services-telnet "zenmap-zzznet-services-telnet")
+
+
 # Определение пути до удаленной машины
 
 Определим путь до `mai.ru`:
