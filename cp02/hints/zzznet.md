@@ -1,5 +1,62 @@
 
 
+# Сканирование компьютеров в сети
+
+## Ping
+
+Сканирование сети лабораторного класса на наличие компьютеров в сети.
+
+    w495@kuantan:~$ echo 192.168.2.{1..254} | xargs -n1 -P255 ping -c1 | grep "bytes from"
+    64 bytes from 192.168.2.23: icmp_seq=0 ttl=255 time=0.424 ms
+    64 bytes from 192.168.2.30: icmp_seq=0 ttl=64 time=0.132 ms
+    64 bytes from 192.168.2.36: icmp_seq=0 ttl=64 time=0.333 ms
+    64 bytes from 192.168.2.50: icmp_seq=0 ttl=64 time=0.034 ms
+    64 bytes from 192.168.2.52: icmp_seq=0 ttl=64 time=0.180 ms
+    64 bytes from 192.168.2.55: icmp_seq=0 ttl=64 time=0.117 ms
+    64 bytes from 192.168.2.56: icmp_seq=0 ttl=64 time=0.201 ms
+    64 bytes from 192.168.2.53: icmp_seq=0 ttl=64 time=0.252 ms
+    64 bytes from 192.168.2.60: icmp_seq=0 ttl=64 time=0.093 ms
+    64 bytes from 192.168.2.59: icmp_seq=0 ttl=64 time=0.072 ms
+    64 bytes from 192.168.2.58: icmp_seq=0 ttl=64 time=0.117 ms
+
+
+# Определение ОС
+
+Возьмем произвольный узел и попытаемся определить, что же на нем за ОС.
+
+    root@kuantan:~# nmap -O -Pn 192.168.2.23
+    Nmap scan report for cam (192.168.2.23)
+    Host is up (0.00048s latency).
+    Not shown: 999 closed ports
+    PORT   STATE SERVICE
+    80/tcp open  http
+    MAC Address: F0:7D:68:00:D4:67 (D-Link)
+    Device type: webcam
+    Running: TRENDnet embedded
+    OS CPE: cpe:/h:trendnet:tv-ip100
+    OS details: TRENDnet TV-IP100 webcam
+    Network Distance: 1 hop
+    OS detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+
+Наш узел оказался вебкамерой. Аналогично можно пройти
+и по другим устройствам и сделать это можно с помощью zenmap.
+
+
+![zenmap-zzznet-host-192.168.2.022.png](images/zenmap-zzznet-host-192.168.2.022.png "zenmap-zzznet-host-192.168.2.022.png")
+
+
+![zenmap-zzznet-host-192.168.2.036.png](images/zenmap-zzznet-host-192.168.2.036.png "zenmap-zzznet-host-192.168.2.036.png")
+
+
+![zenmap-zzznet-host-192.168.2.135.png](images/zenmap-zzznet-host-192.168.2.135.png "zenmap-zzznet-host-192.168.2.135.png")
+
+
+![zenmap-zzznet-host-192.168.2.180.png](images/zenmap-zzznet-host-192.168.2.180.png "zenmap-zzznet-host-192.168.2.180.png")
+
+
+![zenmap-zzznet-host-192.168.2.231.png](images/zenmap-zzznet-host-192.168.2.231.png "zenmap-zzznet-host-192.168.2.231.png")
+
+
 # Определение пути до удаленной машины
 
 Определим путь до `mai.ru`:
@@ -43,45 +100,3 @@
 Обычно используется для определения «расстояния» между узлами. 
 Чем больше хопов — тем сложнее путь маршрутизации 
 и тем «дальше» находятся узлы друг от друга.
-
-
-# Сканирование компьютеров в сети
-
-## Ping
-
-Сканирование сети лабораторного класса на наличие компьютеров в сети.
-
-    w495@kuantan:~$ echo 192.168.2.{1..254} | xargs -n1 -P255 ping -c1 | grep "bytes from"
-    64 bytes from 192.168.2.23: icmp_seq=0 ttl=255 time=0.424 ms
-    64 bytes from 192.168.2.30: icmp_seq=0 ttl=64 time=0.132 ms
-    64 bytes from 192.168.2.36: icmp_seq=0 ttl=64 time=0.333 ms
-    64 bytes from 192.168.2.50: icmp_seq=0 ttl=64 time=0.034 ms
-    64 bytes from 192.168.2.52: icmp_seq=0 ttl=64 time=0.180 ms
-    64 bytes from 192.168.2.55: icmp_seq=0 ttl=64 time=0.117 ms
-    64 bytes from 192.168.2.56: icmp_seq=0 ttl=64 time=0.201 ms
-    64 bytes from 192.168.2.53: icmp_seq=0 ttl=64 time=0.252 ms
-    64 bytes from 192.168.2.60: icmp_seq=0 ttl=64 time=0.093 ms
-    64 bytes from 192.168.2.59: icmp_seq=0 ttl=64 time=0.072 ms
-    64 bytes from 192.168.2.58: icmp_seq=0 ttl=64 time=0.117 ms
-
-
-# Определение ОС
-
-Возьмем произвольный узел и попытаемся определить, что же на нем за ОС.
-
-    root@kuantan:~# nmap -O -Pn 192.168.2.23
-    Nmap scan report for cam (192.168.2.23)
-    Host is up (0.00048s latency).
-    Not shown: 999 closed ports
-    PORT   STATE SERVICE
-    80/tcp open  http
-    MAC Address: F0:7D:68:00:D4:67 (D-Link)
-    Device type: webcam
-    Running: TRENDnet embedded
-    OS CPE: cpe:/h:trendnet:tv-ip100
-    OS details: TRENDnet TV-IP100 webcam
-    Network Distance: 1 hop
-    OS detection performed. Please report any incorrect results at http://nmap.org/submit/ .
-
-Наш узел оказался вебкамерой. Аналогично можно пройти
-и по другим устройствам 
