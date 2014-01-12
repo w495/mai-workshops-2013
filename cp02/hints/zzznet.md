@@ -41,23 +41,33 @@
 Наш узел оказался вебкамерой. Аналогично можно пройти
 и по другим устройствам и сделать это можно с помощью zenmap.
 
-## 192.168.2.022
+## zenmap
+
+Сканирование проводилось в другой промежуток времени, 
+потому перечисленные компьютеры не совпадают с полученными 
+в результате `ping`.
+
+
+![zenmap-zzznet-ltopo-scr.png](images/zenmap-zzznet-ltopo-scr.png "zenmap-zzznet-ltopo-scr.png")
+
+
+### 192.168.2.022
 
 ![zenmap-zzznet-host-192.168.2.022.png](images/zenmap-zzznet-host-192.168.2.022.png "zenmap-zzznet-host-192.168.2.022.png")
 
-## 192.168.2.036
+### 192.168.2.036
 
 ![zenmap-zzznet-host-192.168.2.036.png](images/zenmap-zzznet-host-192.168.2.036.png "zenmap-zzznet-host-192.168.2.036.png")
 
-## 192.168.2.135
+### 192.168.2.135
 
 ![zenmap-zzznet-host-192.168.2.135.png](images/zenmap-zzznet-host-192.168.2.135.png "zenmap-zzznet-host-192.168.2.135.png")
 
-## 192.168.2.180
+### 192.168.2.180
 
 ![zenmap-zzznet-host-192.168.2.180.png](images/zenmap-zzznet-host-192.168.2.180.png "zenmap-zzznet-host-192.168.2.180.png")
 
-## 192.168.2.231
+### 192.168.2.231
 
 ![zenmap-zzznet-host-192.168.2.231.png](images/zenmap-zzznet-host-192.168.2.231.png "zenmap-zzznet-host-192.168.2.231.png")
 
