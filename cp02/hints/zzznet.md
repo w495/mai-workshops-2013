@@ -41,18 +41,23 @@
 Наш узел оказался вебкамерой. Аналогично можно пройти
 и по другим устройствам и сделать это можно с помощью zenmap.
 
+## 192.168.2.022
 
 ![zenmap-zzznet-host-192.168.2.022.png](images/zenmap-zzznet-host-192.168.2.022.png "zenmap-zzznet-host-192.168.2.022.png")
 
+## 192.168.2.036
 
 ![zenmap-zzznet-host-192.168.2.036.png](images/zenmap-zzznet-host-192.168.2.036.png "zenmap-zzznet-host-192.168.2.036.png")
 
+## 192.168.2.135
 
 ![zenmap-zzznet-host-192.168.2.135.png](images/zenmap-zzznet-host-192.168.2.135.png "zenmap-zzznet-host-192.168.2.135.png")
 
+## 192.168.2.180
 
 ![zenmap-zzznet-host-192.168.2.180.png](images/zenmap-zzznet-host-192.168.2.180.png "zenmap-zzznet-host-192.168.2.180.png")
 
+## 192.168.2.231
 
 ![zenmap-zzznet-host-192.168.2.231.png](images/zenmap-zzznet-host-192.168.2.231.png "zenmap-zzznet-host-192.168.2.231.png")
 
@@ -93,7 +98,7 @@
 что кафедральная подсеть и подсеть в которой расположен сайт mai.ru
 входят в одну сеть. Что подтверждается экспериментально.
 
-## Что такое Хоп:
+### Что такое Хоп:
 
 Хоп (англ. hop, прыжок) — это участок сети между двумя узлами, 
 по которому передаются сетевые пакеты. 
