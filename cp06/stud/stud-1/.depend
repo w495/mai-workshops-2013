@@ -1,0 +1,3 @@
+$(OBJDIR)/types.o: src/types.c includes/types.h
+$(OBJDIR)/student.o: src/student.c includes/student.h includes/types.h
+$(OBJDIR)/main.o: src/main.c includes/student.h includes/types.h
