@@ -7,23 +7,24 @@ typedef Node *Tree;
 typedef float data_type;
 
 Tree tree_create();
-Node *node_maker(Node * son, Node * brother, data_type x);
-Node *node_seach(Tree tree, data_type x);
+Tree node_maker(Tree son, Tree brother, data_type x);
+Tree node_seach(Tree tree, data_type x);
 void cur_data_print(Tree * p);
-void subtree_print(Node * p, int depth);
+void subtree_print(Tree p, int depth);
 void tree_add(Tree * tree, data_type x);
 void tree_print(Tree tree);
 void tree_delete(Tree * tree);
 int leaves_counter(Tree tree);
-void leaves_subtree_counter(Node * p, int *count);
+void leaves_subtree_counter(Tree p, int *count);
 int counter(Tree tree);
-void subtree_counter(Node * p, int *count);
+void subtree_counter(Tree p, int *count);
 
 struct node {
     data_type data;
     struct node *son;
     struct node *brother;
 };
+
 
 int main() {
     Tree tree = tree_create();
@@ -36,7 +37,7 @@ int main() {
 
         printf("0 exit\t\t\t" "5 delete\n"
                "1 top (create)\t\t" "6 print \n"
-               "2 jangest brother\t" "7 curent\n"
+               "2 youngest brother\t" "7 curent\n"
                "3 eldest son\t\t" "8 count\n"
                "4 add\t\t\t" "9 count leaves\n");
         if (scanf("%i", &choice) != 1)
@@ -121,10 +122,10 @@ void tree_add(Tree * tree, data_type x) {
         printf("\nDENIAL\n");
 }
 
-Node *node_maker(Node * son, Node * brother, data_type x) {
-    Node *p;
+Tree node_maker(Tree son, Tree brother, data_type x) {
+    Tree p;
 
-    p = (Node *) malloc(sizeof(Node));
+    p = (Tree) malloc(sizeof(Node));
     p->data = x;
     p->son = son;
     p->brother = brother;
@@ -142,7 +143,7 @@ int leaves_counter(Tree tree) {
     return *count;
 }
 
-void leaves_subtree_counter(Node * p, int *count) {
+void leaves_subtree_counter(Tree p, int *count) {
     if (p->brother)
         leaves_subtree_counter(p->brother, count);
     if (p->son)
@@ -162,8 +163,8 @@ int counter(Tree tree) {
     return *count;
 }
 
-void subtree_counter(Node * p, int *count) {
-    Node *son = p->son;
+void subtree_counter(Tree p, int *count) {
+    Tree son = p->son;
 
     (*count)++;
     while (son) {
@@ -181,9 +182,9 @@ void tree_print(Tree tree) {
     printf("\n<<<TREE>>>\n");
 }
 
-void subtree_print(Node * p, int depth) {
+void subtree_print(Tree p, int depth) {
     int i;
-    Node *son = p->son;
+    Tree son = p->son;
 
     for (i = 0; i != depth; ++i)
         printf(" ");
