@@ -1,0 +1,44 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% подключение цветов и графики (желательно сохранять именно такой порядок)
+%%%
+
+% -------------------------------------------------------
+% Картинки
+% -------------------------------------------------------
+
+	\ifpdf 
+		\usepackage[pdftex]{graphicx} 
+	\else
+		\usepackage{graphicx}
+			% вообще говоря, тут возникли некоторые проблемы (Common LaTeX):
+			% 	Cannot determine size of graphic in *.??? (no BoundingBox).
+			% и в dvi картинки стали ОГРОМНЫМИ 
+			% для нормального растра (jpg, png) надо использовать конверторы (jpg2ps)
+	\fi
+	
+% -------------------------------------------------------
+% Цвета
+% -------------------------------------------------------	
+
+	\usepackage[usenames]{xcolor}
+	
+% -------------------------------------------------------
+% Векторные рисунки
+% -------------------------------------------------------	
+	\ifpdf \else
+		\usepackage{pspicture}
+		\usepackage{pst-plot,pstricks-add}
+		%\usepackage{pstricks,pst-node,pst-text,pst-3d,pst-grad}	
+	\fi
+
+	\usepackage{tikz}
+		\usetikzlibrary{arrows,shapes,shadows,decorations}
+		\usetikzlibrary{decorations.pathmorphing}
+		\usetikzlibrary{calc}
+
+
+
+	
+		
+

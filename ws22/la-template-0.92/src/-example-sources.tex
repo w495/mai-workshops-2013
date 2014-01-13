@@ -1,0 +1,85 @@
+\section[Исходный код]{Исходный код}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+\subsection{lstlisting}
+
+Исходный код с помощью пакета \textbf{listings} (или \textbf{listingsutf8}).
+Пакет хорошо работает с однобайтовыми кодировками, но при любых настроках отказался дружить с utf8.
+
+\begin{lstlisting}
+	\usepackage[utf8]{inputenc}							% кодировка, тут очень аккуратно
+\end{lstlisting}
+
+\colorbox{yellow}{Проблема глобальна}.
+И я не нашел стандартного пути решения (в pdf\LaTeX --- в $\Lambda$ ее нет).
+
+%% \begin{lstlisting}[language=Tex, escapeinside='']
+%\begin{lstlisting}[escapeinside='', firstnumber=last]
+\begin{lstlisting}[escapeinside='', firstnumber=100]
+	%\usepackage{listingsutf8}	
+	\usepackage{listings}
+	\lstset{
+		language=Tex,
+		tabsize=2,
+		breaklines,
+		columns=fullflexible,
+		flexiblecolumns,
+		frame=tb ,
+		numbers=left,
+		numberstyle=\footnotesize\color{gray},
+		escapechar = |, % 'можно вывалиться в \LaTeX' 
+		extendedchars = false,
+			% extendedchars = true, 
+				%% да именно так но не  \true
+				%% \true == false
+		inputencoding = utf8, % кодировка, очень аккуратно тут
+			% inputencoding = utf8/cp1251, % кодировка, очень аккуратно тут
+		keepspaces = true,
+		belowcaptionskip=5pt
+	}
+\end{lstlisting}
+
+Пути решения:
+\begin{itemize}
+	\item Не использовать \textbf{utf8}
+	\item Не использовать русских комментариев
+	\item Использовать \textbf{verbatim}, 
+\end{itemize}
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+\subsection{verbatim}
+
+Его проблемы:
+\begin{itemize}
+	\item Нет подсветки синтаксиса
+	\item Нет номеров строк
+	\item Надо использовать пробелы вместо табуляции
+\end{itemize}
+
+\begin{verbatim}
+    %\usepackage{listingsutf8}	%%  ---> %% utf8/cp1251
+    \usepackage{listings}
+    \lstset{
+        language=Tex,
+        tabsize=2,
+        breaklines,
+        columns=fullflexible,
+        flexiblecolumns,
+        frame=tb ,
+        numbers=left,
+        numberstyle={\footnotesize},
+        extendedchars = false,
+                % extendedchars = true, 
+                        %% да именно так но не  \true
+                        %% \true == false
+        inputencoding = utf8, % кодировка, очень аккуратно тут
+                % inputencoding = utf8/cp1251, 
+        belowcaptionskip=5pt 
+    }
+\end{verbatim}
+
+\pagebreak %% Разрыв страницы :-)

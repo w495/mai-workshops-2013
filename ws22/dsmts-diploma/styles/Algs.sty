@@ -1,0 +1,36 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% подключение и настройка пакета алгоритмов
+%%%
+	\localAlgs[ruled,section]{algorithm}
+	\localAlgs[noend]{algorithmic}
+	
+	\newcommand{\rusbf}[1]
+		{\textcolor{blue}{\textbf{#1}}}
+								
+	\newcommand{\realgorithmic}
+		{	\renewcommand{\algorithmicrequire}{\rusbf{Нужно:}}
+			\renewcommand{\algorithmicensure}{\rusbf{Есть:}}
+			\renewcommand{\algorithmicend}{\rusbf{Конец}}
+			\renewcommand{\algorithmicif}{\rusbf{Если}}
+			\renewcommand{\algorithmicthen}{\rusbf{то}}
+			\renewcommand{\algorithmicelse}{\rusbf{иначе}}
+			\renewcommand{\algorithmicelsif}{\algorithmicelse\ \algorithmicif}
+			\renewcommand{\algorithmicendif}{\algorithmicend\ \algorithmicif}
+			\renewcommand{\algorithmicfor}{\rusbf{Для}}
+			\renewcommand{\algorithmicforall}{\rusbf{Для всех}}
+			\renewcommand{\algorithmicdo}{\rusbf{выполняем}}
+			\renewcommand{\algorithmicendfor}{\algorithmicend\ \algorithmicfor}
+			\renewcommand{\algorithmicwhile}{\rusbf{Пока}}
+			\renewcommand{\algorithmicendwhile}{\algorithmicend\ \algorithmicwhile}
+			\renewcommand{\algorithmicloop}{\rusbf{Цикл}}
+			\renewcommand{\algorithmicendloop}{\algorithmicend\ \algorithmicloop}
+			\renewcommand{\algorithmicrepeat}{\rusbf{Повторить}}
+			\renewcommand{\algorithmicuntil}{\rusbf{До тех пор пока}}}
+	
+	
+	
+	\localAlgs{clrscode}
+	
+	
+

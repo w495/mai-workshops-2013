@@ -1,0 +1,62 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{listings}
+\lstset{tabsize=2,flexiblecolumns,numbers=left,breaklines}
+\renewcommand*\thelstnumber{\oldstylenums{\the\value{lstnumber}}}
+
+\begin{document}
+
+Вычисление факториала во время компиляции (C++):
+\begin{lstlisting}[language=C++]
+#include <iostream>
+
+template<int N>
+struct factorial
+{
+	static const int value = N * factorial<N - 1>::value;
+};
+
+template<>
+struct factorial<0>
+{
+	static const int value = 1;
+};
+
+
+int main()
+{
+	std::cout << factorial<7>::value << std::endl;
+}
+\end{lstlisting}
+
+Простая программа, порождающая дочерний процесс (Python):
+\begin{lstlisting}[language=Python]
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import os
+import time
+
+
+def main():
+  pid = os.fork()
+  if pid:
+    print "Started child process with pid = %d" % pid
+    exit(0)
+
+  f = open("child.log", "w")
+  f.write("Child started at %s\n" % time.asctime())
+  for i in xrange(1, 11):
+    f.write("Iteration %d at %s\n" % (i, time.asctime()))
+    f.flush()
+    time.sleep(3)
+  f.write("Child stopped at %s\n" % time.asctime())
+
+if __name__ == "__main__":
+  main()
+\end{lstlisting}
+
+\end{document}

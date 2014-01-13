@@ -1,0 +1,71 @@
+\documentclass[12pt,a4paper]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{textcomp}
+\usepackage{amssymb}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\oddsidemargin=-10pt
+\evensidemargin=30pt
+\topmargin=-20pt
+\textheight=700pt
+\textwidth=440pt
+
+\begin{document}
+
+\pagestyle{headings}
+\markboth{\hfill\textup{\footnotesizeГЛ. XIV. ИНТЕГРАЛЫ, ЗАВИСЯЩИЕ ОТ ПАРАМЕТРА}\hfill {\bf[523}}{{\bf523]}\hfill\textup{\footnotesize\textsection \ 3. ИСПОЛЬЗОВАНИЕ РАВНОМЕРНОЙ СХОДИМОСТИ}\hfill}
+\setcounter{page}{730}
+
+\noindentМы уже видели, что
+\[\frac{dy}{d\beta} = -z.\]
+Дальнейшее дифференцирование по $\beta$ производить под знаком интеграла невозможно, ибо в результате такого дифференцирования получился бы уже расходящийся интеграл.
+
+\indentОднако если к написанному равенству почленно прибавить равенство
+\[\frac{\pi}{2}=\int\limits_0^\infty{\frac{\sin{\beta x}}{x}}\,dx\]
+{\bfseries[522, 2\textdegree]} \footnote{\ \normalsizeВпрочем, для дальнейшего нам вовсе не нужно значение этого интеграла; достаточно лишь знать, что при всех $\beta>0$ он сохраняет постоянное значение, а в этом легко убедиться простой подстановкой $t=\beta x$.}, то получим:
+\[\frac{dy}{d\beta} + \frac{\pi}{2} = \alpha^2 \int\limits_0^\infty{\frac{\sin{\beta x}}{x(\alpha^2 + x^2)}}\,dx.\]
+Здесь дифференцировать под знаком интеграла снова можно и таким путем мы найдем
+\[\frac{d^2 y}{d\beta^2} = \alpha^2 \int\limits_0^\infty{\frac{\cos{\beta x}}{\alpha^2 + x^2}}\,dx,\]
+т. е.
+\[\frac{d^2 y}{d\beta^2} = \alpha^2 y.\]
+
+\indentДля этого простого дифференциального уравнения второго порядка с постоянными коэффициентами, по корням $\pm$\,$\alpha$ <<характеристического уравнения>>, легко составить общее решение
+\[y=C_{1}e^{\alpha\beta}+C_{2}e^{-\alpha\beta},\]
+где $C_1$ и $C_2$ --- постоянные. Но при всех значениях $\beta$ величина $y$ ограничена:
+\[|\,{y}\,|\leqslant\int\limits_0^\infty {\frac{dx}{\alpha^2+x^2}} = \frac{\pi}{2\alpha}\]
+значит $C_1$ необходимо равно 0 (ибо иначе, при $\beta \to + \infty$, и величина $y$ безгранично возрастала бы).
+
+\indentДля определения же постоянной $C_2$ положим $\beta = 0;$ очевидно:
+\[C_2 = \frac{\pi}{2\alpha}.\]
+Окончательно,
+\[y=\frac{\pi}{2\alpha}\,e^{-\alpha\beta}.\]
+Отсюда дифференцированием получается и $z$.
+
+\indent10) Вычислить интегралы
+\[u = \int\limits_0^\infty{e^{-x^2}\cos{\frac{\alpha^2}{x^2}}}\,dx,\qquad
+v = \int\limits_0^\infty{e^{-x^2}\sin{\frac{\alpha^2}{x^2}}}\,dx.\]
+
+\indentСуществование и непрерывность интегралов при всех значениях $\alpha$ обеспечивается наличием мажоранты: $e^{-x^2}$. По правилу {\ Л е й б н и ц а}:
+\[\frac{du}{d\alpha} = - \int\limits_0^\infty{e^{-x^2}\sin{\frac{\alpha^2}{x^2}}\cdot\frac{2\alpha}{x^2}}\,dx = -2 \int\limits_0^\infty{e^{-\frac{\alpha^2}{y^2}}\sin{y^2}}\,dy.\]
+\[\Biggl(y=\frac\alpha x\Biggr)\]
+Второй интеграл сходится равномерно --- как при $y=0$, так и при $y=\infty$ --- для всех значений $\alpha$, значит, первый сходится равномерно --- как при $x=\infty$, так и при $x=0$ --- для значений $\alpha$, удовлетворяющих неравенствам $0<\alpha_0\leqslant\alpha\leqslant A<+\infty$. Таким образом, для $\alpha>0$ применение правила {\ Л е й б н и ц а\ } оправдано.
+
+\indentДальнейшее дифференцирование по $\alpha$ (которое оправдывается аналогично) даст нам:
+\[\frac{d^2 u}{d\alpha^2} = -2 \int\limits_0^\infty{e^{-\frac{\alpha^2}{y^2}}\sin{y^2}\cdot\frac{-2\alpha}{y^2}}\,dy = 4\int\limits_0^\infty{e^{-x^2}\sin{\frac{\alpha^2}{x^2}}}\,dx=4v.\]
+Точно так же
+\[\frac{d^2 v}{d\alpha^2}=-4u.\]
+
+\indentПолагая $w=u+iv$, имеем для определения $w$ дифференциальное уравнение
+\[\frac{d^2 w}{d\alpha^2}=-4iw.\]
+Составим <<характеристическое>> уравнение: $\lambda^2 + 4i=0$ и по корням его $\lambda=\pm\sqrt{2}\mp\sqrt{2}i$ напишем общее решение дифференциального уравнения.
+\[w=u+iv=Ae^{-\alpha\sqrt{2}}(\cos{\alpha\sqrt{2}} + i\sin{\alpha\sqrt{2}}) + Be^{\alpha\sqrt{2}}(\cos{\alpha\sqrt{2}} - i\sin{\alpha\sqrt{2}}).\]
+Так как функция $w$ при всех $\alpha$ ограничена, то необходимо: $B=0$; но при $\alpha=0$ должно быть $w=\frac{\sqrt{\pi}}{2}$, так что $A=\frac{\sqrt{\pi}}{2}$. Окончательно,
+\[u=\frac{\sqrt{\pi}}{2}e^{-\alpha\sqrt{2}}\cos{\alpha\sqrt{2}},\qquad v=\frac{\sqrt{\pi}}{2}e^{-\alpha\sqrt{2}}\sin{\alpha\sqrt{2}}.\]
+
+\indent11) Доказать тождество
+\[\int\limits_0^\infty{\frac{e^{-{x^2}}x\,dx}{\sqrt{x^{2}+\alpha^{2}}}} = \frac{a}{\sqrt{\pi}}\int\limits_0^\infty{\frac{e^{-{x^2}}x\,dx}{x^{2}+\alpha^{2}}}\qquad(a>0).\]
+\
+\end{document}

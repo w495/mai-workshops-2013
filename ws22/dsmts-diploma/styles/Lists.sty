@@ -1,0 +1,22 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% переопределение буллетов для списков
+%%%
+	%\renewcommand{\labelitemii}{{$\mathbf{+}$}}
+	%\renewcommand{\labelitemiii}{{$\mathbf{++}$}}
+	
+\setbeamertemplate{itemize item}{\scriptsize\raise1.25pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
+\setbeamertemplate{itemize subitem}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
+\setbeamertemplate{itemize subsubitem}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
+\setbeamertemplate{enumerate item}{\insertenumlabel.}
+\setbeamertemplate{enumerate subitem}{\insertenumlabel.\insertsubenumlabel}
+\setbeamertemplate{enumerate subsubitem}{\insertenumlabel.\insertsubenumlabel.\insertsubsubenumlabel}
+\setbeamertemplate{enumerate mini template}{\insertenumlabel}
+
+
+	\newcommand\liststyleWWviiiNumiii{%
+		\renewcommand\labelitemi{[F0B7?]}
+		\renewcommand\labelitemii{o}
+		\renewcommand\labelitemiii{[F0A7?]}
+		\renewcommand\labelitemiv{[F0B7?]}
+	}

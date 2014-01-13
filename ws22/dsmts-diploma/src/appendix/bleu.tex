@@ -1,0 +1,47 @@
+
+\subsection{BLEU}
+
+\frame{\frametitle{BLEU --- Bilingual Evaluation Understudy}
+	{\small
+	\[
+	    \mathrm{BLEU} = Bp \cdot e^{ \left(  \sum\limits_{n=1}^{N} W_n \log(p_n) \right) }
+	\]\[
+	    Bp = \left\lbrace
+	        \begin{array}{cc}
+	            1, &  l_c > l_h;\\
+	            e^{\left(1 - \frac{l_h}{l_c}\right)}, &  l_c \le l_h.\\
+	        \end{array}
+	    \right.
+	    \quad \text{ и }\quad
+	    p_n =
+	        \dfrac{\sum\limits_{C \in S_c}  \sum\limits_{\eta_c \in C} \text{\it число}_{\text{среза}}(\eta_c) }
+	            {\sum\limits_{C \in S_c}  \sum\limits_{\eta_c \in C} \text{\it число}(\eta_c) }
+	\]
+	}
+	\begin{columns}
+			\begin{column}{6cm}
+				\scriptsize
+				\begin{itemize}
+					\item $S_c$ --- множество кандидатов на перевод;
+					\item $C$ --- кандидат на перевод; 
+					\item $\eta_c$ --- $n$-грамма кандидата на перевод;
+					\item $l_c$ --- длинна кандидата перевода;
+					\item $l_h$ --- длинна экспертного перевода (выполненного человеком);
+					\item $W_n = \dfrac{1}{N}$ --- вес;
+					\item $N = 4$, $n$-граммность оценки.
+				\end{itemize}
+			\end{column}
+			\begin{column}{5cm}
+				\small
+					\begin{tabular}{|r|r|}
+						\hline  \textbf{Система}	&	\textbf{BLEU}  \\ 
+						\hline  ПРС-СМП (1)			&	0.243 \\ 
+						\hline  ПРС-СМП (100)		&	0.209 \\ 
+						\hline  Moses (IBM 3)		&	0.201 \\ 
+						\hline  Moses (IBM 5) 		& 	0.173 \\ 
+						\hline 
+					\end{tabular} 
+			\end{column}
+		\end{columns}
+}
+

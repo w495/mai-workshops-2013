@@ -1,0 +1,33 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% подключение пакета гиперссылок
+%%%
+	\ifpdf
+		\usepackage[pdftex]{hyperref} 
+		% настройка ссылок в оглавлении для pdf формата 
+			\hypersetup{ 
+				unicode=true, 
+				pdfborder    = {0 0 0}, 
+				bookmarksopen, 
+				bookmarksnumbered, 
+				bookmarksopenlevel = 2, 
+				pdftoolbar=true,        % показать тулбар (Acrobat)?
+				pdfmenubar=true,        % показать меню (Acrobat)
+				pdfnewwindow=true,      % ссылки в новых окнах		
+				colorlinks=true, % установка цвета ссылок в оглавлении 
+				citecolor=blue,  
+				filecolor=red, 
+				linkcolor=blue, 
+				urlcolor=blue 	
+			} 
+	\else 
+		\usepackage{hyperref} 
+	\fi
+	
+%	\usepackage[
+%		bookmarks = true,		% используем закладки
+%		bookmarksopen = true, 	% закладки открыты
+%		bookmarksopenlevel = 2 	% глубина открытия
+%	]{hyperref}
+
+

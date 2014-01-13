@@ -1,0 +1,43 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% определение и настрока всевозможных теорем и определений
+%%%
+	%% теореммы:
+		\newtheorem{theorema}{Теоремма}
+		\theoremstyle{definition}
+	
+	%% определения:
+		\newcounter{defs}
+
+		\newtheorem{DEF}{Определение~\addtocounter{defs}{1} }
+		\newtheorem{SUBDEF}{Пояснение}
+		
+	%% вопросы:	
+		\newcounter{questions}
+		\newtheorem{Q}{ \huge <?>  \addtocounter{questions}{1}}
+		\newtheorem{q}{  <?>  \addtocounter{questions}{1}}
+	
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% создание новых комад 
+%%%
+
+	%% Определение:
+		% % \newcommand{\define}[2]{ \begin{tabular}{|l|} \hline \colorbox{yellow}{#1} --- {#2}\\\hline\end{tabular} }
+		% % \newcommand{\define}[2]{ \begin{quote} \colorbox{yellow}{#1} --- {#2} \end{quote}  }
+
+		
+		\newcommand{\define}[2]{ \textbf{#1}~---~{#2}  }
+		
+		\newcommand{\опр}[2]{ \colorbox{yellow}{#1} --- {#2}  }
+		\newcommand{\определение}[2]{ \colorbox{yellow}{#1} --- {#2}  }
+	%% Пометка:
+		\newcommand{\заметка}[1]{ \begin{quote} \textcolor{gray}{#1} \end{quote} }
+		\newcommand{\заметим}[1]{ \begin{quote} \textcolor{gray}{#1} \end{quote} }
+		
+	%% Пример:
+		\newcommand{\пример}[2]{ \paragraph[#1]{ \comic Пример (#1)} \par #2}
+		\newcommand{\пр}[2]{ \paragraph[#1]{ \comic Пример (#1)} \par #2}
+		

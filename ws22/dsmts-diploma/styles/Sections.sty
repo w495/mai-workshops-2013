@@ -1,0 +1,134 @@
+%%%
+%%% Раздел без нумерации
+%%%
+
+	\newcommand{\Csection}[1]{
+		\cleardoublepage %
+		\phantomsection %
+		\addcontentsline{toc}{section}{#1} %
+		\section*{#1} %
+	}
+
+	\newcommand{\Csubsection}[1]{
+		\cleardoublepage %
+		\phantomsection %
+		\addcontentsline{toc}{subsection}{#1} %
+		\subsection*{#1} %
+	}
+
+
+	\newcounter{theappsection}
+	\newcommand{\appsectionname}{Приложение \Alph{theappsection}}
+	\newcommand{\appsection}[1]{
+			\stepcounter{theappsection}
+			\cleardoublepage %
+			\phantomsection %
+			\addcontentsline{toc}{section}{\appsectionname. #1} %
+			\section*{\appsectionname. #1} %
+	}
+		
+		
+\RequirePackage{indentfirst}    % Начинать абзацы с красной строки
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Переопределение пунктов
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addtocounter{secnumdepth}{10}
+
+\ifnum \c@secnumdepth < 4
+\newcommand{\theengost}{\thesection.\@arabic\c@engost}%
+\newcounter{engost}[section]
+\else
+\ifnum \c@secnumdepth < 5
+\newcommand{\theengost}{\thesubsection.\@arabic\c@engost}%
+\newcounter{engost}[subsection]
+\else
+\ifnum \c@secnumdepth < 6
+\newcommand{\theengost}{\thesubsubsection.\@arabic\c@engost}%
+\newcounter{engost}[subsubsection]
+\else
+\ifnum \c@secnumdepth < 7
+\newcommand{\theengost}{\theparagraph.\@arabic\c@engost}%
+\newcounter{engost}[paragraph]
+\else
+\ifnum \c@secnumdepth < 8
+\newcommand{\theengost}{\thesubparagraph.\@arabic\c@engost}%
+\newcounter{engost}[subparagraph]
+\else
+\newcommand{\theengost}{\@arabic\c@engost}%
+\newcounter{engost}
+\fi
+\fi
+\fi
+\fi
+\fi
+\newenvironment{engost}%
+           {%
+         \renewcommand\item{%
+           \par%
+           \refstepcounter{engost}%
+           \theengost
+           %\arabic{section}.\arabic{subsection}.\arabic{engost}%
+           \quad%
+         }%
+               }%
+
+\newcounter{ensubgost}[engost]
+\renewcommand{\theensubgost}{\theengost.\arabic{ensubgost}}%
+\newenvironment{ensubgost}
+    {%
+    \renewcommand{\item}%
+    {
+    \par%
+    \refstepcounter{ensubgost}%
+    \theensubgost%
+    \quad%
+    }
+    }%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Раздел с новой страницы
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \newcommand{\gostnewpage}{\newpage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Переопределение вида разделов
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand\section{%
+  \renewcommand{\theengost}{\thesection.\@arabic\c@engost}
+  \setcounter{engost}{0}
+  %\gostnewpage
+  \@startsection {section}{1}{\parindent}%
+                 {-6.5ex \@plus -1ex \@minus -.2ex}%
+                 {2.3ex \@plus.2ex}%
+                 {\normalfont\Large\bfseries}}
+
+\renewcommand\subsection{%
+  \renewcommand{\theengost}{\thesubsection.\@arabic\c@engost}
+  \setcounter{engost}{0}
+  \@startsection{subsection}{2}{\parindent}%
+                {-3.25ex\@plus -1ex \@minus -.2ex}%
+                {1.5ex \@plus .2ex}%
+                {\normalfont\large\bfseries}}
+\renewcommand\subsubsection{%
+  \renewcommand{\theengost}{\thesubsubsection.\@arabic\c@engost}
+  \setcounter{engost}{0}
+  \@startsection{subsubsection}{3}{\parindent}%
+                {-3.25ex\@plus -1ex \@minus -.2ex}%
+                {1.5ex \@plus .2ex}%
+                {\normalfont\normalsize\bfseries}}
+\renewcommand\paragraph{%
+  \renewcommand{\theengost}{\theparagraph.\@arabic\c@engost}
+  \setcounter{engost}{0}
+  \@startsection{paragraph}{4}{\parindent}%
+                {3.25ex \@plus 1ex \@minus .2ex}%
+                {-1em}%
+                {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{%
+  \renewcommand{\theengost}{\thesubparagraph.\@arabic\c@engost}
+  \setcounter{engost}{0}
+  \@startsection{subparagraph}{5}{\parindent}%
+                {3.25ex \@plus1ex \@minus .2ex}%
+                {-1em}%
+                {\normalfont\normalsize\bfseries}}
+

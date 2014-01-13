@@ -1,0 +1,29 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% настройка колонтитулов
+%%%
+	\renewcommand{\sectionmark}[1]{\markboth{%
+		{\thesection\hspace{1em}#1}}% левая пометка
+		{}% правая пометка (она пуста)
+	}
+	\newcounter{lections} 		% создадим новый счетчик, например для лекций
+	\setcounter{lections}{0}	% пока лекций не было
+	\newcommand{ \lection}[1]{	% опишем команду --- начало <<лекции>>
+		\addtocounter{lections}{1}  
+		\textbf{ 
+			\textcolor{red}{Лекция \arabic{lections}} : 
+		} \textcolor{blue} {#1} 
+	}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% создание новых комад форматирования (by US Marine)
+%%%
+	\newcommand{\WorkHeader}[2]{\setcounter{section}{#1}\addtocounter{section}{-1}\section{#2}}
+	\newcommand{\TPHeader}[1]{\section*{#1}}
+	\newcommand{\WorkProblem}[1]{\par\textbf{Задача: }#1}
+
+
+
+

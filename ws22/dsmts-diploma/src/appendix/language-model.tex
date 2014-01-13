@@ -1,0 +1,41 @@
+
+\subsection{Модель языка}
+
+\frame{
+	\frametitle{Модель языка}
+	\small
+	Вычисляется с помощью $n$-грамм слов.
+	\[
+		P( \WA_1 \ldots \WA_{\LA} ) = \prod\limits_{i=0}^{i=\LA+n-1} P'(\WA_i|\WA_{i-1} \ldots \WA_{i-n+1})
+	\]
+
+	\begin{itemize}	
+		\item $P'(\WA_m|\WA_1 \ldots \WA_{m-1}) = K_n \cdot P(\WA_m|\WA_1 \ldots \WA_{m-1}) + \ldots + K_1 \cdot P(\WA_1) + K_0$; \vspace{10pt}
+		\item  $P(\WA_1) = \dfrac{\text{\it частота } (\WA_1)}{|\TA|};$
+		\item  $P(\WA_m|\WA_1 \ldots \WA_{m-1}) = \dfrac{\text{\it частота } (\WA_1 \ldots \WA_{m-1}\WA_m)} {\text{\it частота } (\WA_1 \ldots \WA_{m-1})};$ \vspace{5pt}
+		\item  $K_i$ --- коэффициенты сглаживания $K_i > K_{i+1}$ и $\sum\limits_{i= 0}^{i = n} K_i = 1.0$.
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Модель языка (адаптивные модели)}
+	\small
+	\[
+		P( \WA_1 \ldots \WA_{\LA} ) = \prod\limits_{i=0}^{i=\LA+n-1} P'(\WA_i|\WA_{i-1} \ldots \WA_{i-n+1})
+	\]
+	
+	$P'$ можно вычислить иначе, используя адаптивный метод сглаживания
+	\[
+		P'(\WA_m|\WA_1 \ldots \WA_{m-1}) = \dfrac{\delta + \text{\it частота } (\WA_1 \ldots \WA_m) }
+			{\sum\limits_{i}\left( \delta  + \text{\it частота } (\WA_{1_j} \ldots \WA_{m_j}) \right) } = 
+	\]\[
+			= \dfrac{\delta + \text{\it частота } (\WA_1 \ldots \WA_m) }
+					{ \delta \cdot V + \sum\limits_{i}\left(\text{\it частота } (\WA_{1_j} \ldots \WA_{m_j}) \right) }
+	\]
+
+	\begin{itemize}		
+		\item  $V$ --- количество всех $n$-грамм в используемом корпусе;
+		\item  $\delta=1$ --- метод сглаживания Лапласа;
+		\item  $\delta \ne 1 \Rightarrow $ методы Гуда-Тьюринга, Катца, Кнезера-Нейя.
+	\end{itemize}		
+}

@@ -1,0 +1,34 @@
+
+\subsection{BLEU}
+
+\frame{
+	\frametitle{Оценка перевода с использованием метрики BLEU}
+	\begin{columns}
+			\begin{column}{7cm}
+				\small
+				\begin{itemize}
+					\item BLEU --- Bilingual Evaluation Understudy
+					\item Численная оценка качества перевода.
+					\item Нужен перевод, выполненный человеком.
+					\item Показывает величину близости 
+						к~<<человеческому>> переводу.
+					\item Чем меньше величина, тем лучше.
+					\item Сравнивались:
+						\begin{itemize}
+							\item ПРС-СМП;
+							\item cистемы построенная на~основе Moses.
+						\end{itemize}
+				\end{itemize}
+			\end{column}
+			\begin{column}{5cm}
+					\begin{tabular}{|r|r|}
+						\hline  \textbf{Система}	&	\textbf{BLEU}  \\ 
+						\hline  ПРС-СМП (1)			&	0.243 \\ 
+						\hline  ПРС-СМП (100)		&	0.209 \\ 
+						\hline  Moses (IBM 3)		&	0.201 \\ 
+						\hline  Moses (IBM 5) 		& 	0.173 \\ 
+						\hline 
+					\end{tabular} 
+			\end{column}
+		\end{columns}
+}

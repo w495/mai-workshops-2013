@@ -1,0 +1,53 @@
+\subsection{Скорость}
+
+\frame{
+	\frametitle{Оценка скорости обучения}
+	Процессор: Intel Core2 Duo, 1 ядро 64 бит, ОП 4Гб, ФС:ext4
+	\begin{center}
+	    \begin{tabular}{|r|r|}
+	        \hline  \textbf{Система}        & \textbf{Время, ч} \\
+	        \hline  ПРС-СМП (1)             &   $ \approx $ 5   \\
+	        \hline  Moses (GIZA++)          &   $ \approx $ 25  \\
+	        \hline  Chaski (MGIZA++)        &   $ \approx $ 26  \\
+	        \hline
+	    \end{tabular}
+	\end{center}
+	Процессор: Intel Xeon E5506, 8 ядер 64 бит, ОП 10Гб, ФС:xfs
+	\begin{center}
+	    \begin{tabular}{|r|r|}
+	        \hline  \textbf{Система}    & \textbf{Время, ч} \\
+	        \hline  ПРС-СМП (1)         &   $ \approx $ 1   \\
+	        \hline  Moses (GIZA++)      &   $ \approx $ 22  \\
+	        \hline  Chaski (MGIZA++)    &   $ \approx $ 3   \\
+	        \hline
+	    \end{tabular}
+	\end{center}
+}
+
+\frame{
+	\frametitle{Оценка скорости декодирования}
+	Процессор: Intel Core2 Duo, 1 ядро 64 бит, ОП 4Гб, ФС:ext4
+	\begin{center}
+	    \begin{tabular}{|r|r|}
+	        \hline  \textbf{Система}    &   \textbf{Время, мкс} \\
+	        \hline  ПРС-СМП (1)         &   1132 \\
+	        \hline  ПРС-СМП (100)       &   7108124  \\
+	        \hline  Moses (IBM 3)       &   $\approx$ 10000000\\
+	        \hline  Moses (IBM 5)       &   $\approx$ 30000000 \\
+	        \hline
+	    \end{tabular}
+	\end{center}
+	Процессор: Intel Xeon E5506, 8 ядер 64 бит, ОП 10Гб, ФС:xfs
+	\begin{center}
+	    \begin{tabular}{|r|r|}
+	        \hline  \textbf{Система}    &   \textbf{Время, мкс} \\
+	        \hline  ПРС-СМП (1)         &   1012 \\
+	        \hline  ПРС-СМП (100)       &   1119024  \\
+	        \hline  Moses (IBM 3)       &   $\approx$ 5000000\\
+	        \hline  Moses (IBM 5)       &   $\approx$ 6000000 \\
+	        \hline
+	    \end{tabular}
+	\end{center}
+}
+
+

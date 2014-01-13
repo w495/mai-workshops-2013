@@ -1,0 +1,186 @@
+
+\subsection{Модель Шеннона}
+
+\frame[allowframebreaks]{
+	\frametitle{Модель зашумленного канала} 
+	\def\drawnoisychanelpicture{
+		\begin{center}
+		\begin{scriptsize}
+		\tikzstyle{rootf} = [draw=yellow!50!black!70,thick,minimum height=1cm,minimum width=2cm,top color=yellow!20,bottom color=yellow!60!black!20,decorate,decoration={random steps,segment length=3pt,amplitude=1pt}]
+		\tikzstyle{pointf} = [rounded rectangle,thick,minimum size=1cm,draw=blue!50!black!50,top color=white,bottom color=blue!50!black!20]
+		\tikzstyle{itemf} = [rectangle,thick,minimum width=2cm,minimum height=1cm,draw=teal!50!black!50,top color=white,bottom color=teal!50!black!20]
+		\begin{tikzpicture}[thick, node distance=3cm, text height=0.9ex, text depth=.25ex, auto]
+			\node[pointf] (source-point) {Передачик};
+			\node[pointf,right of=source-point] (target-point) {Приемник};	
+			\node[itemf,left of=source-point] (source) {Источник ($R$)};
+			\node[itemf,right of=target-point] (target) {Цель ($E$)};	
+				\path[->, black] (source) edge (source-point);
+				\path [->, red, decoration={zigzag,segment length=5,amplitude=2,
+					post=lineto,post length=2pt},font=\scriptsize,line join=round] 
+						(source-point) edge[decorate] node[auto] {Шум} (target-point);
+				\path[->, black] (target-point) edge (target);
+		\end{tikzpicture}
+		\end{scriptsize}
+		\end{center}
+	}
+	
+	\drawnoisychanelpicture
+	
+	\begin{small}
+		\begin{enumerate}
+			\item  Пусть $\FR$ --- фраза оригинала (русская).
+			\item  Требуется найти $\FE$ --- фразу перевода (английскую).
+			% \[
+			%	\FE_g = \arg\max\limits_{\FE} P(\FE|\FR)
+			% \]
+		\end{enumerate}
+		Максимизировать $P(\FE|\FR)$.
+		\[
+			P(\FE|\FR) =  \dfrac{\left( P(\FE) \cdot P(\FR|\FE) \right) }{P(\FR)}  \Rightarrow
+		\]\[
+			\FE_g = \arg\max\limits_{\cup \FE} P(\FE|\FR) =  \arg\max\limits_{\cup \FE} \left(  P(\FE) \cdot P(\FR|\FE) \right) 
+		\]
+		% $P(\FR)$ --- нам известна, ее не учитываем
+	\end{small}
+		% \pagebreak
+		% 
+		% \drawnoisychanelpicture 
+		% 
+		% \[
+		% 	\arg\max\limits_{\cup \FE} P(\FE|\FR) =  \arg\max\limits_{\cup \FE} \left(  P(\FE) \cdot P(\FR|\FE) \right) 
+		% \]
+		% \begin{itemize}
+		% 	\item  $\FR$ --- фраза оригинала (русская);
+		% 	\item  $\FE$ --- фраза перевода (английская).
+		% \end{itemize}	
+}
+
+
+{
+	\tikzstyle{ssmpf} = [minimum height=1cm]
+	\tikzstyle{lmf} = [circle,thick,minimum size=2.5cm,draw=blue!50!black!50,top color=white,bottom color=blue!50!black!20]
+	\tikzstyle{tmf} = [circle,thick,minimum size=2.5cm,draw=green!50!black!50,top color=white,bottom color=green!50!black!20]
+	\tikzstyle{dcf} = [circle,thick,minimum size=2.5cm,draw=red!50!black!50,top color=white,bottom color=red!50!black!20]
+	\tikzstyle{corpf1} = [rectangle,rounded corners,thick,minimum size=2cm,draw=yellow!50!black!50,top color=white,bottom color=yellow!50!black!20]
+	\tikzstyle{corpf2} = [rectangle,rounded corners,thick,minimum size=2cm,draw=yellow!50!black!50,top color=white,bottom color=yellow!50!black!20]
+	\begin{frame}[t]
+		\begin{center}
+			\begin{scriptsize}
+				\begin{tikzpicture}[thick, node distance=3.5cm, text height=0.2ex, text depth=.25ex, auto]
+					\node[ssmpf] (ssmp) {Статистическая система машинного перевода};
+					\node[lmf, below left of=ssmp] (lm) 
+					{
+						\begin{tabular}{c}
+							Модель языка \\ 
+							$ P(\FE) $\\ 
+						\end{tabular} 
+					};
+					\node[tmf, below right of=ssmp] (tm)
+					{
+						\begin{tabular}{c}
+							Модель перевода\\ 
+							$ P(\FR|\FE) $\\ 
+						\end{tabular} 
+					};
+					\path[->, black] (ssmp) edge (lm);
+					\path[->, black] (ssmp) edge (tm);
+				\end{tikzpicture}
+			\end{scriptsize}
+		\end{center}
+		\[
+			\arg\max\limits_{\cup \FE} P(\FE|\FR) =  \arg\max\limits_{\cup \FE} \left(  P(\FE) \cdot P(\FR|\FE) \right) 
+		\]
+		\begin{itemize}
+			\item  $\FE$ --- фраза перевода (английская);
+			\item  $\FR$ --- фраза оригинала (русская).
+		\end{itemize}
+	\end{frame}
+	\begin{frame}[t]
+		\begin{center}
+			\begin{scriptsize}
+				\begin{tikzpicture}[thick, node distance=3.5cm, text height=0.2ex, text depth=.25ex, auto]
+					\node[ssmpf] (ssmp) {Статистическая система машинного перевода};
+					\node[lmf, below left of=ssmp] (lm) 
+					{
+						\begin{tabular}{c}
+							Модель языка \\ 
+							$ P(\FE) $\\ 
+						\end{tabular} 
+					};
+					\node[tmf, below right of=ssmp] (tm)
+					{
+						\begin{tabular}{c}
+							Модель перевода\\ 
+							$ P(\FR|\FE) $\\ 
+						\end{tabular} 
+					};
+					\path[->, black] (ssmp) edge (lm);
+					\path[->, black] (ssmp) edge (tm);		
+					\node[dcf, below of=ssmp] (dc)
+					{
+							\begin{tabular}{c}
+								{\large Декодер} \\ 
+									\\
+								% вычисляет \\
+								$ \arg\max\limits_{\cup\FE} \left(  P(\FE) \cdot P(\FR|\FE) \right)$\\ 
+							\end{tabular} 
+					};	
+					\path[->, black] (ssmp) edge (dc);
+				\end{tikzpicture}
+			\end{scriptsize}
+		\end{center}
+	\end{frame}
+	\begin{frame}[t]
+		\begin{center}
+			\begin{scriptsize}
+				\begin{tikzpicture}[thick, node distance=3.5cm, text height=0.2ex, text depth=.25ex, auto]
+					\node[ssmpf] (ssmp) {Статистическая система машинного перевода};
+					\node[lmf, below left of=ssmp] (lm) 
+					{
+						\begin{tabular}{c}
+							Модель языка \\ 
+							$ P(\FE) $\\ 
+						\end{tabular} 
+					};
+					\node[corpf1, below of=lm] (lmr) 
+					{
+						\begin{tabular}{c}
+							Корпус текста   \\ 
+							на языке $\FE$. \\
+						\end{tabular} 
+					};
+					\node[tmf, below right of=ssmp] (tm)
+					{
+						\begin{tabular}{c}
+							Модель перевода\\ 
+							$ P(\FR|\FE) $\\ 
+						\end{tabular} 
+					};
+					\node[corpf2, below of=tm] (tmr) 
+					{\tiny 
+						\begin{tabular}{c}
+							Параллельный \\
+							корпус текста  \\ 
+							на языках $\FE$ и $\FR$. \\ 
+						\end{tabular} 
+					};
+					\path[->, black] (ssmp) edge (lm);
+					\path[->, black] (ssmp) edge (tm);		
+					\path[->, yellow!50!black!50] (lmr) edge (lm);
+					\path[->, yellow!50!black!50] (tmr) edge (tm);		
+					\node[dcf, below of=ssmp] (dc)
+					{
+							\begin{tabular}{c}
+								{\large Декодер} \\ 
+									\\
+								% вычисляет \\
+								$ \arg\max\limits_{\cup\FE} \left(  P(\FE) \cdot P(\FR|\FE) \right)$\\ 
+							\end{tabular} 
+					};	
+					\path[->, black] (ssmp) edge (dc);
+				\end{tikzpicture}
+			\end{scriptsize}
+		\end{center}
+	\end{frame}
+}
+

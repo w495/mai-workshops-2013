@@ -1,0 +1,85 @@
+
+\subsection{Обзор}
+
+\frame{
+	\frametitle{\om Из чего состоит система} 
+		\tikzstyle{databasef} = [rectangle,thick,minimum size=1cm,draw=teal!50!black!50,top color=white,bottom color=teal!50!black!20,font=\itshape]
+		\tikzstyle{readerf} = [rectangle,rounded corners,thick,minimum size=1cm,draw=blue!50!black!50,top color=white,bottom color=blue!50!black!20,font=\itshape]
+		\tikzstyle{handlerf} = [rectangle,rounded corners,thick,minimum size=1cm,draw=green!50!black!50,top color=white,bottom color=green!50!black!20,font=\itshape]
+		\tikzstyle{decoderf} = [rounded rectangle,thick,minimum size=1cm,draw=red!50!black!50,top color=white,bottom color=red!50!black!20,font=\itshape]
+		\tikzstyle{humanf} = [rounded rectangle,thick,minimum size=1.2cm]
+		\tikzstyle{decoderif} = [rounded rectangle,thick,minimum size=0.5cm,draw=red!50!black!50,top color=white,bottom color=red!50!black!20,font=\itshape]
+		\tikzstyle{corporaf} = [draw=yellow!50!black!70,thick,minimum height=1cm,minimum width=1cm,top color=yellow!20,bottom color=yellow!60!black!20,decorate,decoration={random steps,segment length=3pt,amplitude=1pt}]
+	\begin{tikzpicture}[thick, node distance=3cm, text height=1.5ex, text depth=.25ex, auto]
+		\node[databasef] 						(database)	{
+			\footnotesize 
+			\begin{tabular}{c}
+				{\small База данных} \\
+				{$\vartriangleright$} Redis
+			\end{tabular} 
+		};
+		\begin{scope}[node distance=2.5cm]
+			\node[above right of=database]	(name)	{
+				\Large \Malgun ПРС-СМП
+			};
+		\end{scope}
+		\begin{scope}[node distance=4cm]
+			\node[left of=database] 	(comment)	{
+				\scriptsize
+				\begin{tabular}{l}
+					{\color{pacificorange} $\blacktriangleright$} Набор приложений.\\
+					{\color{pacificorange} $\blacktriangleright$} Могут быть удалены\\
+						\qquad друг от друга.\\
+					{\color{pacificorange} $\blacktriangleright$} Распределены\\
+						\qquad где это возможно.\\
+				\end{tabular} 
+			};
+		\end{scope}
+		\node[readerf,above left of=database]	(reader)	{
+			\footnotesize 
+			\begin{tabular}{c}
+				{\small Читатель} \\
+				{$\vartriangleright$} Erlang
+			\end{tabular} 
+		};
+		\node[corporaf,left of=reader]			(corpora)	{\small Корпус En, Ru};
+		\node[handlerf,below left of=database]	(handler)	{
+			\footnotesize 
+			\begin{tabular}{c}
+				{ \small Обработчик }\\
+				{$\vartriangleright$} Erlang
+			\end{tabular} 
+		};
+		\node[decoderf,right of=database]		(decoder)	{
+			\footnotesize 
+			\begin{tabular}{c}
+				{ \small Декодер } \\
+				{$\vartriangleright$} Erlang
+			\end{tabular} 
+		};
+		\begin{scope}[node distance=1.9cm]		
+			\node[decoderif,below left  of=decoder]		(decoderweb)	{\footnotesize Веб};
+			\node[decoderif,below 	   of=decoder]		(decodercon)	{\footnotesize Консоль};
+			\node[decoderif,below right of=decoder]		(decoderrest)	{\footnotesize Rest};
+		\end{scope}
+		
+		\begin{scope}[node distance=1.2cm]		
+			\node[humanf,		below 	   of=decodercon]		(human)	{
+				\begin{tabular}{c}
+					\includegraphics[height=1.2cm]{./vec/arch-human.eps} \\
+				\end{tabular} 
+			};
+		\end{scope}
+		\path[->, yellow!40!black!70] 	(corpora)	edge (reader);
+		\path[<-, blue] 				(database)	edge (reader);
+		\path[<->, blue] 				(database)	edge (handler);
+		\path[<->, red] 				(database)	edge (decoder);
+		\path[-, red, dotted] 			(decoder)	edge node[auto] {\scriptsize интерфейсы} (decoderweb);
+		\path[-, red, dotted] 			(decoder)	edge (decodercon);
+		\path[-, red, dotted] 			(decoder)	edge (decoderrest);
+		\path[<->, red] 				(human)	edge (decoderweb);
+		\path[<->, red] 				(human)	edge (decodercon);
+		\path[<->, red] 				(human)	edge (decoderrest);
+	\end{tikzpicture}
+}
+

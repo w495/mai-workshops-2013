@@ -1,0 +1,57 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% подключение и настройка пакета листингов
+%%%
+
+	%\usepackage{listingsutf8}	
+	\usepackage{listings}
+	\lstset{
+		language=Tex,
+		tabsize=2,
+		breaklines,
+		columns=fullflexible,
+		flexiblecolumns,
+		frame=tb ,
+		numbers=left,
+		numberstyle=\footnotesize\color{gray},
+		escapechar = |, % можно вывалиться в \LaTeX 
+		escapebegin={***},
+		escapeend={***},
+		extendedchars = false,
+			% extendedchars = true, 
+				%% да именно так но не  \true
+				%% \true == false
+		inputencoding = \globalEncoding, % кодировка, очень аккуратно ту
+		keepspaces = true,
+		belowcaptionskip=5pt
+	}
+
+	%% Основной стиль
+	\lstset{
+		basicstyle=\color[rgb]{0.3,0.0,0},
+	}
+
+	
+	%% Комментарии
+	\lstset{
+		commentstyle=\color[rgb]{0,0.5,0}\itshape,
+		morecomment=[l]{\%}, 
+		morecomment=[s]{/*}{*/}, 
+		morecomment=[n]{(*}{*)}, 
+		morestring=[b]", 
+		morestring=[d]
+	}
+
+	%% Ключевые слова
+	\lstset{
+			%keywordsprefix={\\},
+			%keywordstyle=\color{blue},
+			classoffset=0,
+			morekeywords={true, false, 5pt },	keywordstyle=\color{red},
+			classoffset=1,
+			morekeywords={\usepackage,\footnotesize, \color }, keywordstyle=\color{blue},
+			classoffset=2,
+			morekeywords={0,1,2,3,4,5,6,7,8,9,0},keywordstyle=\color{blue},
+			classoffset=0
+	}
+

@@ -1,0 +1,71 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% подключение и настройка пакета листингов (verbatim)
+%%%
+
+	\usepackage{verbatim}               % Подключаем пакет с расширением окружения verbatim. 
+	\usepackage{shortvrb}               % Подключаем пакет для короткой вставки выражений типа verbatim.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% подключение и настройка пакета listings
+%%%
+	\usepackage{listings}
+
+%%%
+%%% определение собственных языков
+%%%		
+	
+	\localSources{ConfigNet}	
+	\localSources{CSharp}
+
+%%%
+%%% настройка
+%%%	
+
+	\lstset{
+		language=Tex,
+		tabsize=2,
+		breaklines,
+		columns=fullflexible,
+		flexiblecolumns,
+		frame=tb ,
+		numbers=left,
+		numberstyle=\footnotesize\color{gray},
+			%numberstyle=\scriptsize\color{gray},
+			%numberstyle=\tiny\color{gray},
+		extendedchars = false,
+			%extendedchars = false,
+			% extendedchars = true, 
+				%% да именно так но не  \true
+				%% \true == false
+		inputencoding = \globalEncoding, % кодировка, очень аккуратно ту
+		keepspaces = true,
+		belowcaptionskip=5pt
+	}
+
+	%% Основной стиль
+	\lstset{
+		basicstyle=\color[rgb]{0.0,0.0,0},
+			%basicstyle=\small\color[rgb]{0.0,0.0,0},
+			%basicstyle=\footnotesize\color[rgb]{0.0,0.0,0},
+			%basicstyle=\scriptsize\color[rgb]{0.0,0.0,0},
+	}
+	
+	%% Комментарии
+	\lstset{
+		commentstyle=\color[rgb]{0,0.5,0}\itshape,
+	}
+
+	%% Ключевые слова
+	\lstset{
+			keywordstyle=\bfseries\color{blue},
+			morekeywords={true, false, begin, is, as}
+	}
+	
+	%% Строки
+	\lstset{
+			stringstyle=\ttfamily\color{gray},
+			morestring=[b]", 
+			morestring=[d]
+	}

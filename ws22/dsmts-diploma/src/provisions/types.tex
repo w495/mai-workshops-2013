@@ -1,0 +1,39 @@
+\subsection{Методы}
+	
+\frame{
+	\frametitle{Основные методы машинного перевода} 
+	\begin{center}
+		\begin{scriptsize}
+			\tikzstyle{rootf} = [draw=yellow!50!black!70,thick,minimum height=1cm,minimum width=2cm,top color=yellow!20,bottom color=yellow!60!black!20,decorate,decoration={random steps,segment length=3pt,amplitude=1pt}]
+			\tikzstyle{basef-rule} = [rounded rectangle,thick,minimum size=1cm,draw=red!50!black!50,top color=white,bottom color=red!50!black!20,font=\itshape]
+			\tikzstyle{typef-rule-i} = [rectangle,thick,minimum width=2cm,minimum height=1cm,draw=black!20,top color=white,bottom color=black!10]
+			\tikzstyle{typef-rule-w} = [rectangle,thick,minimum width=2cm,minimum height=1cm,draw=orange!50!black!50,top color=white,bottom color=orange!50!black!20]
+			\tikzstyle{typef-rule-t} = [rectangle,thick,minimum width=2cm,minimum height=1cm,draw=magenta!50!black!50,top color=white,bottom color=magenta!50!black!20]
+			\tikzstyle{basef-data} = [rounded rectangle,thick,minimum size=1cm,draw=blue!50!black!50,top color=white,bottom color=blue!50!black!20]
+			\tikzstyle{typef-data-e} = [rectangle,thick,minimum width=2cm,minimum height=1cm,draw=teal!50!black!50,top color=white,bottom color=teal!50!black!20]
+			\tikzstyle{typef-data-s} = [rectangle,thick,minimum width=2cm,minimum height=1cm,draw=violet!50!black!50,top color=white,bottom color=violet!50!black!20]
+			\tikzstyle{typef-mixed} = [rectangle,thick,minimum width=2cm,minimum height=1cm,draw=green!50!black!50,top color=white,bottom color=green!50!black!20]
+			\begin{tikzpicture}[thick, node distance=2.5cm, text height=0.9ex, text depth=.25ex, auto]
+				\node[rootf] (mt) {Машинный перевод};
+				\node[basef-rule,below left of=mt] (rule) {Правила};
+				\node[typef-rule-i,below right of=rule] (inter) {\color{black!40}Интерлингвистические};
+				\node[typef-rule-w,below left of=rule] (words) {Пословные};		
+				\node[typef-rule-t,below of=rule] (trans) {\bfseries Трансферные};
+				\node[basef-data,below right of=mt] (data) {Данные};
+				\node[typef-data-e,below right of=data] (ebmt) {Основанные на примерах};	
+				\node[typef-data-s,below of=data] (smt) {\bfseries Статистические};
+				%\node[typef-mixed,below left of=smt] (mixed) {\bfseries Смешанные};
+				\path[->, red] (mt) edge (rule);		
+				\path[->, red] (rule) edge (words);
+				\path[->, red] (rule) edge (trans);
+				\path[->, red!20] (rule) edge (inter);
+				%\path[->, red] (trans) edge (mixed);
+				\path[->, blue] (mt) edge (data);
+				\path[->, blue] (data) edge (ebmt);	
+				\path[->, blue] (data) edge (smt);	
+				%\path[->, blue] (smt) edge (mixed);		
+			\end{tikzpicture}
+		\end{scriptsize}
+	\end{center}
+}
+

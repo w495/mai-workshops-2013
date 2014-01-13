@@ -1,0 +1,65 @@
+
+
+	\RequirePackage{ifpdf} 	% для раздельной компиляции pdf и dvi 
+		
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% глобальные переменные --- удобно, не надо ментять везде
+%%%
+	\newcommand{\globalEncoding}{utf8}		% кодировка	
+	
+	\newcommand{\globalStylesDir}{styles}	% месторасположение стилей
+	
+%	еще раз
+	\newcommand{\STYLES}{\globalStylesDir}	
+	\newcommand{\IMG}{img}
+	\newcommand{\SRC}{src}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% жизненноважная директива
+%%%
+	
+	\usepackage[\globalEncoding]{inputenc}							% кодировка, тут очень аккуратно
+		%% вариант:
+		%	\usepackage[utf8]{inputenc}
+		%	\usepackage{ucs}
+		
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% опишем <<наши>> модули, раздельное описание --- легче редактировать
+%%%
+	
+	\usepackage{\globalStylesDir/myFonts}		% наши шрифты и локализация
+	\usepackage{\globalStylesDir/myMath}		% модуль нашей математики 
+	\usepackage{\globalStylesDir/myCode}		% модуль наших листингов
+	\usepackage{\globalStylesDir/myTables} 		% модуль наших таблиц
+	\usepackage{\globalStylesDir/myColRows}		% модуль нашей многополосности
+	\usepackage{\globalStylesDir/myQuotes}		% модуль наших цитат
+	\usepackage{\globalStylesDir/myTheorem}		% модуль наших теоремм и определений
+	\usepackage{\globalStylesDir/myGraphics}		% модуль нашей графики
+	\usepackage{\globalStylesDir/myAlgorithms}	% модуль наших алгоритмов
+	\usepackage{\globalStylesDir/myLscape}		% модуль нашией ориентации (книжная, албомная)
+	\usepackage{\globalStylesDir/myHyperref}		% модуль нашиих гиперссылок
+		
+	%% это уже косметика, но мы тоже их вынесем отдельно
+	\usepackage{\globalStylesDir/myLists} 		% модуль наших списков
+												% переопределение буллетов 
+	\usepackage{\globalStylesDir/mySections} 	% модуль наших секций
+												% настройка отображения частей 	
+	\usepackage{\globalStylesDir/userCommands}	% всевозможные переопределения
+												% настройка отображения частей 	
+
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% настройка параметров документа
+%%%
+	\oddsidemargin=-0.4mm
+	\textwidth=160mm
+	\topmargin=4.6mm
+	\textheight=210mm
+	\parindent=0pt
+	\parskip=3pt
+
+

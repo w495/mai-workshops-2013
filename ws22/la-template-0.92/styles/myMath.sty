@@ -1,0 +1,42 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% подключение математики
+%%%
+	\usepackage{amsmath}
+	\usepackage{amsthm}
+	\usepackage{amssymb} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% руссификация математики
+%%%
+	\usepackage{mathtext} 
+		% русские буквы в формулах, 
+		% возможно эту команду надо выше всех
+% -------------------------------------------------------
+% Переопределение le ge в русских традициях
+% -------------------------------------------------------
+	\renewcommand{\le}{\leqslant}
+		%\renewcommand{\leq}{\leqslant}
+	\renewcommand{\ge}{\geqslant}
+		%\renewcommand{\geq}{\geqslant}
+% -------------------------------------------------------
+% Переопределение kappa epsilon phi на русский лад
+% -------------------------------------------------------
+	\renewcommand{\kappa}{\varkappa}
+	\renewcommand{\epsilon}{\varepsilon}
+	\renewcommand{\phi}{\varphi}
+% -------------------------------------------------------
+% Прямые интегралы
+% -------------------------------------------------------
+% Определяем свой шрифт "lsumb"
+	\DeclareSymbolFont{lsymb}{U}{euex}{m}{n}
+% Определяем интегралы
+	\DeclareMathSymbol{\intop}{\mathop}{lsymb}{"52}
+	\DeclareMathSymbol{\ointop}{\mathop}{lsymb}{"48}
+	\DeclareMathSymbol{\smallint}{\mathop}{lsymb}{"52}
+% Традиции
+	\newcommand{\intl}{\int\limits}
+	\usepackage{misccorr}
+
+

@@ -1,0 +1,23 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% Опишем новые языки --- ConfigNet и ConfigNetTopo
+%%%
+	
+\lstdefinelanguage{ConfigNetTopo}
+{
+ morecomment = [l]{[},
+  morecomment = [l]{[[},
+ morestring=[b]", 
+ sensitive = true,
+ morekeywords = {image,ram,npe,model,slot0,slot1,slot2,slot3,slot4,slot5,slot6,slot7,slot8,slot9,console}
+}
+
+\lstdefinelanguage{ConfigNet}
+{
+ morecomment = [l]{!}, 
+ morestring=[b]", 
+ sensitive = true,
+ morekeywords = {!,version,hostname,username,privilege,password,ip,call,interface,address,duplex,
+ no,http,server,dial,peer,line,transport,half,speed,aaa,end,network,router,log,adjacency,changes}
+}
+

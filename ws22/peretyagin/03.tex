@@ -1,0 +1,73 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{textcomp}
+
+\begin{document}
+
+\section{Размеры шрифтов}
+
+\begin{tabular}{|l|l|}
+\hline
+\bfseries Команда & \bfseries Образец \\
+\hline
+\textbackslash tiny & \tiny\strut Крошечный \\
+\textbackslash scriptsize & \scriptsize\strut Очень маленький (как в индексах) \\
+\textbackslash footnotesize & \footnotesize\strut Маленький (как в сносках) \\
+\textbackslash small & \small\strut Уменьшенный \\
+\textbackslash normalsize & \normalsize\strut обычный \\
+\textbackslash large & \large\strut Увеличенный \\
+\textbackslash Large & \Large\strut Большой \\
+\textbackslash LARGE & \LARGE\strut Очень большой \\
+\textbackslash huge & \huge\strut Громадный \\
+\textbackslash Huge & \Huge\strut Гигантский \\
+\hline
+\end{tabular}
+
+
+\section{Начертания}
+
+\begin{tabular}{|l|l|l|}
+\hline
+\bfseries Без аргументов & \bfseries С аргументом & \bfseries Образец \\
+\hline
+\textbackslash rmfamily Обычный & \textbackslash textrm\{Обычный\} & \textrm{Обычный} \\
+\textbackslash sffamily Рубленый & \textbackslash textsf\{Рубленый\} & \textsf{Рубленый} \\
+\textbackslash ttfamily Моноширинный & \textbackslash texttt\{Моноширинный\} & \texttt{Моноширинный} \\
+\textbackslash mdseries Обычный & \textbackslash texttt\{Обычный\} & \textmd{Обычный} \\
+\textbackslash bfseries Полужирный & \textbackslash texttt\{Полужирный\} & \textbf{Полужирный} \\
+\textbackslash upshape Прямой & \textbackslash textup\{Прямой\} & \textup{Прямой} \\
+\textbackslash itshape Курсив & \textbackslash textit\{Курсив\} & \textit{Курсив} \\
+\textbackslash slshape Наклонный & \textbackslash textsl\{Наклонный\} & \textsl{Наклонный} \\
+\textbackslash scshape Капитель & \textbackslash textsc\{Капитель\} & \textsc{Капитель} \\
+\hline
+\end{tabular}
+
+
+\section{Списки}
+
+\subsection{Ненумерованные}
+
+Любой школьник может не~знать про индукцию и~иметь двойку по физике, но про следующие изобретения Теслы он вам точно расскажет все:
+\begin{itemize}
+\item Тесла-реактор;
+\item Тесла-боец;
+\item Кольцо Тесла;
+\item Тесла-танк;
+\item Броня Тесла;
+\item Тесла-корабль\footnote{Имеется ввиду корабль с~пушкой Теслы?};
+\item Башня Тесла;
+\item Пушка Теслы.
+\end{itemize}
+
+\subsection{Нумерованные}
+
+Бизнес-план гномов:
+\begin{enumerate}
+\item Collect underpants (собрать трусы)
+\item ???
+\item PROFIT
+\end{enumerate}
+
+\end{document}

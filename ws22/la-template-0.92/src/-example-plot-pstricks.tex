@@ -1,0 +1,68 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% PSTRICKS
+%%%
+
+\ifpdf
+	C pdf\LaTeX \ ничего не выйдет. Он понятия не имеет про \textbf{pspicture}. Используйте просто \LaTeX.
+\else
+\par
+\begin{center}
+	\begin{pspicture}[showgrid=true](-2,-2)(2,2)
+		\psaxes[ysubticks=5]{->}(0,0)(-2,-2)(4.5,2.5)
+	\end{pspicture}
+\end{center}
+
+
+\begin{center}
+	\newcommand{\pSyOffset}{0.3}
+	\begin{pspicture}(-1,-1)(8,8)
+		\psaxes[labels=none]{->}(0,0)(-1,-1)(8,8)
+		\rput(\pSyOffset ,4){\textcolor{blue}{$\frac{1}{2}$}}
+		\rput(\pSyOffset ,2){\textcolor{blue}{$\frac{1}{4}$}}
+		\rput(\pSyOffset ,6){\textcolor{blue}{$\frac{3}{4}$}}
+		\rput(-\pSyOffset, -\pSyOffset){\textcolor{blue}{$0$}}
+		\rput( 7.5, -0.3){\textcolor{blue}{$x$}}
+		\rput(-0.4 , 7.5 ){\textcolor{blue}{$f(x)$}}
+
+	%% ???????? ???????:
+		\psline[linecolor=red](7.8,7.5)(7.9,7.5)
+		\psline[linecolor=red](7.3,7)(7.7,7)
+		\psline[linecolor=red](7.1,6.5)(7.2,6.5)
+		\psline[linecolor=red](6,6)(7,6)
+		\psline[linecolor=red](5.8,5.5)(5.9,5.5)
+		\psline[linecolor=red](5.3,5)(5.7,5)
+		\psline[linecolor=red](5.1,4.5)(5.2,4.5)
+		\psline[linecolor=red](3,4)(5,4)
+		\psline[linecolor=red](2.8,3.5)(2.9,3.5)
+		\psline[linecolor=red](2.3,3)(2.7,3)
+		\psline[linecolor=red](2.1,2.5)(2.2,2.5)
+		\psline[linecolor=red](1,2)(2,2)
+		\psline[linecolor=red](0.8,1.5)(0.9,1.5)
+		\psline[linecolor=red](0.3,1)(0.7,1)
+		\psline[linecolor=red](0.1,0.5)(0.2,0.5)
+	\end{pspicture}
+\end{center}
+
+\begin{center}
+	\begin{pspicture}(2,2)(4,4)
+		\psline[linecolor=blue]{->}(1,3)(1,4)
+			\rput(0.7 , 3.8){\textcolor{blue}{$\overrightarrow{F}$}}
+	%% ?????????????:
+		\psline[linecolor=red](0,2)(1,3)(4,2)
+		\psline[linecolor=black](0,2)(4,2)
+	\end{pspicture}
+\end{center}
+
+
+\begin{center}
+	\begin{pspicture}(-1,0)(5,2)
+		\pscurve[linecolor=red](0,0)(0.5,0.3)(2,2)(3.5,0.3)(4,0)
+		\psline[linecolor=black](-1,0)(5,0)
+		\psdot[dotstyle=o](0,0)
+		\psdot[dotstyle=o](4,0)
+	\end{pspicture}
+\end{center}
+
+
+\fi

@@ -1,0 +1,100 @@
+
+\subsection{Модель перевода}
+
+\frame{
+	\frametitle{Введем обозначения}
+		\begin{itemize}
+			\item $\TE$ --- <<английский>> текст (множество предложений);
+			\item $\TR$ --- <<русский>> текст;
+			\item $\SE$ --- <<английское>> предложение (последовательность слов);
+			\item $\SR$ --- <<русское>> предложение;
+			\item $\WE$ --- <<английское>> слово;
+			\item $\WR$ --- <<русское>> слово;
+			%\item $\LE 	\gets |\SE|	$; 
+			%\item $\LR 	\gets |\SR|	$;
+			%\item $\POSR 	\gets \text{ позиция } \WR \text{ в } \SR$; 
+			%\item $\POSE 	\gets \text{ позиция } \WE \text{ в } \SE$.
+		\end{itemize}	
+}
+	
+\frame[allowframebreaks]{\frametitle{Модель перевода}
+	{ \small
+		Пусть $P(\SE|\SR)$ --- вероятность некоторой строки (предложения) из $e$, при гипотезе перевода из $r$.
+		\[
+			P(\SE|\SR) = \sum\limits_{\A} P(\SE, \A|\SR);
+		\]
+		$\A$ --- выравнивание между отдельными словами в паре предложений.
+		Вероятность перевода:
+		\[
+			P(\SE, \A| \SR)	= \dfrac{\varepsilon}{(\LR + 1)^{\LE}} \prod\limits_{j = 1}^{\LE} t(\WE_{j} | \WR_{\A(j)}) 
+		\]
+		$t$ --- это вероятность слова оригинала в позиции $j$ при соответствующем 
+		ему слове перевода $\WR_{\A(j)}$, определенном выравниванием $\A$. 
+	}
+	\pagebreak
+	{ \small
+		\[
+			P(\A | \SE, \SR) = \dfrac{P(\SE, \A| \SR)}
+				{\sum\limits_{\A} P(\SE, \A| \SR)}
+		\]
+		Имея набор выравниваний с определенными вероятностями, 
+		мы можем подсчитать частоты каждой пары слов, 
+		\[
+			t(\WE|\WR) 
+				=  \dfrac{counts(\WE|\WR)}{\sum\limits_{\WE}counts(\WE|\WR)} 
+				= \dfrac{counts(\WE|\WR)}{total(\WR)};
+		\]
+		Требуется оценить вероятности \textit{лексического перевода} $t(\WE|\WR)$ 
+		Но чтобы сделать это нужно вычислить $\A$, которой у нас нет.
+	}
+	
+	\pagebreak
+	
+	Для оценки параметров $\longrightarrow$ EM-алгоритм (Витерби).
+	\begin{itemize}
+		\item инициализируем параметры модели (одинаковыми значениями, на первой итерации);
+		\item оценим вероятности отсутствующей информации;
+		\item оценим параметры модели на основании новой информации;
+		\item перейдем к следующей итерации.
+	\end{itemize}
+}
+
+\frame{
+	\scriptsize
+	\begin{codebox}
+		\Procname{Базовый-алгоритм($\TE$, $\TR$)}
+		\li 	$\forall \ \WE \in \SE \in \TE $ \Do 	
+		\li 		$\forall \WR \in \SR \in \TR $ \Do 
+		\li 			$ t(\WE|\WR) \gets u, u \in \mathbb{R}$;
+					\End	
+				\End	
+		\li 	\Com{ Инициализируем таблицу $t(\WE|\WR)$ одинаковыми значениями.}
+		\li 	\Пока {не сойдется} \Do 
+		\li 		$\forall \ \WE \in \SE \in \TE $ \Do \Com{ Инициализируем остальные таблицы.}
+		\li 			$\forall \WR \in \SR \in \TR $ \Do 
+		\li 				$ counts(\WE|\WR) \gets  0$;  $\quad total(\WR) \gets  0$;
+						\End	
+					\End	
+		\li 		$\forall \ \SE, \SR \in \TE, \TR$ \Do \Com{ Вычисляем нормализациию. }
+		\li 			$\forall \ \WE \in \SE$ \Do
+		\li 				$stotal(\WE) \gets  0$;
+		\li 				$\forall \ \WR \in \SR$ \Do	 
+		\li 					$stotal(\WE) \gets stotal(\WE) + t(\WE|\WR)$;
+		 					\End	
+		 				\End	
+		\li 			$\forall \ \WE \in \SE$ \Do \Com{ Собираем подсчеты. }
+		\li 				$\forall \ \WR \in \SR$ \Do	 
+		\li 					$counts(\WE|\WR) \gets counts(\WE|\WR) + \dfrac{t(\WE|\WR)}{stotal(\WE)}$;
+		\li 					$total(\WR) \gets total(\WR) + \dfrac{t(\WE|\WR)}{stotal(\WE)}$;
+			 				\End	
+						\End
+					\End
+		\li 		$\forall \ \WE \in  \TE $ \Do \Com{ Оцениваем вероятность.}
+		\li 			$\forall \WR \in \TR $ \Do 
+		\li 				$ t(\WE|\WR) \gets \dfrac{counts(\WE|\WR)}{total(\WR)}$;
+						\End	
+					\End	
+				\End
+	\end{codebox}
+}
+

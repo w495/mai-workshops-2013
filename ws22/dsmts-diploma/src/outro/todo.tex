@@ -1,0 +1,37 @@
+
+\subsection{Развитие} 
+
+\frame{
+	\frametitle{Дальнейшее развитие} 
+	\begin{columns}
+		\begin{column}[t]{6cm}
+			\small
+			\textbf{Математика:}
+			\begin{itemize}
+				\item полноценный фразовый перевод;
+				\item синтаксический перевод;
+				\item смешанная система перевода:
+				\begin{itemize}
+					\item пара русский-английский,
+					\item морфологический анализ.
+				\end{itemize}
+				\item опробовать более точные методы поиска.
+			\end{itemize}
+		\end{column}
+		\begin{column}[t]{6cm}
+			\small
+			\textbf{Архитектура и реализация:}
+			\begin{itemize}
+				\item использовать пословное сжатие при хранении в БД;
+				\item переписать обработчика на Cи с libevent;
+				\item libevent для RESTful-сервиса декодера:
+				\begin{itemize}
+					\item 1 млн. одновременных соединений
+				\end{itemize}
+				\item попробовать Redis $\rightarrow$ leveldb.
+			\end{itemize}
+		\end{column}
+	\end{columns}
+}
+
+

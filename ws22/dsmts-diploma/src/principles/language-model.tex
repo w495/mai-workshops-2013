@@ -1,0 +1,27 @@
+
+\subsection{Модель языка}
+
+\frame{
+	\frametitle{Модель языка}
+	\small
+	\begin{itemize}
+		\item Правильный порядок слов.
+		\item Вычисляется с помощью $n$-грамм слов. Пример для $3$-грамм:\\
+		\[
+			\FA = (\WA_1, \WA_2, \WA_3, \WA_4, \ldots, \WA_{\LA})
+			\Rightarrow
+			\left\lbrace 
+				\begin{matrix}
+					( \WA_1, &  \WA_2, &  \WA_3 );\\ 
+					( \WA_2, &  \WA_3, &  \WA_4 );\\ 
+					\vdots   &  \vdots &   \vdots \\ 	
+					( \WA_{\LA-2}, &  \WA_{\LA-1}, &  \WA_{\LA} ).\\ 
+				\end{matrix} 
+			\right.
+		\]
+		\item Вычисляется по формуле:
+		\[
+			P(\FA)	= P( \WA_1 \ldots \WA_{\LA} ) = \prod\limits_{i=0}^{i=\LA+n-1} P'(\WA_i|\WA_{i-1} \ldots \WA_{i-n+1}).
+		\]
+	\end{itemize}
+}

@@ -1,0 +1,142 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% дополнительные команды
+%%%
+
+%%%
+%%% описание цветных вставок
+%%%
+
+\newcommand{\orangebox}[2]{
+	\setbeamercolor{uppercol}{fg=white,bg=pacificorange}
+	\setbeamercolor{lowercol}{fg=black,bg=pacificcream}
+	\begin{beamerboxesrounded}[upper=uppercol,lower=lowercol,shadow=true]
+		{#1} #2
+	\end{beamerboxesrounded} 
+}
+
+\newcommand{\greenbox}[2]{
+	\setbeamercolor{uppergrn}{fg=white,bg=pacificgreen}
+	\setbeamercolor{lowercol}{fg=black,bg=pacificcream}
+	\begin{beamerboxesrounded}[upper=uppergrn,lower=lowercol,shadow=true]
+		{#1}  #2
+	\end{beamerboxesrounded} 
+}
+
+\newcommand{\bluebox}[2]{
+	\setbeamercolor{upperblue}{fg=white,bg=pacificblue}
+	\setbeamercolor{lowercol}{fg=black,bg=pacificcream}
+	\begin{beamerboxesrounded}[upper=upperblue,lower=lowercol,shadow=true]
+		{#1}  #2
+	\end{beamerboxesrounded} 
+}
+
+\newcommand{\graybox}[2]{
+	\setbeamercolor{uppergray}{fg=white,bg=pacificgray}
+	\setbeamercolor{lowercol}{fg=black,bg=pacificcream}
+	\begin{beamerboxesrounded}[upper=uppergray,lower=lowercol,shadow=true]
+		{#1}  #2
+	\end{beamerboxesrounded} 
+}
+
+\newcommand{\grassgreenbox}[2]{
+	\setbeamercolor{uppergrass}{fg=white,bg=grassgreen}
+	\setbeamercolor{lowercol}{fg=black,bg=pacificcream}
+	\begin{beamerboxesrounded}[upper=uppergrass,lower=lowercol,shadow=true]
+		{ #1 }  #2
+	\end{beamerboxesrounded} 
+}
+
+\def \workpdfkeywords{
+	n-граммы,
+	декодирование,
+	дерево супервизии,
+	жадный инкрементный поиск,
+	машинное обучение,
+	модель перевода,
+	модель языка,
+	научный текст,
+	особенности научно-технической литературы,
+	открытая телекоммуникационная платформа,
+	параллельный корпус,
+	перевод,
+	подходы к машинному переводу,
+	поиск по первому наилучшему совпадению,
+	распределенные вычисления,
+	система машинного перевода,
+	система статистического машинного перевода,
+	статистический машинный перевод,
+	супервизор,
+	трансферная система машинного перевода,
+	текстовый корпус,
+	языковая пара.
+}
+
+\newcommand{\worktextkeywords}
+{
+	\MakeUppercase{\workpdfkeywords}
+}
+
+\newcommand{\fulltext}[1]{}
+\newcommand{\additionaltext}[1]{}
+
+\newcommand{\alttext}[1]{}
+
+%% --------------------------------------------------------------
+\newcommand{\TA}{\varTheta}	% текст (корпус)
+\newcommand{\TE}{{\TA_e}}	% английский текст
+\newcommand{\TR}{{\TA_r}}	% русский текст
+
+%% --------------------------------------------------------------
+\newcommand{\SA}{\varPi}	% предложение
+\newcommand{\SE}{{\SA_e}}	% английское предложение
+\newcommand{\SR}{{\SA_r}}	% русское предложение
+
+
+%% --------------------------------------------------------------
+\newcommand{\StrA}{s}			% строка
+\newcommand{\StrE}{{\StrA_e}}	% англиская строка
+\newcommand{\StrR}{{\StrA_r}}	% русская строка
+
+%% --------------------------------------------------------------
+\newcommand{\FA}{\varphi}				% фраза
+\newcommand{\FE}{{\color{red} \FA_e}}	% англиская фраза
+\newcommand{\FR}{{\color{red} \FA_r}}	% русская фраза
+
+\newcommand{\NA}{\eta}					% n-грама
+\newcommand{\NE}{{\color{red} \NA_e}}	% англиская n-грама
+\newcommand{\NR}{{\color{red} \NA_r}}	% русская n-грама
+
+%% --------------------------------------------------------------
+\newcommand{\WA}{\omega}				% слово
+\newcommand{\WE}{{\color{red} \WA_e}}	% английское слово
+\newcommand{\WR}{{\color{red} \WA_r}}	% русское слово
+
+%% --------------------------------------------------------------
+\newcommand{\POSA}{\pi}								% позиция слова
+\newcommand{\POSE}{{\color{red} \POSA_{\omega_e}}}	% позиция английского слова
+\newcommand{\POSR}{{\color{red} \POSA_{\omega_r}}}	% позиция русского слова 
+
+%% --------------------------------------------------------------
+\newcommand{\LA}{{l}}	% длинна предложения
+\newcommand{\LE}{{l_e}}	% длинна английского предложения
+\newcommand{\LR}{{l_r}}	% длинна русского предложения
+
+%% --------------------------------------------------------------
+\newcommand{\A}{{a}}	% выравнивание
+\newcommand{\DA}{{A}}	% множество выравниваний
+
+%% --------------------------------------------------------------
+\newcommand{\Com}[1]{{\color[rgb]{0,0.5,0} \itshape \ \Comment #1 }}
+
+%% --------------------------------------------------------------
+\newcommand{\omark}{ 
+	$
+		\exists
+	%	\varDelta
+	$
+}
+\newcommand{\om}{\omark}
+
+%% --------------------------------------------------------------
+\setbeamertemplate{frametitle continuation}{($\insertcontinuationcount$)}

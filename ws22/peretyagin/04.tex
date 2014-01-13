@@ -1,0 +1,100 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{wasysym}
+
+\usepackage{csquotes}
+\usepackage{textcomp}
+
+\begin{document}
+
+\section{Простые формулы}
+
+Конек \TeX-а~--- это формулы, как встраиваемые типа $|\sin x| \leqslant 1$, так и выключенные вроде
+
+$$e^x = \sum_{n = 0}^\infty \frac{x^n}{n!} = 1 + \sum_{n = 1}^\infty \frac{x^n}{n!}.$$
+
+Команда \textbackslash frac хитроумная: она выбирает размер шрифта в зависимости от того, является формула строчной ($\frac{a}{b}$) или выключенной: $$\frac{a}{b}.$$ Команда \textbackslash dfrac сохраняет размер: $\dfrac{a}{b}$. Впрочем, это может показаться неэстетичным, ведь межстрочный интервал меняется по ходу абзаца! (Это предложение написано специально, чтобы абзац был достаточно длинным и было можно визуально оценить изменение межстрочного интервала.)
+
+Стрелки и прочая диакритика никогда не была проблемой \TeX-а: $\vec a \times \vec b$, $\hat c \cdot \tilde d$, $\grave e$, $\ddot f$, $\bar g$, $\check \imath$, $\acute \jmath$, $\dot k$, $\breve l$.
+
+
+\section{Выбор шрифта}
+
+В формулах выбор шрифтов еще богаче, чем в обычном тексте:
+\begin{description}
+\item[прямой] $\mathrm a + b$;
+\item[полужирный] $\mathbf a + b$;
+\item[моноширинный] $\mathtt a + b$;
+\item[рубленый] $\mathsf a + b$;
+\item[каллиграфический] $\mathcal A + b$ (существует только для заглавных букв);
+\item[готический] $\mathfrak a + B$;
+\item[ажурный] $a \in \mathbb R^2$ (тоже только для заглавных букв);
+\item[греческий] $\alpha \beta \Gamma \Delta$.
+\end{description}
+
+
+\section{Сложные формулы}
+
+Кроме обычных скобок в \TeX-е есть скобки переменного размера (и, само собой, матрицы):
+$$\left\| \begin{array}{cc}%
+	a & b \\%
+	c & d \\%
+\end{array}\right\| = ad - cb,$$
+даже \emph{очень} переменного размера:
+$$b{j,2} = \left\{ \begin{array}{l}%
+	\frac12 t^2 \\
+	-t^2 + t + \frac12 \\
+	\frac12 (1 - t)^2
+\end{array}\right..$$
+
+(Формула абзацем выше~--- однородный квадратичный B-сплайн.)
+
+Иногда нужно записать очень большую матрицу:
+$$\left(\begin{array}{cccc}
+	a_{11} & a_{12} & \cdots & a_{1n} \\
+	a_{21} & a_{22} & \cdots & a_{2n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{m1} & a_{m2} & \cdots & a_{mn} \\
+\end{array}\right).$$
+
+Формула в рамке~--- не~что-нибудь, а, на минутку, формула Остроградского:
+$$\boxed{\iiint_V (\nabla \cdot \mathbf F)\;dV = \oiint_S (\mathbf F \cdot \mathbf n)\;dS}.$$
+
+\section{Нумерация формул}
+
+Сами по себе выключенные формулы не нумеруются, но окружение \enquote{equation} автоматически их нумерует.
+
+Формула Грина:
+\begin{equation}
+\label{fG}
+\int_{\partial D} P\;dx + Q\;dy = \int_D \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial x} \right)\;dx\;dy.
+\end{equation}
+
+Формула Кельвина-Стокса:
+\begin{equation}
+\label{fKS}
+\int_\Sigma \mathrm{rot}\,\mathbf F\;d\mathbf \Sigma = \int_{\partial\Sigma} \mathbf F\;d\mathbf r.
+\end{equation}
+
+Формулы (\ref{fG}) и (\ref{fKS}) являются частными случаями формулы Стокса:
+\begin{equation}
+\int_\sigma d\omega = \int_{\partial \sigma} \omega.
+\end{equation}
+
+\section{Многострочные формулы}
+
+\begin{multline}
+\label{fO}
+\iint_{\partial V} P\;dy\;dz + Q\;dz\;dx + R\;dx\;dy = \\
+= \iiint_V \left(\frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} \right)\;dx\;dy\;dz.
+\end{multline}
+
+Формула (\ref{fO})~--- вариант формулы Остроградского.
+
+\end{document}

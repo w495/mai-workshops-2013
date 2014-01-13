@@ -1,0 +1,165 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% TIKZ
+%%%
+
+\subsubsection{Графики}
+
+\begin{center}
+	\newcommand{\upPoint}{1.3}
+	
+	\newcommand{\startX}{2}
+	\newcommand{\maxY}{2}
+
+	\begin{tikzpicture}[scale=1.5]
+		\draw [<->,thick] (0,2) node (yaxis) [above] {$t$}
+			|- (4,0) node (xaxis) [right] {$x$};
+		\draw [red] (\startX + 1,0) .. controls (2.7,0.7) and (2.3,1) .. (2,\upPoint) node [left] {\textcolor{blue}{$C^{-}$}};
+		\draw [red] (\startX,0) .. controls (\startX,\maxY) and (\startX,\maxY) .. (\startX,\maxY) node [right] 		{\textcolor{blue}{$C^{0}$}}; 
+		\draw [red] (\startX - 1,0) .. controls (1.3,0.7) and (1.7,1) .. (2,1.3) node [right] {\textcolor{blue}{$C^{+}$}};
+	
+		\draw [blue] [->] (\startX - 1,0) -> (1.3,0.7); % % касательные
+		\draw [blue] [->] (\startX + 1,0) -> (2.7,0.7); % % касательные
+    
+		\draw [red] (\startX + 1,0) circle (1pt) node [below] {\textcolor{blue}{$i + 1$}};
+		\draw [red] (\startX - 1,0) circle (1pt) node [below] {\textcolor{blue}{$i$}};		
+		\draw [red] (2,\upPoint) circle (1pt) ;
+		\fill [green] (2,\upPoint) circle (1pt) node [above left] {\textcolor{red}{$3$}};
+		\fill [green] (\startX - 1,0) circle (1pt) node [above left] {\textcolor{red}{$1$}};
+		\fill [green] (\startX + 1,0) circle (1pt) node [above right] {\textcolor{red}{$2$}};
+		\fill [green] (\startX,0) circle (1pt) node [above right] {\textcolor{red}{$0$}};
+	\end{tikzpicture}
+\end{center}
+
+\subsection*{Газодинамические разрывы (случай двух независимых переменных)}
+
+\begin{center}
+\newcommand{\changebleValue}{P}		% параметр
+\newcommand{\gridMaxX}{2}  			% длинна оси X
+\newcommand{\gridMaxY}{1.5} 		% высота оси Y
+\newcommand{\breakPoint}{1.0} 		% точка разрва
+\newcommand{\firstWaveheight}{0.5} 	% высота первой области
+\newcommand{\secondWaveheight}{1.0} % высота второй области
+
+\newcommand{\drawWaves}{
+\begin{tikzpicture}[scale=1.5]
+	% оси
+	\draw [ thick, ->] (-\gridMaxX / 2, 0) -- (\gridMaxX, 0) node (xaxis) [right] {$x$};
+	\draw [ thick, ->] (0, -\gridMaxY / 2 ) -- (0, \gridMaxY) node (yaxis) [above] {$\changebleValue$};
+	% точка разрыва
+	\draw [red] (\breakPoint,0) circle (1pt) node [below] {$x_0$};
+	% волны
+	\draw [blue] (-\gridMaxX / 2 ,\secondWaveheight) node [below] {$\changebleValue_{l}$} -- (\breakPoint ,\secondWaveheight) 
+		|- (\breakPoint,0);
+		
+	\draw [red] (\gridMaxX , \firstWaveheight) node [below] {$\changebleValue_{r}$}-- (\breakPoint, \firstWaveheight) 
+		|- (\breakPoint,0);
+\end{tikzpicture}
+}
+
+\renewcommand{\changebleValue}{P}
+\drawWaves
+\renewcommand{\changebleValue}{\rho}
+\drawWaves
+\renewcommand{\changebleValue}{U}
+\drawWaves
+
+\end{center}
+
+\pagebreak
+
+Построим метод Годунова как метод конечных (контрольных) объемов.
+
+\begin{center}
+\newcommand{\gridStep}{1.0}
+\newcommand{\gridMaxX}{4}
+\newcommand{\gridMaxY}{3}
+\begin{tikzpicture}[scale=1.5]
+	\draw[very thin,color=gray, step=\gridStep cm] (0, 0) grid (\gridMaxX - \gridStep, \gridMaxY - \gridStep);
+	\draw [<->,thick] (0,\gridMaxY) node (yaxis) [above] {$t$}
+		|- (\gridMaxX,0) node (xaxis) [right] {$x$};
+
+	\fill [green] (0.5, 0) circle (2pt);  
+	\fill [green] (1.5, 0) circle (2pt);  
+	\fill [green] (2.5, 0) circle (2pt);  
+	
+	\fill [green] (0.5, 1) circle (2pt);  
+	\fill [green] (1.5, 1) circle (2pt);  
+	\fill [green] (2.5, 1) circle (2pt);  
+
+	\draw [blue] (0.5, 0) circle (2pt);  
+	\draw [blue] (1.5, 0) circle (2pt);  
+	\draw [blue] (2.5, 0) circle (2pt);  
+		
+	\draw [blue] (0.5, 1) circle (2pt);  
+	\draw [blue] (1.5, 1) circle (2pt);  
+	\draw [blue] (2.5, 1) circle (2pt);  
+			
+							
+	\draw [red] (\gridStep, 0) circle (1pt) node [below] {$x_i$};  
+	\draw [red] (\gridStep + \gridStep , 0) circle (1pt) node [below] {$x_{i+1}$};  	
+\end{tikzpicture}
+\end{center}
+
+Преобразования координат:
+
+\begin{tikzpicture}
+	\begin{scope}
+		\draw [help lines] (0,0) grid (3,2);
+		\coordinate (a) at (1,0);
+		\coordinate (b) at ($(a)+1/2*(3,3)$);
+		\draw (a) -- (b);
+		\coordinate (c) at ($ (a)!.25!(b) $);
+		\coordinate (d) at ($ (c)!1cm!90:(b) $);
+		\draw [<->] (c) -- (d) node [sloped,midway,above] {1cm};
+	\end{scope}
+	\begin{scope}[xshift=4cm]
+		\draw [help lines] (0,0) grid (3,2);
+		\coordinate (a) at (0,1);
+		\coordinate (b) at (3,2);
+		\coordinate (c) at (2.5,0);
+		\draw (a) -- (b) -- (c) -- cycle;
+		\draw[red] (a) -- ($(b)!(a)!(c)$);
+		\draw[orange] (b) -- ($(a)!(b)!(c)$);
+		\draw[blue] (c) -- ($(a)!(c)!(b)$);
+	\end{scope}
+\end{tikzpicture}
+
+
+\subsubsection{Дигаммы}
+
+C  градиентом и деформацией
+\begin{center}
+
+\tikzstyle{format} = [rounded rectangle,thick,minimum size=1cm,draw=blue!50!black!50,top color=white,bottom color=blue!50!black!20,font=\itshape]
+
+\tikzstyle{serverf} = [rectangle,thick,minimum size=1cm,draw=blue!50!black!50,top color=white,bottom color=blue!50!black!20,font=\itshape]
+
+\tikzstyle{clientf} = [rounded rectangle,thick,minimum size=1cm,draw=red!50!black!50,top color=white,bottom color=red!50!black!20,font=\itshape]
+
+\tikzstyle{netf} = [draw=yellow!50!black!70,thick,minimum height=1cm,minimum width=2cm,top color=yellow!20,bottom color=yellow!60!black!20,decorate,decoration={random steps,segment length=3pt,amplitude=1pt}]
+
+\begin{tikzpicture}[thick,	node distance=4cm,	text height=1.5ex,	text depth=.25ex, auto]
+	\node[netf] (net)  {Сеть};
+	\node[clientf,left of=net] (client)  {Клиент};
+	\node[serverf,below right of=net] (s1)  {Сервер Приложений};
+	\node[serverf,above right of=net] (s2)  {Сервер БД};
+
+	\path[<->, blue] (net) edge  (client);
+	\path[<->, blue] (net) edge  (s1);
+	\path[<->, blue] (net) edge  (s2);
+	\path[<->, blue, dashed] (s1) edge  (s2);
+\end{tikzpicture}
+\end{center}
+
+
+С тенью:
+\begin{center}
+\begin{tikzpicture}
+	\node[starburst,drop shadow,fill=white,draw] {Drop shadow};
+	\node[copy shadow,fill=blue!20,draw=blue,thick] at (3.5,0) {Copy shadow};
+	\node[circle,circular drop shadow,fill=blue!20,draw] at (6,0) {Circular};
+\end{tikzpicture}
+\end{center}
+
+\pagebreak

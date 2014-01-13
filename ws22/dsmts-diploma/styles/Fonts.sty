@@ -1,0 +1,92 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%            Для компиляции только в XeTeX         %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% шрифты и локализация основное
+%%%
+
+	\usepackage[cm-default]{fontspec}
+	\usepackage{xltxtra} % \XeLaTeX macro
+	\defaultfontfeatures{Mapping=tex-text}
+	\usepackage{polyglossia}
+	
+	\setdefaultlanguage{russian} 	% задаем язык по умолчанию, 
+									% для правильного отображения некоторых разделов
+									% таких как Содержание, предметный указатель
+
+%%%
+%%% Зададим основные шрифты
+%%%		(!)
+%%% 	обязателльно нужно проверить, есть ли у вас такие шрифты
+%%%		если нет, та попробуйте установить из папки fonts, 
+%%%		или заменить на другие
+%%%
+
+	% тут использованы DejaVu шрифты --- они есть почти на всех ОС
+	% к тому же не все шрифты формально поддерживают кириллицу (ругаются когда, их назначаешь основным)
+		
+	\setmainfont{DejaVu Serif}
+	\setsansfont{DejaVu Sans}
+	\setmonofont{DejaVu Sans Mono}
+
+	\newcommand{\setmaincyrfont}[1]{\newfontfamily{\cyrillicfont}{#1}\setmainfont{#1} }
+    %% Для некторых шрифтов нужно использовать эту команду.
+
+    \setmaincyrfont{Liberation Sans}
+
+    \setsansfont{Liberation Sans}
+    \setmonofont{Liberation Mono}
+
+    %\renewcommand{\baselinestretch}{1.3}
+
+    %\usepackage{setspace}
+    %\singlespacing
+    %\onehalfspacing
+    %\doublespacing
+    %\setstretch{1.1}
+
+
+%	\usepackage{lettrine}
+%	\usepackage{indentfirst}
+
+%%%
+%%% Зададим псевдонимы для шрифтов, 
+%%% 	чтобы можно было менять шрифт в тексте
+%%% 	коменндой \fontspec
+%%%		(!)
+%%% 	обязателльно нужно проверить, есть ли у вас такие шрифты
+%%%		если нет, та попробуйте установить из папки fonts, 
+%%%		или заменить на другие
+%%%
+
+	\newcommand{\Magic}{\fontspec{MagicC}} 
+	\newcommand{\Malgun}{\fontspec{Malgun Gothic}} 
+		
+	\newcommand{\Libertine}{\fontspec{Linux Libertine G}} 
+		% всегда есть в Kubuntu
+		%% если вы не смогли найти замену шрифту, всегда подойдет:
+		%% \renewcommand{\libertine}{\sf}
+
+	\newcommand{\Biolinum}{\fontspec{Linux Biolinum G}} 
+		% всегда есть в Kubuntu
+		%% если вы не смогли найти замену шрифту, всегда подойдет:
+		%% \renewcommand{\biolinum}{\sf}
+		
+	\newcommand{\comic}{\fontspec{Comic Sans MS}} 
+		% всегда есть в Windows
+		%% если вы не смогли найти замену шрифту, всегда подойдет:
+		%% \renewcommand{\comic}{\it} 
+		
+	\newcommand{\Garamond}{\fontspec{Garamond}}
+		% часто используется при верстке журналов
+		%% если вы не смогли найти замену шрифту, всегда подойдет:
+		%% \renewcommand{\Garamond}{} 	
+		
+	\newcommand{\Calibri}{\fontspec{Calibri}}
+		% всегда есть в Windows
+		%% если вы не смогли найти замену шрифту, всегда подойдет:
+		%% \renewcommand{\Calibri}{} 	
+	\renewcommand{\Calibri}{} 	
+

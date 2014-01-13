@@ -1,0 +1,83 @@
+
+\subsection{Декодер}
+
+\frame{
+	\frametitle{Декодер}
+	\small
+	\begin{columns}
+		\begin{column}{6cm}
+			Среди всех возможных вариантов перевода выбрать правильный:
+			\begin{itemize}
+				\item полный перебор;
+				\item A*:
+				\begin{itemize}
+					\item стековый поиск,
+					\item многостековый поиск;
+				\end{itemize}
+				\item \textbf{жадный инкрементный поиск};
+				\item сведение к обобщенной задаче коммивояжера.
+					% \begin{itemize}
+					%	\item задача ЛП,
+					%	\item эвристические методы (Лин-Керниган),
+					%	\item генетические алгоритмы,
+					%	\item {<<муравьиная оптимизация>>}.
+					% \end{itemize}
+			\end{itemize}
+		\end{column}
+		\begin{column}{4cm}
+			\tikzstyle{ssmpf} = [minimum height=1cm]
+			\tikzstyle{lmf} = [circle,thick,minimum size=1.5cm,draw=blue!50!black!50,top color=white,bottom color=blue!50!black!20]
+			\tikzstyle{tmf} = [circle,thick,minimum size=1.5cm,draw=green!50!black!50,top color=white,bottom color=green!50!black!20]
+			\tikzstyle{dcf} = [circle,thick,minimum size=1.5cm,draw=red!50!black!50,top color=white,bottom color=red!50!black!20]
+			\begin{tiny}
+				\begin{tikzpicture}[thick, node distance=1.9cm, text height=0.2ex, text depth=.25ex, auto]
+					\node(ssmp) {};
+					\node[lmf, below right of=ssmp] (lm) 
+					{\begin{tabular}{c}
+						Модель \\ языка \\  $ P(\FE) $\\ 
+					\end{tabular}};
+					\node[tmf, below left of=ssmp] (tm)
+					{\begin{tabular}{c}
+						Модель \\ перевода\\ $ P(\FR|\FE) $\\ 
+					\end{tabular} };
+					\node[dcf, below of=ssmp] (dc) {\small Декодер};	
+					\begin{scope}[node distance=2.0cm]
+						\node[ssmpf, above of=dc] (source)
+						{ \scriptsize
+							\begin{tabular}{c}
+								Исходная фраза \\ $ \FR $\\ 
+							\end{tabular} 
+						};
+						\node[ssmpf, below of=dc] (target)
+						{ \scriptsize
+							\begin{tabular}{c}
+								Перевод исходной фразы \\
+								$ \arg\max\limits_{\FE} \left(  P(\FE) \cdot P(\FR|\FE) \right)$\\ 
+							\end{tabular} 
+						};
+					\end{scope}
+					\path[->, gray] (source) edge (dc);
+					\path[->, gray] (dc) edge (target);
+				\end{tikzpicture}
+			\end{tiny}
+		\end{column}
+	\end{columns}
+}
+
+\frame{
+	\frametitle{Жадный инкрементный поиск} 
+	\begin{itemize}
+		\item простой и быстрый поиск;
+		\item {<<плохой>> вариант перевода получаем сразу};
+		\item последовательно применяя набор операций можем улучшить перевод;
+		\begin{itemize}	
+			\item изменить перевод слова \textit{(группы слов, $n$-граммы)},
+			\item удалить слово \textit{(группу слов, $n$-грамму)},
+			\item поменять слова местами \textit{(группы слов, $n$-граммы)};
+		\end{itemize} 
+		\item можно делать отсечку по времени;
+		\item можем сразу оценить модель языка большой фразы.
+	\end{itemize} 
+}
+
+
