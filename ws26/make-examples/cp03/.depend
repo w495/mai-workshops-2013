@@ -1,0 +1,5 @@
+$(OBJDIR)/libtypes.o: src/libtypes.c includes/libtypes.h
+$(OBJDIR)/libfunc.o: src/libfunc.c includes/libfunc.h includes/libtypes.h
+$(OBJDIR)/libformat.o: src/libformat.c includes/libformat.h includes/libtypes.h
+$(OBJDIR)/main.o: src/main.c includes/main.h includes/libtypes.h includes/libfunc.h \
+ includes/libformat.h
