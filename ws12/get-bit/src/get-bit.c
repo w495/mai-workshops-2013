@@ -3,15 +3,15 @@
  *
  *      Программа выводит значения бита заданного числа.
  *      Со стандартного потока ввода (stdin) считывается входное число 
- *      и номер бита, который нужно вывести. 
+ *      и номер бита, который нужно вывести. Отсчет ведется от нуля.
  *      На стандартный поток вывода (stdout) выводится значение искомого бита. 
  *      На стандартный поток ошибок выводится отладочная информация: 
- *          * входной число в двоичном представлении;
+ *          * входное число в двоичном представлении;
  *          * входное число после двоичного сдвига на номер бита 
  *            (тоже в двоичном представлении).
- *      Размер входного числа должен быть не более размера типа `long int`,
+ *      Размер входного числа должен быть не более размера типа `unsigned long`,
  *      вашего компилятора. Программа проверялась на gcc x86_64.
- *      Размер `long int` составлял восемь байт (64 бита).
+ *      Размер `unsigned long int` составлял восемь байт (64 бита).
  *      
  *      @subsection Пример
  *      
@@ -36,7 +36,12 @@
  *          9223372036854775807 63
  *          0111111111111111111111111111111111111111111111111111111111111111
  *          0000000000000000000000000000000000000000000000000000000000000000
- *          $> 
+ *          $> ./a.out 
+ *          -10 1
+ *          1111111111111111111111111111111111111111111111111111111111110110
+ *          0111111111111111111111111111111111111111111111111111111111111011
+ *          1
+ *
  * 
  *  @authors    Никитин Илья Константинович (преп. каф. 806 МАИ) <w@w-495.ru>
  *  @version    1.0
@@ -55,7 +60,7 @@
  * @param   input   входное число;
  * @param   numbit  номер бита;
  **/ 
-int get_bit(long input_number, unsigned short numbit); 
+int get_bit(unsigned long input_number, unsigned short numbit); 
 
 /**
  * @fn  Выводит на поток ошибок число `input` в двоичном представлении.
@@ -63,13 +68,13 @@ int get_bit(long input_number, unsigned short numbit);
  * 
  * @param   input   входное число;
  **/ 
-void debug_print_binary(long input);
+void debug_print_binary(unsigned long input);
 
 int main(){
     /**
      * @var Входное число, для которого надо вывести бит.
      */ 
-    long input_number = 0;
+    unsigned long input_number = 0;
     
     /**
      * @var Номер бита, который нужно вывести. Отсчет от нуля.
@@ -83,13 +88,13 @@ int main(){
      */ 
     unsigned short bit = 2;
 
-    if(scanf("%ld", &input_number) != 1){
+    if(scanf("%lu", &input_number) != 1){
         /*
          *  Защита от дурака.
          *  Если на вход подается что-то неприличное,
          *  то на стандартный поток (файл) ошибок выводим сообщения об ошибке.
          */
-        fprintf(stderr, "error: %ld is not integer number.", input_number);
+        fprintf(stderr, "error: %lu is not integer number.", input_number);
         return 1;
     }
     if(scanf("%hu", &numbit) != 1){
@@ -118,8 +123,8 @@ int main(){
  * @param   input   входное число;
  * @param   numbit  номер бита;
  **/ 
-int get_bit(long input_number, unsigned short numbit){
-    long tmp = 0;
+int get_bit(unsigned long input_number, unsigned short numbit){
+    unsigned long tmp = 0;
     /*
      * Посмотрим, как выглядит наше число в двоичном представлении.
      * Это нужно только для отладки
@@ -138,6 +143,8 @@ int get_bit(long input_number, unsigned short numbit){
     /**
      * Применяем побитовое умножение `битовое И` для исходного числа 
      * и единицы. Таким образом выделяем нужные бит.
+     * Суффикс `L` у числа говорит компилятору, 
+     * что мы работаем с типом `unsigned long`.
      */ 
     if(1L == (tmp & 1L)){
         return 1;
@@ -152,10 +159,10 @@ int get_bit(long input_number, unsigned short numbit){
  * @param   input   входное число;
  * @param   width   ширина выводимого числа;
  *                  Этот аргумент нужен, чтобы дополнять выходное число 
- *                  ведущеми нулями, до нужного размера.
- *                  Например `print_base(2, 4)` напечатает `0010`. 
+ *                  ведущими нулями, до нужного размера.
+ *                  Например `debug_print_binaryw(2, 4)` напечатает `0010`. 
  **/ 
-void debug_print_binaryw(long input, unsigned short width){
+void debug_print_binaryw(unsigned long input, unsigned short width){
     /*
      * Получаем разряд числа `input` в системе счисления `2`.
      */ 
@@ -185,7 +192,7 @@ void debug_print_binaryw(long input, unsigned short width){
         * Как результат возвращает предыдущие разряды числа.
         */
         debug_print_binaryw(input / 2, (width) ? (width - 1) : 0);
-        fprintf(stderr, "%d", digit);
+        fprintf(stderr, "%hu", digit);
     }
 }
 
@@ -195,10 +202,10 @@ void debug_print_binaryw(long input, unsigned short width){
  * 
  * @param   input   входное число;
  **/ 
-void debug_print_binary(long input){
+void debug_print_binary(unsigned long input){
     /**
      * @var Ширина выводимого числа.
-     *      Нужна для дополнения его ведущеми нулями.
+     *      Нужна для дополнения его ведущими нулями.
      */ 
     unsigned short width = sizeof(input) * 8;
     debug_print_binaryw(input, width);
