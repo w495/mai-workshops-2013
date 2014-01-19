@@ -344,7 +344,6 @@ int get_byte(int input, int num){
 int get_byte(int input, int num){
     return (input >> (num * 8)) & 255;
 }
-
 ```
 Для подробностей смотрите [ЛР 12 / Выдача байта](./ws12/get-byte/).
 
