@@ -327,7 +327,7 @@
 
 Кратко:
 ```C
-int get_byte(int input, int num){
+int get_bit(int input, int num){
     return (input >> num) & 1;
 }
 ```
