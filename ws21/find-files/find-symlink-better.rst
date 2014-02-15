@@ -1,6 +1,6 @@
-===========
- better.sh
-===========
+========================
+ find-symlink-better.sh
+========================
 
 ------------------------------------------------
 удаление всех синонимов указанного файла
@@ -17,9 +17,9 @@
 ОБЗОР
 ========
 
-``./better.sh`` ``--help``
+``./find-symlink-better.sh`` ``--help``
 
-``./better.sh``  [-h]|[-v][-D] -d *directory* -f *file*
+``./find-symlink-better.sh``  [-h]|[-v][-D] -d *directory* -f *file*
 
 
 ОПИСАНИЕ
@@ -50,9 +50,9 @@
 ПРИМЕРЫ
 ===========
 
-``./better.sh``    -d */some/dir* -f  */path/to/any/file*
+``./find-symlink-better.sh``    -d */some/dir* -f  */path/to/any/file*
 
-``./better.sh``    -f  */path/to/any/file* -d */some/dir*
+``./find-symlink-better.sh``    -f  */path/to/any/file* -d */some/dir*
 
 ФАЙЛЫ
 =====
