@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+﻿#! /usr/bin/env python
 # --*-- encoding=utf8 --*--
 
 ##
@@ -410,7 +410,7 @@ if '__main__' == __name__:
     output_filename = None
     if len(sys.argv) > 3:
         output_filename = sys.argv[3]
-        
+
     ## Если второй параметр не указан, то имя файла устанавливается в `None`.
     ## В этом случае, сам файл будет взят по-умолчанию (stdin).
     input_filename = None

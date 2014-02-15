@@ -8,11 +8,11 @@ XBACKLIGHT_MIN=1;
 ## ---------------------------------------------------------------
 
 warn () {
-  echo "WARN:$PROGNAME: $1";
+    echo "WARN:$PROGNAME: $1";
 }
 
 error () {
-  echo "ERROR:$PROGNAME: $1" ; exit 1 ;
+    echo "ERROR:$PROGNAME: $1" ; exit 1 ;
 }
 
 usage () {
@@ -28,7 +28,6 @@ $PROGNAME [-h]|[[-m]|[-M]|[-a] [-v]]
 -v | --verbose  uses verbose mode. It tells about really actions for power managment .
 CPUSAGE
 }
-
 
 notice() {
     [[ "x${verbose}" = "xyes" ]] && echo "# $@" 1>&2;
