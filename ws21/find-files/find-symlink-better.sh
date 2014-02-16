@@ -10,34 +10,44 @@ PROGNAME=$0;
 
 ##
 ## Печатает сообщение об ошибке и выходит из скрипта с кодом `1`.
+## Используется управление цветом.
+## Про то как управлять цветом, смотрите тут:
+## http://www.opennet.ru/base/dev/console_ctl.txt.html
 ##
 error () {
-    echo -e  "ERROR: $PROGNAME: $@" ; usage; exit 1 ;
+    echo -en  "\033[31mERROR:\033[0m \033[33m$PROGNAME: \033[0m\033[31m$@\033[0m\n";
+    usage;
+    exit 1 ;
 }
 
 ##
 ## Печатает предупреждение.
+## Используется управление цветом.
 ##
 warn () {
-    echo -e "WARN: $PROGNAME: $@";
+    echo -en "\033[33mWARN: $PROGNAME: $@\033[0m";
 }
 
 ##
 ## Печатает информационное сообщение,
 ## если программа была запущена с ключом `-v`.
 ## Т. е. в режиме трассировки.
+## Используется управление цветом.
 ##
 verbose() {
-    [[ "x${verbose}" = "xyes" ]] && echo -e "# verbose: $@" 1>&2;
+    [[ "x${verbose}" = "xyes" ]]
+    && echo -e "\033[32m# \033[1mverbose:\033[22m $@ \033[0m " 1>&2;
 }
 
 ##
 ## Печатает отладочное сообщение,
 ## если программа была запущена с ключом `-d`.
 ## Т. е. в режиме трассировки.
+## Используется управление цветом.
 ##
 debug() {
-    [[ "x${debug}" = "xyes" ]] && echo -e "# debug: $@" 1>&2;
+    [[ "x${debug}" = "xyes" ]]
+    && echo -e "\033[35m# \033[1mdebug:\033[22m $@\033[0m" 1>&2;
 }
 
 ##
@@ -106,21 +116,21 @@ file="${file//\'}"
 ##
 ## Проверяем что оба аргумента не пустые.
 ##
-if_empty "${dir}"   "there is no directory";
-if_empty "${file}"  "there is no file";
+if_empty "${dir}" "there is no directory";
+if_empty "${file}" "there is no file";
 
 ##
 ## Проверяем что директория существует.
 ##
 if [ ! -d "${dir}" ]; then
-  error "the ${dir} argument must be a directory";
+  error "the \033[4m${dir}\033[24m argument must be a directory";
 fi;
 
 ##
 ## Проверяем что файл существует.
 ##
 if [ ! -f "${file}" ]; then
-  error "the ${file} argument must be a file";
+  error "the \033[4m${file}\033[24m argument must be a file";
 fi;
 
 
