@@ -11,7 +11,7 @@ LD=gcc
 ## 
 ## Зададим флаги компиляции.
 ## 
-CFLAGS=-c -Wall -pedantic -std=c99
+CFLAGS=-c -Wall -pedantic -ansi -std=c99
 
 ## 
 ## Зададим флаги сборки.
