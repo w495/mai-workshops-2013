@@ -1,11 +1,17 @@
+/**
+ * @file    student.с
+ *          Файл с кодом для работы со структурой студента.
+ *
+ * @package student
+ *          Работа со структурой студента.
+ */
+
 /*
  * Подключаем только один заголовочный файл.
  * В нем иже сделаны все нужные определения и включения.
  */
 
 #include "student.h"
-
-
 
 /**
  * @fn  Считывает информацию о студенте из файла `infile`.
@@ -30,16 +36,36 @@ int student_fscanf(FILE* infile, student_t* student_pointer){
         return -2;
     }
 
+    __STUDENT_PROMPT("%lu) \n", (student_pointer->number));
+    __STUDENT_PROMPT("name                 (\033[3mstring[32]\033[0m): ");
+
+
     /*
      * Опасный момент. Если мы введем слишком большую строку,
      * то мы перезапишем, что было до нее.
+     *
+     * Правильный путь:
+     *      fscanf(infile, "%32s", (student_pointer->name))
+     *
+     * Еще лучше:
+     *      char name[4096];
+     *      fgets(name, sizeof(char) * 32, infile);
+     *      sscanf(name, "%[^\n]", student_pointer->name);
+     *
+     * Или пишите свою функцию считывания строки.
+     *
      */
-    __STUDENT_PROMPT("%lu) \n", (student_pointer->number));
-    __STUDENT_PROMPT("name                 (\033[3mstring[32]\033[0m): ");
-    if (1 != fscanf(infile, "%s", (char *)&(student_pointer->name))){
+    if (1 != fscanf(infile, "%s", (student_pointer->name))){
         return -3;
     }
 
+    /**
+     * Инициализируем, т.к. рискуем поиметь проблемы из-за приведения типов.
+     * student_pointer->gender --- unsigned int, а мы считываем char.
+     * Что произойдет:
+     *      младшие байты перезапишем,
+     *      а старшие останутся с мусором.
+     */
     student_pointer->gender = 0;
     __STUDENT_PROMPT("gender                  (\033[3mf or m\033[0m): ");
     if (1 != fscanf(infile, " %c", (char *)&(student_pointer->gender))){
@@ -56,12 +82,24 @@ int student_fscanf(FILE* infile, student_t* student_pointer){
         return -104;
     }
 
+    __STUDENT_PROMPT("group                (\033[3mstring[8]\033[0m): ");
+
     /*
      * Опасный момент. Если мы введем слишком большую строку,
      * то мы перезапишем, что было до нее.
+     *
+     * Правильный путь:
+     *      fscanf(infile, "%8s", (student_pointer->group))
+     *
+     * Еще лучше:
+     *      char group[4096];
+     *      fgets(group, sizeof(char) * 8, infile);
+     *      sscanf(group, "%[^\n]", student_pointer->group);
+     *
+     * Или пишите свою функцию считывания строки.
      */
-    __STUDENT_PROMPT("group                (\033[3mstring[8]\033[0m): ");
-    if (1 != fscanf(infile, "%s", (char *)&(student_pointer->group))){
+
+    if (1 != fscanf(infile, "%s", (student_pointer->group))){
         return -5;
     }
 
