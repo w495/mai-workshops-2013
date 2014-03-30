@@ -90,10 +90,6 @@ int main(int argc, char *argv[]) {
         student_printf(&student);
     }
 
-    /**
-     * Сбросили все изменения на диск.
-     */
-    fflush(database_file);
 
     /*
      * Файлы всегда нужно закрывать.
