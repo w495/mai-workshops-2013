@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf8 -*-
 
 '''
@@ -211,6 +212,10 @@ def build_matrix(config):
 
     if(not config.no_size):
         iostream.write("%s %s "%(config.width, config.height))
+
+    if(not config.one_line):
+        iostream.write("\n")
+
 
     for i in xrange(config.width):
         for j in xrange(config.height):
