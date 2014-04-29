@@ -65,13 +65,6 @@ OBJECTS  = $(patsubst %,$(OBJDIR)/%.o,$(MODULES))
 ## 
 .SUFIXES: .h .c .o
 
-## 
-## Цели, которые не создают одноименных файлов.
-## 
-.PHONY : all depend 		\
-	clean clean_obj 	\
-	pack clean_pack repack 	\
-	snapshot clean_snapshots
 
 ##
 ## Соберем "всё", т.е. соберем исполняемый файл.
@@ -235,3 +228,12 @@ man: help
 ## 
 help:
 	less README.md
+
+##
+## Цели, которые не создают одноименных файлов.
+##
+.PHONY : all depend 		\
+	clean clean_obj 	\
+	pack clean_pack repack 	pack \
+	snapshot clean_snapshots
+
