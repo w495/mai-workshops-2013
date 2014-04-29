@@ -22,7 +22,7 @@ It prints to `stdout` matrix with format
         ...     ...     ...
     <cell_k1>   ... <cell_kn>
 \033[0m
-You can tune the matrix generation or even format of matrix.
+You can tune the matrix generating or even format of matrix.
 See examples for it.
 
 """
