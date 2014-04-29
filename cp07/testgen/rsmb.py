@@ -258,6 +258,16 @@ def configure():
 
     # Далее опишем какие могут быть аргуметы командной строки.
 
+    # Размер матрицы, ширина и высота. Если хотим задать точно.
+    parser.add_argument(
+        '-s',   '--size',
+        type    =   check_size,
+        default =   None,
+        help    =   'size for square matrix; '
+        'other size keys will be ignored; '
+        '`-x` SIZE `-sq` has the same effect.'
+    )
+
     # Ширина матрицы. Если хотим задать точную.
     parser.add_argument(
         '-x',   '--width',
@@ -378,31 +388,37 @@ def configure():
     # Получаем от парсера объект конфигурации.
     config = parser.parse_args()
 
-    # Если задан минимальный размер матрицы,
-    # перезаписываем минимальную ширину и высоту.
-    if(config.min_size):
-        config.min_width  = config.min_size
-        config.min_height = config.min_size
+    if(config.size):
+        config.height = config.size
+        config.width  = config.size
+    else:
+        # Если задан минимальный размер матрицы,
+        # перезаписываем минимальную ширину и высоту.
+        if(config.min_size):
+            config.min_width  = config.min_size
+            config.min_height = config.min_size
 
-    # Если задан максимальный размер матрицы,
-    # перезаписываем максимальную ширину и высоту.
-    if(config.max_size):
-        config.max_width  = config.max_size
-        config.max_height = config.max_size
+        # Если задан максимальный размер матрицы,
+        # перезаписываем максимальную ширину и высоту.
+        if(config.max_size):
+            config.max_width  = config.max_size
+            config.max_height = config.max_size
 
-    # Если нет четко заданной ширины, то задаем ее случайным образом,
-    # как число из отрезка между минимальной и максимальной высотой.
-    if(not config.width):
-        config.width = int(random.uniform(config.min_width, config.max_width))
+        # Если нет четко заданной ширины, то задаем ее случайным образом,
+        # как число из отрезка между минимальной и максимальной высотой.
+        if(not config.width):
+            config.width = int(random.uniform(config.min_width, config.max_width))
 
-    # Если нет четко заданной высоты, то задаем ее случайным образом.
-    if(not config.height):
-        config.height = int(random.uniform(config.min_height, config.max_height))
+        # Если нет четко заданной высоты, то задаем ее случайным образом.
+        if(not config.height):
+            config.height = int(random.uniform(config.min_height, config.max_height))
 
-    # Если сказано, что матрица должна быть квадратной,
-    # делаем высоту равной ширине.
-    if(config.square):
-        config.height = config.width
+        # Если сказано, что матрица должна быть квадратной,
+        # делаем высоту равной ширине.
+        if(config.square):
+            config.height = config.width
+
+
 
     return config
 
