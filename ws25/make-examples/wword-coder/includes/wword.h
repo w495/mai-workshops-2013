@@ -5,7 +5,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h> // для memset и memcmp
-#include <wchar.h> // для работы с unicode
+#include <wchar.h>  // для работы с unicode
 #include <wctype.h> // для iswspace
 
 typedef struct {
@@ -22,8 +22,13 @@ typedef struct {
     wchar_t* string;
 } wword_t;
 
+///
+/// @fn Считывает слово из потока input.
+///     Работа ведется в unicode.
+///
 xresult_t wword_scan(FILE* input);
 
+/// @fn Сравнивает два слова, как это делает strcmp.
 int wword_cmp(wword_t*, wword_t*);
 
 #endif // __WWORD_H__
