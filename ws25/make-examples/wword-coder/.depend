@@ -1,0 +1,3 @@
+$(OBJDIR)/main.o: src/main.c includes/stree.h includes/wword.h
+$(OBJDIR)/stree.o: src/stree.c includes/stree.h includes/wword.h
+$(OBJDIR)/wword.o: src/wword.c includes/wword.h

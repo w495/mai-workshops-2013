@@ -11,7 +11,7 @@ LD=gcc
 ## 
 ## Зададим флаги компиляции.
 ## 
-CFLAGS=-c -Wall -pedantic -std=c89
+CFLAGS=-c -Wall -pedantic -std=c99
 
 ## 
 ## Зададим флаги сборки.
@@ -22,7 +22,7 @@ LDFLAGS=-lm
 ## 
 ## Зададим имя для исполняемого файла.
 ## 
-EXECUTABLE=cp3
+EXECUTABLE=wword-coder
 
 ## 
 ## Директория с исходными файлами кода *.c
@@ -42,7 +42,7 @@ OBJDIR=./obj
 ## 
 ## Опишем модули программы
 ## 
-MODULES=libtypes libfunc libformat main
+MODULES=main stree wword
 
 ## Строка с заголовочными файлами.
 ## 	Для patsubst формат команды: $(patsubst pattern, replacement, text)
