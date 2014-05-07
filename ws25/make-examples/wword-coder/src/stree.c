@@ -67,7 +67,7 @@ void stree_print_(stree_t* stree, FILE* output) {
         if(!wword->eoln)
             fwprintf(
                 output,
-                L"%ls %lx %lx %lx %lx\n",
+                L"%ls %ld %ld %ld %ld\n",
                 wword->string,
                 wword->size,
                 stree->freq,

@@ -16,7 +16,7 @@ xresult_t wword_scan(FILE* input) {
     wchar_t wchar = getwc(input);
     size_t counter = 0;
 
-    if(iswalnum(wchar))
+    if(iswalnum(wchar)){
         while (iswalnum(wchar)){
             this->string[counter] = towlower(wchar);
             wchar = getwc(input);
@@ -24,14 +24,18 @@ xresult_t wword_scan(FILE* input) {
             if(false == xresult.isok)
                 xresult.isok = true;
         }
-    else if(iswpunct(wchar)) {
-        this->string[counter] = wchar;
-        counter++;
-        xresult.isok = true;
+        // Для простоты возвращаем символ в поток.
+        // В общем случае лучше уметь обходиться без таких приемов.
+        ungetwc (wchar, input);
     }
     else if('\n' == wchar) {
         this->string[counter] = wchar;
         this->eoln = true;
+        counter++;
+        xresult.isok = true;
+    }
+    else if(iswpunct (wchar)) {
+        this->string[counter] = wchar;
         counter++;
         xresult.isok = true;
     }
