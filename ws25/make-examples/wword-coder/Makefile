@@ -42,7 +42,8 @@ OBJDIR=./obj
 ## 
 ## Опишем модули программы
 ## 
-MODULES=main stree wword
+MODULES=stree wword
+MODULES_MAIN=main $(MODULES)
 
 ## Строка с заголовочными файлами.
 ## 	Для patsubst формат команды: $(patsubst pattern, replacement, text)
@@ -52,12 +53,12 @@ INCLUDES = $(patsubst %,$(INCDIR)/%.h,$(MODULES))
 ##
 ## Строка с исходными кодами.
 ##
-SOURCES  = $(patsubst %,$(SRCDIR)/%.c,$(MODULES)) 
+SOURCES  = $(patsubst %,$(SRCDIR)/%.c,$(MODULES_MAIN))
 
 ##
 ## Строка с объектными файлами.
 ##
-OBJECTS  = $(patsubst %,$(OBJDIR)/%.o,$(MODULES)) 
+OBJECTS  = $(patsubst %,$(OBJDIR)/%.o,$(MODULES_MAIN))
 
 
 ## 
@@ -171,7 +172,7 @@ FULL_PACK_NAME=$(PACKNAME).$(PACKEXTN)
 ##
 ## Что паковать.
 ##
-FILES_FOR_PACK=$(INCLUDES) $(SOURCES) $(MAKEFILE_LIST) README.md
+FILES_FOR_PACK=$(INCLUDES) $(SOURCES) $(MAKEFILE_LIST)
 
 ##
 ## Упакуем архив если его еще нет. 
