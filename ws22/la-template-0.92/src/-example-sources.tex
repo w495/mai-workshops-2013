@@ -16,8 +16,8 @@
 
 %% \begin{lstlisting}[language=Tex, escapeinside='']
 %\begin{lstlisting}[escapeinside='', firstnumber=last]
-\begin{lstlisting}[escapeinside='', firstnumber=100]
-	%\usepackage{listingsutf8}	
+\begin{lstlisting}[firstnumber=100]
+
 	\usepackage{listings}
 	\lstset{
 		language=Tex,
@@ -28,9 +28,9 @@
 		frame=tb ,
 		numbers=left,
 		numberstyle=\footnotesize\color{gray},
-		escapechar = |, % 'можно вывалиться в \LaTeX' 
+		escapechar = X, % 'можно вывалиться в \LaTeX'
 		extendedchars = false,
-			% extendedchars = true, 
+			% extendedchars = true,
 				%% да именно так но не  \true
 				%% \true == false
 		inputencoding = utf8, % кодировка, очень аккуратно тут
@@ -38,6 +38,7 @@
 		keepspaces = true,
 		belowcaptionskip=5pt
 	}
+    | $$ X = 1 $$
 \end{lstlisting}
 
 Пути решения:
