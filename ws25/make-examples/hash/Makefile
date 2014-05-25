@@ -1,12 +1,12 @@
 ## 
 ## Определим компилятор.
 ## 
-CC=gcc
+CC=@gcc
 
 ## 
 ## Определим сборщик.
 ## 
-LD=gcc
+LD=@gcc
 
 ## 
 ## Зададим флаги компиляции.
@@ -22,7 +22,7 @@ LDFLAGS=-lm
 ## 
 ## Зададим имя для исполняемого файла.
 ## 
-EXECUTABLE=wword-coder
+EXECUTABLE=hash
 
 ## 
 ## Директория с исходными файлами кода *.c
@@ -42,7 +42,7 @@ OBJDIR=./obj
 ## 
 ## Опишем модули программы
 ## 
-MODULES=stree wword
+MODULES=htab node util
 MODULES_MAIN=main $(MODULES)
 
 ## Строка с заголовочными файлами.
@@ -74,9 +74,9 @@ OBJECTS  = $(patsubst %,$(OBJDIR)/%.o,$(MODULES_MAIN))
 all: $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
-	# 
+	#
 	# 	Собираем исполняемый файл из объектных.
-	# 
+	#
 	$(LD) $(LDFLAGS) $^ -o $@
 
 $(OBJDIR)/%.o: | $(OBJDIR)
@@ -92,7 +92,7 @@ $(OBJDIR)/%.o: | $(OBJDIR)
 
 $(OBJDIR):
 	# 	Создаем директорию $(OBJDIR) если ее нет.
-	mkdir -p $@
+	@mkdir -p $@
 
 ## 
 ## Подкачаем файл описания зависимостей.
@@ -106,18 +106,18 @@ clean: clean_obj
 	# 
 	# 	Удаляем исполняемый файл.
 	# 
-	rm -f "$(EXECUTABLE)";
+	@rm -f "$(EXECUTABLE)";
 	
 clean_obj:
 	# 
 	# 	Удаляем объектные файлы.
 	# 
-	rm -f  "$(OBJECTS)";
+	@rm -f  "$(OBJECTS)";
 	
 	#
 	# 	Удаляем директорию с объектными файлами.
 	# 
-	rm -rf "$(OBJDIR)";
+	@rm -rf "$(OBJDIR)";
 
 ## -------------------------------------------------------------------------
 ## В реальной жизни проекты состоят из сотен модулей.
@@ -132,7 +132,7 @@ depend: $(SOURCES)
 	# 
 	# 	Удаляем старый файл зависимостей.
 	# 	
-	rm -f ./.depend
+	@rm -f ./.depend
 	
 	# 
 	# 	Создаем новый файл зависимостей.
@@ -187,13 +187,13 @@ $(FULL_PACK_NAME):
 	#
 	#	Создаем архив из исходных кодов проекта и элементов Makefile.
 	#
-	tar -cjf $@ $(FILES_FOR_PACK)
+	@tar -cjf $@ $(FILES_FOR_PACK)
 
 clean_pack:
 	#
 	# 	Удаляет архив.
 	#
-	rm -f $(FULL_PACK_NAME);
+	@rm -f $(FULL_PACK_NAME);
 
 ##
 ## По `make repack` Перекуем архив, даже если он есть.
@@ -210,13 +210,13 @@ snapshot:
 	#
 	# 	Создаем архив со снимком проекта.
 	#
-	tar -cjf $(SNAPSHOTNAME) $(FILES_FOR_PACK)
+	@tar -cjf $(SNAPSHOTNAME) $(FILES_FOR_PACK)
 
 clean_snapshots:
 	#
 	#	Удаляем все архивы в папке.
 	#
-	rm -f *.$(PACKEXTN);
+	@rm -f *.$(PACKEXTN);
 
 ##
 ## Цели, которые не создают одноименных файлов.

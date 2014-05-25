@@ -1,0 +1,4 @@
+$(OBJDIR)/main.o: src/main.c includes/htab.h includes/node.h includes/util.h
+$(OBJDIR)/htab.o: src/htab.c includes/htab.h includes/node.h includes/util.h
+$(OBJDIR)/node.o: src/node.c includes/node.h includes/util.h
+$(OBJDIR)/util.o: src/util.c includes/util.h
