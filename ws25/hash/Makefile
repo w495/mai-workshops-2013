@@ -172,7 +172,7 @@ FULL_PACK_NAME=$(PACKNAME).$(PACKEXTN)
 ##
 ## Что паковать.
 ##
-FILES_FOR_PACK=$(INCLUDES) $(SOURCES) $(MAKEFILE_LIST)
+FILES_FOR_PACK=$(INCLUDES) $(SOURCES) $(MAKEFILE_LIST) README.md
 
 ##
 ## Упакуем архив если его еще нет. 
