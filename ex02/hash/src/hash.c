@@ -61,7 +61,7 @@
  *          - bird
  *          p
  *          {
- *          "size" : 4,
+ *          "size" : 3,
  *          "data" : [
  *                  {
  *                      "hash"  : "0x0139",
@@ -536,6 +536,7 @@ int htab_delnode(htab_t * this, node_t * node) {
     this->_used[hash] = false;
     node_destroy(this->data[hash]);
     this->data[hash] = NULL;
+    --(this->size);
     return 0;
 }
 

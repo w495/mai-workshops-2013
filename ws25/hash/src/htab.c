@@ -195,12 +195,12 @@ int htab_findnode(htab_t * this, node_t * node) {
  */
 int htab_delnode(htab_t * this, node_t * node) {
     hash_t hash = htab_findhash(this, node);
-
     if (!this->_used[hash])
         return -1;
     this->_used[hash] = false;
     node_destroy(this->data[hash]);
     this->data[hash] = NULL;
+    --(this->size);
     return 0;
 }
 
