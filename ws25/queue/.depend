@@ -1,0 +1,2 @@
+$(OBJDIR)/queue.o: lib/src/queue.c lib/includes/queue.h
+$(OBJDIR)/main.o: src/main.c lib/includes/queue.h
