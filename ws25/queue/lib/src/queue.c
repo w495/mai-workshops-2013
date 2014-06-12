@@ -18,7 +18,8 @@ queue_t *queue_init(queue_t *queue) {
 
 queue_t *queue_sort(queue_t *queue) {
     queue->mainQueue = sort(queue->mainQueue, queue->first, queue->size);
-
+    queue = queue_new_main(queue);
+    
     return queue;
 }
 
@@ -79,7 +80,7 @@ void queue_print(queue_t *mainQueue) {
     }
 }
 
-queue_t *queue_pop(queue_t *queue){
+queue_t *queue_new_main(queue_t *queue){
     int i;
     for (i = 0; i < queue->size; ++i) {
         if (queue->mainQueue->previous != NULL)

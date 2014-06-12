@@ -30,7 +30,7 @@ queue_t *queue_del(queue_t *Queue);
 
 queue_t *queue_concat(queue_t *firstQueue, queue_t *secondQueue);
 
-queue_t *queue_pop(queue_t *Queue);
+queue_t *queue_new_main(queue_t *Queue);
 
 void queue_print(queue_t *mainQueue);
 

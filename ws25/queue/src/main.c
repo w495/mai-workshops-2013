@@ -43,25 +43,9 @@ int main() {
 
             if (c == '1') {
                 firstQueue = queue_sort(firstQueue);
-
-                for (i = 0; i < firstQueue->size; ++i) {
-                    if (firstQueue->mainQueue->previous != NULL)
-                        firstQueue->mainQueue =
-                            firstQueue->mainQueue->previous;
-                    else
-                        break;
-                }
             }
             if (c == '2') {
                 secondQueue = queue_sort(secondQueue);
-
-                for (i = 0; i < secondQueue->size; ++i) {
-                    if (secondQueue->mainQueue->previous != NULL)
-                        secondQueue->mainQueue =
-                            secondQueue->mainQueue->previous;
-                    else
-                        break;
-                }
             }
         }
         if (c == 'q') {
